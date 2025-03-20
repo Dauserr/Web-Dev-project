@@ -1,157 +1,125 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Краудфандинговая Платформа</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение внешнего CSS-файла -->
-</head>
-<body>
-    <!-- Навигационная линия (хэдер) -->
+<div class="body">
     <header>
-        <div class="container">
-            <a href="index.html" class="logo">Логотип</a>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.svg" alt="StartHub.kz Logo" class="logo-icon">
+                StartHub.kz
+            </a>
             <nav>
                 <ul>
                     <li><a href="about.html">О нас</a></li>
-                    <li><a href="news.html">Новости</a></li>
-                    <li><a href="projects.html">Каталог проектов</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="create_project.html">Создать проект</a></li>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="how-it-works.html">FAQ</a></li>
+                    <li><a href="blog.html">Блог</a></li>
                 </ul>
             </nav>
-            <div class="search">
-                <input type="text" placeholder="Поиск проектов">
-                <button type="button">Поиск</button>
-            </div>
-            <div class="account">
-                <a href="login.html">Вход</a> / <a href="register.html">Регистрация</a>
-            </div>
+            <a href="create_project.html" class="btn btn-primary">Создать проект</a>
         </div>
     </header>
 
-    <!-- Баннер с ключевыми проектами -->
     <section class="banner">
         <div class="container">
-            <div class="slider">
-                <!-- Слайды с популярными/новыми проектами -->
-                <div class="slide">Проект 1</div>
-                <div class="slide">Проект 2</div>
-                <div class="slide">Проект 3</div>
+            <h1>Воплощайте мечты в реальность вместе с нами</h1>
+            <p>Присоединяйтесь к сообществу инноваторов и творческих людей. Создавайте проекты, находите поддержку и меняйте мир к лучшему.</p>
+            <div class="banner-buttons">
+                <a href="explore.html" class="btn btn-primary">Исследовать проекты</a>
+                <a href="how-it-works.html" class="btn btn-secondary">Узнать больше</a>
             </div>
-            <div class="cta-buttons">
-                <a href="support_project.html" class="btn">Поддержать проект</a>
-                <a href="create_project.html" class="btn">Создать проект</a>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-icon"></div>
+                    <div class="stat-text">12K+ Проектов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-icon"></div>
+                    <div class="stat-text">68K Пользователей</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Категории проектов -->
     <section class="categories">
         <div class="container">
             <h2>Категории проектов</h2>
-            <div class="category-cards">
-                <div class="card">Технологии</div>
-                <div class="card">Искусство</div>
-                <div class="card">Благотворительность</div>
-                <!-- Добавьте другие категории по необходимости -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция с текущими трендами -->
-    <section class="trending-projects">
-        <div class="container">
-            <h2>Текущие тренды</h2>
-            <div class="project-cards">
-                <div class="card">Популярный проект 1</div>
-                <div class="card">Популярный проект 2</div>
-                <div class="card">Популярный проект 3</div>
-                <!-- Добавьте другие проекты по необходимости -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок “Как это работает” -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2>Как это работает</h2>
-            <div class="steps">
-                <div class="step">
-                    <h3>1. Создай проект</h3>
-                    <p>Опишите свою идею и разместите её на нашей платформе.</p>
+            <p class="subtitle">Найдите проекты, которые вас вдохновляют, или создайте свой собственный</p>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="images/tech.svg" alt="Технологии">
+                    <h3>Технологии</h3>
+                    <p>Инновационные решения и гаджеты</p>
                 </div>
-                <div class="step">
-                    <h3>2. Найди поддержку</h3>
-                    <p>Привлекайте финансирование от заинтересованных пользователей.</p>
+                <div class="category-card">
+                    <img src="images/art.svg" alt="Искусство">
+                    <h3>Искусство</h3>
+                    <p>Креативные и культурные проекты</p>
                 </div>
-                <div class="step">
-                    <h3>3. Реализуй идею</h3>
-                    <p>Получите средства и приступайте к реализации проекта.</p>
+                <div class="category-card">
+                    <img src="images/eco.svg" alt="Экология">
+                    <h3>Экология</h3>
+                    <p>Проекты для защиты природы</p>
+                </div>
+                <div class="category-card">
+                    <img src="images/social.svg" alt="Социальные проекты">
+                    <h3>Социальные проекты</h3>
+                    <p>Инициативы для общества</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Информация о платформе -->
-    <section class="about-platform">
-        <div class="container">
-            <h2>О нашей платформе</h2>
-            <p>Мы предоставляем уникальные возможности для реализации ваших идей, объединяя авторов проектов и инвесторов на одной площадке.</p>
-        </div>
-    </section>
-
-    <!-- Отзывы пользователей -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>Отзывы пользователей</h2>
-            <div class="testimonial-cards">
-                <div class="card">
-                    <p>“Благодаря этой платформе я смог реализовать свою мечту!”</p>
-                    <cite>— Автор проекта</cite>
-                </div>
-                <div class="card">
-                    <p>“Инвестировал в несколько проектов и остался доволен результатом.”</p>
-                    <cite>— Инвестор</cite>
-                </div>
-                <!-- Добавьте другие отзывы по необходимости -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер -->
     <footer>
         <div class="container">
-            <div class="footer-columns">
-                <div class="column">
-                    <h3>Контакты</h3>
-                    <p>{{ 'Email: info@platforma.com' }}</p>
-                    <p>Телефон: +123 456 7890</p>
-                </div>
-                <div class="column">
-                    <h3>Мы в соцсетях</h3>
-                    <ul class="social-links">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <!-- Добавьте другие соцсети по необходимости -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>О платформе</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Как это работает</a></li>
+                        <li><a href="#">Правила</a></li>
+                        <li><a href="#">Безопасность</a></li>
                     </ul>
                 </div>
-                <div class="column">
-                    <h3>Партнеры</h3>
-                    <ul class="partners">
-                        <li><a href="#">Партнер 1</a></li>
-                        <li><a href="#">Партнер 2</a></li>
-                        <li><a href="#">Партнер 3</a></li>
-                        <!-- Добавьте других партнеров по необходимости -->
+                <div class="footer-column">
+                    <h3>Проекты</h3>
+                    <ul>
+                        <li><a href="#">Популярные</a></li>
+                        <li><a href="#">Новые</a></li>
+                        <li><a href="#">Завершенные</a></li>
+                        <li><a href="#">Создать проект</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">Сообщить о проблеме</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Сообщество</h3>
+                    <ul>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Форум</a></li>
+                        <li><a href="#">События</a></li>
+                        <li><a href="#">Партнеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Правовая информация</h3>
+                    <ul>
+                        <li><a href="#">Условия использования</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Правила платформы</a></li>
+                        <li><a href="#">Юридические документы</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p><a href="privacy_policy.html">Политика конфиденциальности</a> | <a href="terms_of_use.html">Условия использования</a></p>
-                <p>&copy; 2025 Краудфандинговая Платформа. Все права защищены.</p>
+                <p>&copy; 2024 StartHub.kz. Все права защищены.</p>
+                <p>Сделано с ❤️ для творческих людей</p>
             </div>
         </div>
     </footer>
-</body>
-</html>
+</div>

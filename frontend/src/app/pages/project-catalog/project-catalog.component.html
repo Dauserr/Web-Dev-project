@@ -1,1 +1,148 @@
-<p>project-catalog works!</p>
+<div class="body">
+    <header>
+        <div class="container header-container">
+            <a href="../main/index.html" class="logo">
+                <img src="../main/images/logo.svg" alt="StartHub.kz Logo" class="logo-icon">
+                StartHub.kz
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="../main/about.html">О нас</a></li>
+                    <li><a href="../main/news.html">Проекты</a></li>
+                    <li><a href="index.html" class="active">FAQ</a></li>
+                    <li><a href="../main/faq.html">Блог</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="../main/login.html" class="btn btn-secondary">Вход</a>
+                <a href="../main/register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="catalogue-main">
+        <div class="container">
+            <section class="filters-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Поиск по проектам..." class="search-input">
+                    <button class="search-button">Найти</button>
+                </div>
+                
+                <div class="filters">
+                    <div class="filter-group">
+                        <h3>Категории</h3>
+                        <div class="filter-options">
+                            <label><input type="checkbox" name="category" value="tech"> Технологии</label>
+                            <label><input type="checkbox" name="category" value="art"> Искусство</label>
+                            <label><input type="checkbox" name="category" value="eco"> Экология</label>
+                            <label><input type="checkbox" name="category" value="social"> Социальные проекты</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Статус проекта</h3>
+                        <div class="filter-options">
+                            <label><input type="radio" name="status" value="active"> Активные</label>
+                            <label><input type="radio" name="status" value="completed"> Завершённые</label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h3>Сортировка</h3>
+                        <select class="sort-select">
+                            <option value="date">По дате добавления</option>
+                            <option value="popularity">По популярности</option>
+                            <option value="funds">По сумме собранных средств</option>
+                            <option value="deadline">По времени до завершения</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects-list">
+                <!-- Пример карточки проекта -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../main/images/tech.svg" alt="Изображение проекта">
+                    </div>
+                    <div class="project-content">
+                        <h2>Название проекта</h2>
+                        <p class="project-description">Краткое описание проекта и его основных целей...</p>
+                        <div class="project-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 65%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>65% собрано</span>
+                                <span>Осталось 15 дней</span>
+                            </div>
+                        </div>
+                        <div class="project-author">
+                            <img src="../main/images/avatar.svg" alt="Аватар автора" class="author-avatar">
+                            <span class="author-name">Имя автора</span>
+                        </div>
+                        <div class="project-actions">
+                            <button class="btn-favorite">В избранное</button>
+                            <button class="btn-share">Поделиться</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Повторить для других проектов -->
+            </section>
+
+            <div class="pagination">
+                <button class="btn-page" disabled>←</button>
+                <button class="btn-page active">1</button>
+                <button class="btn-page">2</button>
+                <button class="btn-page">3</button>
+                <span>...</span>
+                <button class="btn-page">10</button>
+                <button class="btn-page">→</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>О платформе</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Как это работает</a></li>
+                        <li><a href="#">Правила</a></li>
+                        <li><a href="#">Безопасность</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>Email: support@starthub.kz</li>
+                        <li>Телефон: +7 (777) 123-45-67</li>
+                        <li>Адрес: г. Алматы, ул. Примерная, 123</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Социальные сети</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Правовая информация</h3>
+                    <ul>
+                        <li><a href="#">Условия использования</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Правила платформы</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StartHub.kz. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</div>

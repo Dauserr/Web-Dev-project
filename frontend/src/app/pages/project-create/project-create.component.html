@@ -1,1 +1,123 @@
-<p>project-create works!</p>
+<!-- Основной контейнер -->
+<div class="project-create-container">
+  <!-- Секция с инструкциями -->
+  <section class="instructions-section">
+    <h2>Создание проекта</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-icon">
+          <!-- TODO: Добавить SVG иконку -->
+        </div>
+        <h3>Шаг 1</h3>
+        <p>Расскажите о вашем проекте</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <!-- TODO: Добавить SVG иконку -->
+        </div>
+        <h3>Шаг 2</h3>
+        <p>Добавьте медиа-контент</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <!-- TODO: Добавить SVG иконку -->
+        </div>
+        <h3>Шаг 3</h3>
+        <p>Установите цель и сроки</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <!-- TODO: Добавить SVG иконку -->
+        </div>
+        <h3>Шаг 4</h3>
+        <p>Настройте вознаграждения</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">
+          <!-- TODO: Добавить SVG иконку -->
+        </div>
+        <h3>Шаг 5</h3>
+        <p>Просмотрите и отправьте</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма создания проекта -->
+  <section class="project-form-section">
+    <form class="project-form">
+      <!-- Основная информация -->
+      <div class="form-group">
+        <label for="projectName">Название проекта</label>
+        <div class="input-tip">Придумайте яркое и запоминающееся название</div>
+        <input type="text" id="projectName" name="projectName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="projectDescription">Краткое описание</label>
+        <div class="input-tip">Опишите суть вашего проекта в 2-3 предложениях</div>
+        <textarea id="projectDescription" name="projectDescription" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="projectCategory">Категория проекта</label>
+        <select id="projectCategory" name="projectCategory" required>
+          <option value="">Выберите категорию</option>
+          <!-- TODO: Добавить категории -->
+        </select>
+      </div>
+
+      <!-- Финансовая информация -->
+      <div class="form-group">
+        <label for="targetAmount">Целевая сумма</label>
+        <input type="number" id="targetAmount" name="targetAmount" min="0" required>
+      </div>
+
+      <!-- Даты -->
+      <div class="form-group">
+        <label>Сроки сбора средств</label>
+        <div class="date-range">
+          <input type="date" id="startDate" name="startDate" required>
+          <span>до</span>
+          <input type="date" id="endDate" name="endDate" required>
+        </div>
+      </div>
+
+      <!-- Календарь дедлайнов -->
+      <div class="form-group">
+        <label>Календарь дедлайнов</label>
+        <div class="calendar-container">
+          <!-- TODO: Добавить календарь -->
+        </div>
+      </div>
+
+      <!-- Медиа-контент -->
+      <div class="form-group">
+        <label>Медиа-контент</label>
+        <div class="media-upload">
+          <div class="image-upload">
+            <label for="projectImages">Загрузить изображения</label>
+            <input type="file" id="projectImages" name="projectImages" multiple accept="image/*">
+          </div>
+          <div class="video-upload">
+            <label for="projectVideo">Добавить видео</label>
+            <input type="text" id="projectVideo" name="projectVideo" placeholder="Вставьте ссылку на видео">
+          </div>
+        </div>
+      </div>
+
+      <!-- Вознаграждения -->
+      <div class="form-group">
+        <label>Вознаграждения для инвесторов</label>
+        <div class="rewards-container">
+          <!-- TODO: Добавить динамические поля для вознаграждений -->
+        </div>
+      </div>
+
+      <!-- Кнопки действий -->
+      <div class="form-actions">
+        <button type="button" class="preview-btn">Предпросмотр</button>
+        <button type="submit" class="submit-btn">Отправить на модерацию</button>
+      </div>
+    </form>
+  </section>
+</div>

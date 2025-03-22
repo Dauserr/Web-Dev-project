@@ -1,1 +1,125 @@
-<p>blog works!</p>
+<!-- Заголовок страницы -->
+<section class="blog-header">
+  <div class="container">
+    <h1>Блог</h1>
+    <p class="subtitle">Актуальные новости, полезные советы и истории успеха в мире краудфандинга</p>
+  </div>
+</section>
+
+<!-- Поисковая строка -->
+<section class="search-section">
+  <div class="container">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Поиск статей</mat-label>
+      <input matInput placeholder="Введите ключевые слова...">
+      <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</section>
+
+<!-- Категории статей -->
+<section class="categories-section">
+  <div class="container">
+    <mat-tab-group>
+      <mat-tab label="Новости платформы"></mat-tab>
+      <mat-tab label="Советы по краудфандингу"></mat-tab>
+      <mat-tab label="Истории успеха"></mat-tab>
+    </mat-tab-group>
+  </div>
+</section>
+
+<!-- Список статей -->
+<section class="articles-section">
+  <div class="container">
+    <div class="articles-grid">
+      <mat-card *ngFor="let article of articles" class="article-card">
+        <img mat-card-image [src]="article.image" [alt]="article.title">
+        <mat-card-content>
+          <h2>{{article.title}}</h2>
+          <p>{{article.description}}</p>
+          <div class="tags">
+            <mat-chip *ngFor="let tag of article.tags">{{tag}}</mat-chip>
+          </div>
+          <button mat-raised-button color="primary">Читать далее</button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Теги и популярные статьи -->
+<section class="tags-section">
+  <div class="container">
+    <h3>Популярные теги</h3>
+    <mat-chip-grid>
+      <mat-chip-row *ngFor="let tag of popularTags">{{tag}}</mat-chip-row>
+    </mat-chip-grid>
+    <button mat-stroked-button color="primary" class="popular-button">
+      <mat-icon>trending_up</mat-icon>
+      Популярные статьи
+    </button>
+  </div>
+</section>
+
+<!-- Подписка на обновления -->
+<section class="newsletter-section">
+  <div class="container">
+    <h3>Подпишитесь на обновления</h3>
+    <form class="newsletter-form">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Введите ваш email">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Подписаться</button>
+    </form>
+  </div>
+</section>
+
+<!-- Популярные статьи -->
+<section class="popular-articles">
+  <div class="container">
+    <h3>Популярные статьи</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let article of popularArticles">
+        <span mat-line>{{article.title}}</span>
+        <span mat-line>{{article.date}}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</section>
+
+<!-- Информация об авторах -->
+<section class="authors-section">
+  <div class="container">
+    <h3>Наши авторы</h3>
+    <div class="authors-grid">
+      <mat-card *ngFor="let author of authors" class="author-card">
+        <img mat-card-image [src]="author.image" [alt]="author.name">
+        <mat-card-content>
+          <h4>{{author.name}}</h4>
+          <p>{{author.bio}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</section>
+
+<!-- Социальные кнопки -->
+<section class="social-section">
+  <div class="container">
+    <h3>Поделиться</h3>
+    <div class="social-buttons">
+      <button mat-icon-button color="primary">
+        <mat-icon>facebook</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>twitter</mat-icon>
+      </button>
+      <button mat-icon-button color="primary">
+        <mat-icon>linkedin</mat-icon>
+      </button>
+    </div>
+  </div>
+</section>

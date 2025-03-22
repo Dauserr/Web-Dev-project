@@ -156,6 +156,30 @@ nav a {
     margin-top: 40px;
 }
 
+.contact-button-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
 /* Футер */
 footer {
     background: var(--white);

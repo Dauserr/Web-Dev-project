@@ -25,9 +25,9 @@
 
 .container {
     width: 100%;
-    max-width: 1110px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 2rem;
 }
 
 /* Хедер */
@@ -166,11 +166,25 @@ nav a {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 1.5rem;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .project-card:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.project-card:active {
+    transform: translateY(0);
+}
+
+.project-card .btn-favorite,
+.project-card .btn-share {
+    position: relative;
+    z-index: 1;
 }
 
 .project-image {

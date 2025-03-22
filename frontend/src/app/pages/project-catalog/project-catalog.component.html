@@ -40,9 +40,9 @@
 
             <section class="projects-list">
                 <!-- Пример карточки проекта -->
-                <div class="project-card">
+                <a href="../project/:id" class="project-card">
                     <div class="project-image">
-                        <img src="../main/images/tech.svg" alt="Изображение проекта">
+                        <img src="assets/icons/tech.svg" alt="Изображение проекта">
                     </div>
                     <div class="project-content">
                         <h2>Название проекта</h2>
@@ -57,15 +57,15 @@
                             </div>
                         </div>
                         <div class="project-author">
-                            <img src="../main/images/avatar.svg" alt="Аватар автора" class="author-avatar">
+                            <img src="assets/icons/avatar.svg" alt="Аватар автора" class="author-avatar">
                             <span class="author-name">Имя автора</span>
                         </div>
                         <div class="project-actions">
-                            <button class="btn-favorite">В избранное</button>
-                            <button class="btn-share">Поделиться</button>
+                            <button class="btn-favorite" (click)="$event.preventDefault(); $event.stopPropagation();">В избранное</button>
+                            <button class="btn-share" (click)="$event.preventDefault(); $event.stopPropagation();">Поделиться</button>
                         </div>
                     </div>
-                </div>
+                </a>
                 <!-- Повторить для других проектов -->
             </section>
 

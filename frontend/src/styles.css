@@ -1,3 +1,13 @@
+/* Global CSS Variables */
+:root {
+    --primary-color: #101828;
+    --secondary-color: #006D77;
+    --accent-color: #BEE1E6;
+    --text-color: #475467;
+    --light-text: #969696;
+    --white: #FFFFFF;
+}
+
 /* You can add global styles to this file, and also import other style files */
 body{
   margin: 0 0;

@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {MatButtonModule } from '@angular/material/button';
 import {NgForOf, NgIf} from '@angular/common';
 import {MatCard, MatCardContent, MatCardHeader} from '@angular/material/card';
-import {MatFormField} from '@angular/material/input';
 import {Router} from '@angular/router';
 
 @Component({
@@ -16,7 +15,6 @@ import {Router} from '@angular/router';
     MatCardHeader,
     MatCardContent,
     NgIf,
-    MatFormField,
   ],
   standalone:true,
   templateUrl: './login-page.component.html',

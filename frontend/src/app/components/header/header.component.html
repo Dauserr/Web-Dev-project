@@ -1,6 +1,6 @@
 <header>
     <div class="container header-container">
-        <a href="../main/index.html" class="logo">
+        <a href="../" class="logo">
             <img src="assets/icons/logo.svg" alt="StartHub.kz Logo" class="logo-icon">
             StartHub.kz
         </a>
@@ -8,22 +8,32 @@
             <ul>
                 <li><a href="../about">О нас</a></li>
                 <li><a href="../catalog">Проекты</a></li>
-                <li><a href="../help" class="active">FAQ</a></li>
+                <li><a href="../help" >FAQ</a></li>
                 <li><a href="../blog">Блог</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="../main/login.html" class="btn btn-secondary">Вход</a>
-            <a href="../main/register.html" class="btn btn-primary">Регистрация</a>
+            <a href="../login" class="btn btn-secondary">Вход</a>
+            <a href="../register" class="btn btn-primary">Регистрация</a>
             <div class="language-switcher">
-                <input type="radio" name="lang" id="ru" checked>
-                <label for="ru">РУ</label>
-
-                <input type="radio" name="lang" id="kz">
-                <label for="kz">ҚАЗ</label>
-
-                <input type="radio" name="lang" id="en">
-                <label for="en">ENG</label>
+                <div class="language-switcher-item">
+                    <input type="radio" name="lang" id="ru" checked>
+                    <div class="radio-tile">
+                        <label for="ru">RU</label>
+                    </div>
+                </div>
+                <div class="language-switcher-item">
+                    <input type="radio" name="lang" id="kz">
+                    <div class="radio-tile">
+                        <label for="kz">KK</label>
+                    </div>
+                </div>
+                <div class="language-switcher-item">
+                    <input type="radio" name="lang" id="en">
+                    <div class="radio-tile">
+                        <label for="en">EN</label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,1 +1,170 @@
-<p>project works!</p>
+<!-- Заголовок проекта -->
+<section class="project-header">
+  <div class="container">
+    <h1 class="project-title">{{project.title}}</h1>
+    <h2 class="project-subtitle">{{project.subtitle}}</h2>
+  </div>
+</section>
+
+<!-- Визуальная зона проекта -->
+<section class="project-hero">
+  <div class="media-container">
+    <div class="main-image">
+      <img [src]="project.mainImage" [alt]="project.title">
+    </div>
+    <div class="video-container" *ngIf="project.videoUrl">
+      <iframe [src]="project.videoUrl | safe" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="project-stats">
+      <div class="progress-bar">
+        <div class="progress" [style.width.%]="project.progress"></div>
+        <div class="progress-info">
+          <span>{{project.raisedAmount | currency:'RUB'}}</span>
+          <span>{{project.progress}}%</span>
+        </div>
+      </div>
+      
+      <div class="stats">
+        <div class="investors-count">
+          <i class="fas fa-users"></i>
+          <span>{{project.investorsCount}} инвесторов</span>
+        </div>
+        <div class="time-remaining">
+          <i class="fas fa-clock"></i>
+          <span>{{project.timeRemaining}}</span>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="support-btn">Поддержать проект</button>
+        <div class="share-buttons">
+          <button class="share-btn facebook"><i class="fab fa-facebook"></i></button>
+          <button class="share-btn telegram"><i class="fab fa-telegram"></i></button>
+          <button class="share-btn vk"><i class="fab fa-vk"></i></button>
+          <button class="share-btn twitter"><i class="fab fa-twitter"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Краткое описание и цели -->
+<section class="project-description">
+  <div class="container">
+    <div class="main-info">
+      <h3>О проекте</h3>
+      <p>{{project.description}}</p>
+    </div>
+    <div class="goals">
+      <h3>Цели и задачи</h3>
+      <ul>
+        <li *ngFor="let goal of project.goals">{{goal}}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Список вознаграждений -->
+<section class="rewards">
+  <div class="container">
+    <h3>Выберите вознаграждение</h3>
+    <div class="rewards-grid">
+      <div class="reward-card" *ngFor="let reward of project.rewards">
+        <h4>{{reward.title}}</h4>
+        <p class="amount">{{reward.amount | currency:'RUB'}}</p>
+        <p class="description">{{reward.description}}</p>
+        <button class="select-reward-btn">Выбрать</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stretch Goals -->
+<section class="stretch-goals">
+  <div class="container">
+    <h3>Дополнительные цели</h3>
+    <div class="goals-progress">
+      <div class="goal-card" *ngFor="let goal of project.stretchGoals">
+        <div class="goal-progress" [style.width.%]="goal.progress"></div>
+        <h4>{{goal.title}}</h4>
+        <p>{{goal.description}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Информация об авторе -->
+<section class="author-info">
+  <div class="container">
+    <div class="author-profile">
+      <img [src]="project.author.avatar" [alt]="project.author.name" class="author-avatar">
+      <h3>{{project.author.name}}</h3>
+      <p>{{project.author.bio}}</p>
+      <button class="contact-author-btn">Написать автору</button>
+    </div>
+  </div>
+</section>
+
+<!-- Комментарии -->
+<section class="comments">
+  <div class="container">
+    <h3>Комментарии</h3>
+    <div class="comment-form">
+      <textarea placeholder="Оставьте комментарий..."></textarea>
+      <button class="submit-comment">Отправить</button>
+    </div>
+    <div class="comments-list">
+      <div class="comment" *ngFor="let comment of project.comments">
+        <img [src]="comment.userAvatar" [alt]="comment.userName">
+        <div class="comment-content">
+          <h4>{{comment.userName}}</h4>
+          <p>{{comment.text}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Обновления по проекту -->
+<section class="project-updates">
+  <div class="container">
+    <h3>Обновления проекта</h3>
+    <div class="updates-timeline">
+      <div class="update" *ngFor="let update of project.updates">
+        <div class="update-date">{{update.date | date}}</div>
+        <h4>{{update.title}}</h4>
+        <p>{{update.content}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h3>Часто задаваемые вопросы</h3>
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of project.faq">
+        <div class="question">{{faq.question}}</div>
+        <div class="answer">{{faq.answer}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Информация о рисках -->
+<section class="risks">
+  <div class="container">
+    <h3>Риски и вызовы</h3>
+    <div class="risks-content">
+      <div class="risk-item" *ngFor="let risk of project.risks">
+        <h4>{{risk.title}}</h4>
+        <p>{{risk.description}}</p>
+        <p class="solution">Решение: {{risk.solution}}</p>
+      </div>
+    </div>
+  </div>
+</section>

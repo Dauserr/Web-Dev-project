@@ -1,0 +1,201 @@
+/* Основной контейнер */
+.project-create-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Секция с инструкциями */
+.instructions-section {
+  margin-bottom: 3rem;
+}
+
+.instructions-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.step {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: #e9ecef;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step h3 {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Форма создания проекта */
+.project-form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #495057;
+  font-weight: 500;
+}
+
+.input-tip {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+/* Поля ввода */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Диапазон дат */
+.date-range {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.date-range input {
+  flex: 1;
+}
+
+/* Медиа-загрузка */
+.media-upload {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.image-upload,
+.video-upload {
+  padding: 1.5rem;
+  border: 2px dashed #ced4da;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.image-upload:hover,
+.video-upload:hover {
+  border-color: #80bdff;
+}
+
+/* Кнопки действий */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.preview-btn,
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.preview-btn {
+  background: #e9ecef;
+  color: #495057;
+  border: none;
+}
+
+.submit-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.preview-btn:hover {
+  background: #dee2e6;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+  }
+
+  .step {
+    width: 100%;
+  }
+
+  .media-upload {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .preview-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}

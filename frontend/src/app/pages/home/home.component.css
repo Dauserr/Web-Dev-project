@@ -6,15 +6,6 @@
     font-family: 'Work Sans', sans-serif;
 }
 
-:root {
-    --primary-color: #101828;
-    --secondary-color: #006D77;
-    --accent-color: #BEE1E6;
-    --text-color: #475467;
-    --light-text: #969696;
-    --white: #FFFFFF;
-}
-
 .body {
     background: var(--white);
     max-width: 1440px;

@@ -1,3 +1,12 @@
+:root {
+    --primary-color: #101828;
+    --secondary-color: #006D77;
+    --accent-color: #BEE1E6;
+    --text-color: #475467;
+    --light-text: #969696;
+    --white: #FFFFFF;
+}
+
 footer {
     background-color: var(--white);
     color: var(--text-color);
@@ -38,10 +47,6 @@ footer {
     color: var(--secondary-color);
 }
 
-.social-links {
-    display: flex;
-    gap: 0.8rem;
-}
 
 .social-link {
     color: var(--light-text);

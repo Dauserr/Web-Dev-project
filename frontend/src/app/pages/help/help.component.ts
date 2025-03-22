@@ -7,13 +7,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterByCategoryPipe } from './filter-by-category.pipe';
 
-interface FAQItem {
+export interface FAQItem {
   question: string;
   answer: string;
   category: string;
   lastUpdated: Date;
   isHelpful?: boolean;
 }
+
+export type {FAQItem as glFAQItem}
 
 @Component({
   selector: 'app-help',

@@ -19,8 +19,6 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'register', component: RegisterPageComponent },
-      { path: 'login', component: LoginPageComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'create-project', component: ProjectCreateComponent },
       { path: 'project/:id', component: ProjectComponent },
@@ -29,5 +27,8 @@ export const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'contact', component: ContactComponent },
     ],
+
   },
+  { path: 'register', component: RegisterPageComponent },
+  { path: 'login', component: LoginPageComponent },
 ];

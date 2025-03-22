@@ -1,1 +1,72 @@
-<p>help works!</p>
+<div class="help-container">
+  <!-- Заголовок страницы -->
+  <section class="header-section">
+    <h1>Часто задаваемые вопросы</h1>
+    <p class="subtitle">Найдите ответы на популярные вопросы о работе с нашей платформой</p>
+  </section>
+
+  <!-- Поисковая строка -->
+  <section class="search-section">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Поиск по вопросам</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (keyup.enter)="searchFAQ()" placeholder="Введите ваш вопрос...">
+      <button mat-icon-button matSuffix (click)="searchFAQ()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </section>
+
+  <!-- Навигация по категориям -->
+  <nav class="category-nav">
+    <ul>
+      <li *ngFor="let category of categories">
+        <a [href]="'#' + category">{{ category }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Основной контент FAQ -->
+  <main class="faq-content">
+    <div *ngFor="let category of categories" class="category-section" [id]="category">
+      <h2>{{ category }}</h2>
+      
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of filteredFAQItems | filterByCategory:category">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ item.question }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          
+          <div class="answer-content">
+            <p>{{ item.answer }}</p>
+            
+            <!-- Блок обратной связи -->
+            <div class="feedback-section">
+              <p>Был ли этот ответ полезен?</p>
+              <div class="feedback-buttons">
+                <button mat-icon-button (click)="markAsHelpful(item, true)">
+                  <mat-icon>thumb_up</mat-icon>
+                </button>
+                <button mat-icon-button (click)="markAsHelpful(item, false)">
+                  <mat-icon>thumb_down</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <small class="last-updated">
+              Последнее обновление: {{ item.lastUpdated | date:'dd.MM.yyyy' }}
+            </small>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </main>
+
+  <!-- Блок поддержки -->
+  <section class="support-section">
+    <h2>Не нашли ответа на свой вопрос?</h2>
+    <p>Наша команда поддержки всегда готова помочь вам</p>
+    <button mat-raised-button color="primary" class="contact-support">
+      Связаться с поддержкой
+    </button>
+  </section>
+</div>

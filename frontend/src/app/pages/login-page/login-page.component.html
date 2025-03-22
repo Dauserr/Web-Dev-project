@@ -1,1 +1,42 @@
-<p>login-page works!</p>
+<div class="login-main-container">
+    <mat-card class="card-init" id="card-init-authPage">
+        <mat-card-header>{{!isExpanded ? 'Log In to your account' : 'Create your own account'}}</mat-card-header>
+        <mat-card-content>
+          <div class="card-inner" [class.rotate]="isExpanded">
+            <div class="card-front" *ngIf="!isExpanded">
+              <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                <div class="authCardElems">
+                  <div class="input-container" *ngFor="let lbInfo of labelTextsLogin">
+                    <input [formControlName]="lbInfo.frmCtrlName" class="input-cal input-base" id="input" placeholder="" type="text" >
+                    <label id="label-input">{{lbInfo.labelText}}</label>
+                  </div>
+                  <button mat-flat-button style="color: white;background: black" class="btn-black" type="submit">Log In</button>
+                  <div class="dontHaveAnAccount">
+                    <span>Do not have an account?</span>
+                    <a (click)="flipCard()">Register</a>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="card-back" *ngIf="isExpanded">
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                  <div class="authCardElems">
+                    <div class="input-container" *ngFor="let lbInfo of labelTextsRegistration">
+                      <input [formControlName]="lbInfo.frmCtrlName" class="input-cal input-base" id="input" placeholder="" type="text" >
+                      <label id="label-input">{{lbInfo.labelText}}</label>
+                    </div>
+                    <button mat-flat-button style="color: white;background: black" type="submit">Register</button>
+                    <div class="dontHaveAnAccount">
+                      <span>Back to Log In</span>
+                      <a (click)="flipCard()">Back</a>
+                    </div>
+                  </div>
+                </form>
+            </div>
+
+
+          </div>
+        </mat-card-content>
+    </mat-card>
+</div>

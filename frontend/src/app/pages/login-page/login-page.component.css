@@ -1,0 +1,134 @@
+.login-main-container{
+  background-color: rgb(232, 232, 232);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-main-container > mat-card{
+  /*height: 500px;*/
+  /*border: 1px solid black;*/
+}
+
+.login-part{
+  display: flex;
+  flex-direction: column;
+}
+
+
+#label-input {
+  transition: all 0.1s ease-in-out;
+  color: #2c2c54;
+  position: absolute;
+  top: 30%;
+  left: 18px;
+  transform: scale(0.95);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.input-base {
+  border-radius: 10px;
+}
+
+#input:focus ~ label#label-input,
+#input:not(:placeholder-shown) ~ #label-input {
+  top: -20% !important;
+  left: 2px !important;
+  transform: scale(0.8);
+  background: white;
+  color: black;
+  padding: 0 6px;
+  opacity: 1;
+}
+
+#input {
+  transition: outline 0.2s ease;
+  font-size: 1rem;
+  outline-color: var(--button-text);
+  outline: unset;
+  border: 1px solid #bbbbbb;
+  padding: 17px 10px 10px 17px;
+  width: 90%;
+}
+
+#input:focus {
+  box-shadow: 0 0 0 1px #e8e8e8, 0 0 0 3px rgb(92, 127, 202);
+}
+.input-container {
+  position: relative;
+}
+
+.card-init{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  min-width: 400px;
+  max-width: calc(100%/3);
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.card-init > mat-card-content{
+  overflow: visible;
+}
+
+.rotate-card{
+  transform: rotateY(180deg);
+  direction: ltr;
+}
+
+.card-init > mat-card-header{
+  font-size: 20px;
+  align-self: center;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
+
+.authCardElems{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  /*position: absolute;*/
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-inner.rotate {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  /*position: absolute;*/
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.dontHaveAnAccount{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+.dontHaveAnAccount > a{
+  color:blue;
+}
+
+.dontHaveAnAccount > a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}

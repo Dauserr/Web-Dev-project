@@ -87,6 +87,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend_service.wsgi.application'
 
 
+JWT_SECRET_KEY = '8V1p7V6TL4JlsHjYOcP5g8wzO12JTkYVZfThMjgmZlA'
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 from dotenv import load_dotenv

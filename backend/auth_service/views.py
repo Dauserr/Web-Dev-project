@@ -1,8 +1,11 @@
+import datetime
+
 from django.shortcuts import render
 import json
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-
+import jwt
+from django.conf import settings
 from auth_service.models import Users
 
 
@@ -26,7 +29,18 @@ def auth_handler(request):
                 if not password_validation:
                     return JsonResponse({"AUTH_STATUS": "INCORRECT_PASSWORD"}, status=400)
 
-                return JsonResponse({"AUTH_STATUS": "SUCCESS_LOGIN"}, status=200)
+                payload = {
+                    'username': username,
+                    'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2),
+                    'iat': datetime.datetime.utcnow()
+                }
+                secret_key = settings.JWT_SECRET_KEY
+                token = jwt.encode(payload, secret_key, algorithm='HS256')
+
+                return JsonResponse({
+                    "AUTH_STATUS": "SUCCESS_LOGIN",
+                    "access_token": token
+                }, status=200)
 
             elif auth_mode == 'register':
                 if user_existence:

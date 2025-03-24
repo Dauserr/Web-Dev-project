@@ -5,11 +5,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-.login-main-container > mat-card{
-  /*height: 500px;*/
-  /*border: 1px solid black;*/
+.login-main-container > mat-progress-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .login-part{
@@ -131,4 +135,10 @@
 .dontHaveAnAccount > a:hover{
   cursor: pointer;
   text-decoration: underline;
+}
+
+.error-message{
+  font-size: 12px;
+  color:red;
+  margin-top: 5px;
 }

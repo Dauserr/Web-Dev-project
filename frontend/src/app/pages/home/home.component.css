@@ -85,12 +85,51 @@ nav a {
 .banner {
     padding: 80px 0;
     position: relative;
+    background-image: url('/assets/images/home-page-banner1.jpg');
+    /* Использую абсолютный путь от корня приложения */
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Создает эффект параллакса при прокрутке */
+    
+    min-height: 600px;
+    width: 100%;
+    /* Гарантирует, что баннер займет всю ширину */
+    
+    display: flex;
+    align-items: center;
+    /* Центрирует содержимое по вертикали */
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+    /* Улучшенный градиентный оверлей для лучшей читаемости */
+}
+
+.banner .container {
+    position: relative;
+    z-index: 1;
+}
+
+.banner h1,
+.banner p,
+.banner .stats .stat-text {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    /* Добавляем тень для лучшей читаемости текста */
 }
 
 .banner h1 {
     font-size: 50px;
     line-height: 60px;
-    color: var(--primary-color);
     max-width: 572px;
     margin-bottom: 30px;
 }
@@ -99,7 +138,6 @@ nav a {
     font-family: 'Merriweather', serif;
     font-size: 16px;
     line-height: 26px;
-    color: var(--text-color);
     max-width: 549px;
     margin-bottom: 42px;
     letter-spacing: 0.045em;

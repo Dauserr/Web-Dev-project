@@ -96,6 +96,7 @@ export class LoginPageComponent{
                 positionClass: 'toast-top-right'
               })
               localStorage.setItem('accessToken',res.access_token)
+              this._router.navigate(['']);
               break
             case 'SUCCESS_REGISTER':
               this.toastr.success('Аккаунт успешно создан','Успех!', {

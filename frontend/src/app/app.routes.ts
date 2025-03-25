@@ -15,9 +15,14 @@ import {AuthGuard} from './auth/guards/auth.guard';
 
 export const routes: Routes = [
   {
+    path: 'login',
+    component: LoginPageComponent,
+    // canActivate: [NoAuthGuard]
+  },
+  {
     path: '',
     component: LayoutComponent,
-    canActivate: [NoAuthGuard],
+    // canActivate: [NoAuthGuard],
     children: [
       {path: '',component: HomeComponent},
       {path: 'about',component: AboutComponent},
@@ -30,7 +35,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'create-project', component: ProjectCreateComponent },
@@ -38,10 +43,5 @@ export const routes: Routes = [
       { path: 'catalog', component: ProjectCatalogComponent },
     ],
 
-  },
-  {
-    path: 'login',
-    component: LoginPageComponent,
-    canActivate: [NoAuthGuard]
   },
 ];

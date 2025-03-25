@@ -6,7 +6,7 @@
         </a>
         <nav>
             <ul>
-                <li><a href="../about">О нас</a></li>
+                <li><a href="../about">{{t('about_us')}}</a></li>
                 <li><a href="../catalog">Проекты</a></li>
                 <li><a href="../help" >FAQ</a></li>
                 <li><a href="../blog">Блог</a></li>
@@ -16,19 +16,19 @@
             <a href="../login" class="btn btn-primary">Авторизация</a>
             <div class="language-switcher">
                 <div class="language-switcher-item">
-                    <input type="radio" name="lang" id="ru" checked>
+                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="ru" checked>
                     <div class="radio-tile">
                         <label for="ru">RU</label>
                     </div>
                 </div>
                 <div class="language-switcher-item">
-                    <input type="radio" name="lang" id="kz">
+                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="kz">
                     <div class="radio-tile">
                         <label for="kz">KK</label>
                     </div>
                 </div>
                 <div class="language-switcher-item">
-                    <input type="radio" name="lang" id="en">
+                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="en">
                     <div class="radio-tile">
                         <label for="en">EN</label>
                     </div>

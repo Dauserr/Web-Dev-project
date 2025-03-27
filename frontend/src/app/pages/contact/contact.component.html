@@ -2,8 +2,8 @@
     <!-- Заголовок страницы -->
     <section class="contact-header">
         <div class="container">
-            <h1>Свяжитесь с нами</h1>
-            <p>Мы всегда готовы ответить на ваши вопросы и помочь с выбором оптимального решения</p>
+            <h1>{{t('contact_us')}}</h1>
+            <p>{{t('contact_us_description')}}</p>
         </div>
     </section>
 
@@ -13,55 +13,55 @@
             <div class="contact-grid">
                 <!-- Контактная информация -->
                 <div class="contact-info">
-                    <h2>Контактная информация</h2>
+                    <h2>{{t('contact_info')}}</h2>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>ул. Примерная, 123<br>Город, 12345</p>
+                            <p>{{t('address')}}</p>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-phone"></i>
-                            <p>+7 (999) 123-45-67<br>+7 (999) 765-43-21</p>
+                            <p>{{t('phone')}}</p>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <p>info&#64;example.com<br>support&#64;example.com</p>
+                            <p>{{t('email')}}</p>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-clock"></i>
-                            <p>Пн-Пт: 9:00 - 18:00<br>Сб-Вс: Выходной</p>
+                            <p>{{t('working_hours1')}}<br>{{t('working_hours2')}}<br>{{t('working_hours3')}}</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Форма обратной связи -->
                 <div class="contact-form">
-                    <h2>Отправьте нам сообщение</h2>
+                    <h2>{{t('send_message')}}</h2>
                     <form>
                         <div class="form-group">
-                            <label for="name">Ваше имя</label>
+                            <label for="name">{{t('name')}}</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">{{t('client_email')}}</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Тема</label>
+                            <label for="subject">{{t('subject')}}</label>
                             <input type="text" id="subject" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Сообщение</label>
+                            <label for="message">{{t('message')}}</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        <button type="submit" class="btn-submit">Отправить сообщение</button>
+                        <button type="submit" class="btn-submit">{{t('send_message')}}</button>
                     </form>
                 </div>
             </div>
 
             <!-- Карта -->
             <div class="map-section">
-                <h2>Как нас найти</h2>
+                <h2>{{t('how_to_find_us')}}</h2>
                 <div class="map-container">
                     <!-- Здесь будет встроена карта -->
                     <iframe
@@ -86,7 +86,7 @@
             <div class="quick-contact-buttons">
                 <a href="tel:+79991234567" class="quick-contact-btn">
                     <i class="fas fa-phone"></i>
-                    Позвонить
+                    {{t('call')}}
                 </a>
                 <a href="https://wa.me/7" class="quick-contact-btn">
                     <i class="fab fa-whatsapp"></i>

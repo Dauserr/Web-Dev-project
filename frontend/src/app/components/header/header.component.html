@@ -7,13 +7,13 @@
         <nav>
             <ul>
                 <li><a href="../about">{{t('about_us')}}</a></li>
-                <li><a href="../catalog">Проекты</a></li>
-                <li><a href="../help" >FAQ</a></li>
-                <li><a href="../blog">Блог</a></li>
+                <li><a href="../catalog">{{t('projects')}}</a></li>
+                <li><a href="../help" >{{t('faq')}}</a></li>
+                <li><a href="../blog">{{t('blog')}}</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="../login" class="btn btn-primary">Авторизация</a>
+            <a href="../login" class="btn btn-primary">{{t('login')}}</a>
             <div class="language-switcher">
                 <div class="language-switcher-item">
                     <input (click)="languageSwitcher($event)" type="radio" name="lang" id="ru" checked>

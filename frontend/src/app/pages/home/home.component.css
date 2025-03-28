@@ -87,17 +87,17 @@ nav a {
     position: relative;
     background-image: url('/assets/images/home-page-banner1.jpg');
     /* Использую абсолютный путь от корня приложения */
-    
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     /* Создает эффект параллакса при прокрутке */
-    
+
     min-height: 600px;
     width: 100%;
     /* Гарантирует, что баннер займет всю ширину */
-    
+
     display: flex;
     align-items: center;
     /* Центрирует содержимое по вертикали */
@@ -269,7 +269,7 @@ footer {
     .container {
         max-width: 720px;
     }
-    
+
     .category-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -279,12 +279,12 @@ footer {
     .container {
         max-width: 540px;
     }
-    
+
     .banner h1 {
         font-size: 40px;
         line-height: 50px;
     }
-    
+
     .stats {
         flex-direction: column;
         gap: 30px;
@@ -296,25 +296,25 @@ footer {
         width: 100%;
         padding: 0 15px;
     }
-    
+
     .header-container {
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .banner-buttons {
         flex-direction: column;
         width: 100%;
     }
-    
+
     .btn {
         width: 100%;
     }
-    
+
     .category-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-grid {
         grid-template-columns: 1fr;
     }

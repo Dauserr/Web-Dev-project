@@ -6,34 +6,15 @@
         </a>
         <nav>
             <ul>
-                <li><a href="../about">{{t('about_us')}}</a></li>
-                <li><a href="../catalog">{{t('projects')}}</a></li>
-                <li><a href="../help" >{{t('faq')}}</a></li>
-                <li><a href="../blog">{{t('blog')}}</a></li>
+                <li *ngFor="let navChild of navigationChildren"><a [href]="navChild.linkToThePage">{{t(navChild.translationCode)}}</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
-            <a href="../login" class="btn btn-primary">{{t('login')}}</a>
-            <div class="language-switcher">
-                <div class="language-switcher-item">
-                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="ru" checked>
-                    <div class="radio-tile">
-                        <label for="ru">RU</label>
-                    </div>
-                </div>
-                <div class="language-switcher-item">
-                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="kz">
-                    <div class="radio-tile">
-                        <label for="kz">KK</label>
-                    </div>
-                </div>
-                <div class="language-switcher-item">
-                    <input (click)="languageSwitcher($event)" type="radio" name="lang" id="en">
-                    <div class="radio-tile">
-                        <label for="en">EN</label>
-                    </div>
-                </div>
-            </div>
+          <a *ngIf="!showAuthorizationModal" href="../login" class="btn btn-primary">{{t('login')}}</a>
+          <button class="menuMainObject" mat-button [matMenuTriggerFor]="menu">{{currentLanguage}}</button>
+          <mat-menu #menu="matMenu">
+            <button (click)="languageSwitcher($event)" [id]="langItem.langId" *ngFor="let langItem of languageItems" mat-menu-item>{{langItem.langName}}</button>
+          </mat-menu>
         </div>
     </div>
 </header>

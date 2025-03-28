@@ -15,6 +15,25 @@
           <mat-menu #menu="matMenu">
             <button (click)="languageSwitcher($event)" [id]="langItem.langId" *ngFor="let langItem of languageItems" mat-menu-item>{{langItem.langName}}</button>
           </mat-menu>
+          <div class="user-profile-menu" *ngIf="showAuthorizationModal">
+            <div role="button" [ngClass]="!!userFullName ? 'pd-left' : ''" [matMenuTriggerFor]="userActions">
+              <span *ngIf="!!userFullName">{{userFullName}}</span>
+              <button
+                mat-icon-button>
+                <span class="relative">
+                    <mat-icon style="color: white">account_circle</mat-icon>
+                </span>
+              </button>
+            <mat-menu #userActions="matMenu">
+              <button (click)="navigateByUrl(profileItem.destinationPath)" [id]="profileItem.profileItemId" *ngFor="let profileItem of profileItems" mat-menu-item>
+                <div class="basicFlex">
+                  <mat-icon>{{profileItem.iconName}}</mat-icon>
+                  {{t(profileItem.profileItemName)}}
+                </div>
+              </button>
+            </mat-menu>
+            </div>
+          </div>
         </div>
     </div>
 </header>

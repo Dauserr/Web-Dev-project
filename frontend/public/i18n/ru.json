@@ -70,5 +70,7 @@
   "ecology": "Экология",
   "ecology_description": "Проекты для защиты природы",
   "social": "Социальные проекты",
-  "social_description": "Инициативы для общества"
+  "social_description": "Инициативы для общества",
+  "view_profile": "Просмотреть профайл",
+  "log_out": "Выйти"
 }

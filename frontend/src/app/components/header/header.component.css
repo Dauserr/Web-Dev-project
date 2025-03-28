@@ -147,3 +147,19 @@ input:checked+.radio-tile label {
 .mat-mdc-button {
   color: white !important;
 }
+
+.user-profile-menu{
+  cursor: pointer;
+}
+.user-profile-menu > div{
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.pd-left{
+  padding-left: 15px;
+}

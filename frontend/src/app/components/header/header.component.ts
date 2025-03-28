@@ -1,12 +1,14 @@
 import {Component, inject} from '@angular/core';
 import {TranslocoModule, TranslocoService} from '@ngneat/transloco';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf],
+  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf, MatIcon, MatIconButton, MatIconModule, NgClass],
   standalone:true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -41,7 +43,24 @@ export class HeaderComponent {
       langName:'ҚАЗ'
     }
   ]
+  profileItems = [
+    {
+      profileItemId:'view_profile_button',
+      profileItemName:'view_profile',
+      iconName:'perm_identity',
+      destinationPath:'profile'
+    },
+    {
+      profileItemId:'log_out_button',
+      profileItemName:'log_out',
+      iconName:'logout',
+      destinationPath: 'sign-out'
+    }
+  ]
+  userFullName = 'Даулет Серикбаев'
 
+  constructor(private _router:Router) {
+  }
 
   checkTokenExpiration(){
     const token = localStorage.getItem('accessToken');
@@ -63,5 +82,9 @@ export class HeaderComponent {
     this.translocoService.setActiveLang($event.currentTarget.id.split('_')[1]);
     this.currentLanguage = this.translocoService.getActiveLang() === 'ru' ? 'РУС' : 'ҚАЗ'
     localStorage.setItem('currentLang',currentLang);
+  }
+
+  navigateByUrl(url:string){
+    this._router.navigate([url])
   }
 }

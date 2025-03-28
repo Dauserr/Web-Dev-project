@@ -12,11 +12,17 @@ import {BlogComponent} from './pages/blog/blog.component';
 import {ContactComponent} from './pages/contact/contact.component';
 import {NoAuthGuard} from './auth/guards/noAuth.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
+import {SignOutComponent} from './pages/sign-out/sign-out.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent,
+    // canActivate: [NoAuthGuard]
+  },
+  {
+    path: 'sign-out',
+    component: SignOutComponent,
     // canActivate: [NoAuthGuard]
   },
   {

@@ -70,5 +70,7 @@
   "ecology": "Экология",
   "ecology_description": "Табиғаттың қорғауына арналған жобалар",
   "social": "Қоғамдық жобалар",
-  "social_description": "Қоғамдық жобалар"
+  "social_description": "Қоғамдық жобалар",
+  "view_profile": "Профайлды көру",
+  "log_out": "Шығу"
 }

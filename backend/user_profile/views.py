@@ -5,6 +5,7 @@ from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from jwt import ExpiredSignatureError
 
 from auth_service.models import Users
 from backend_service.settings import JWT_SECRET_KEY
@@ -23,9 +24,11 @@ def getUserData(request):
                 user = Users.objects.filter(user_name=decoded.get('username')).first()
                 if not user:
                     return JsonResponse({"response_code": "USER_NOT_FOUND"})
-                return JsonResponse({"data": model_to_dict(user), "response_code": "SUCCESS"}, status=200)
+                return JsonResponse({"data": model_to_dict(user, fields=['user_name', 'user_fullName', 'user_phoneNumber', 'user_description']), "response_code": "SUCCESS"}, status=200)
             else:
                 return JsonResponse({"response_code": "WRONG_TOKEN_FORMAT"}, status=407)
+        except ExpiredSignatureError:
+            return JsonResponse({"response_code": "TOKEN_EXPIRED"}, status=401)
         except json.JSONDecoder:
             return JsonResponse({"error": "Некорректный JSON", "response_code": "WRONG_JSON"}, status=400)
 

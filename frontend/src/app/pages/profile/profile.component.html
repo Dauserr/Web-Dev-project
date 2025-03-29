@@ -4,10 +4,10 @@
             <div class="avatar">
                 <img src="assets/images/avatar-placeholder.jpg" alt="Фото пользователя">
             </div>
-            <h1 class="user-name">Даулет Серикбаев</h1>
-            <p class="contact-info">Email: gaukadauka&#64;example.com</p>
-            <p class="contact-info">Телефон: +7 (707) 020-89-84</p>
-            <p class="bio">Пацан жоский БДСМщик, раньше был Хуторским, сейчас занимаеться ДжаваСкриптом. Ненавидит все дни кроме воскресенья. Жрет дофига, но не толстый. Любит пить пиво и играть в доту.</p>
+            <h1 class="user-name">{{ userInfo?.user_fullName }}</h1>
+            <p class="contact-info">Email: {{userInfo?.user_name}}</p>
+            <p class="contact-info">Телефон: {{ userInfo?.user_phoneNumber }}</p>
+            <p class="bio">{{userInfo?.user_description}}</p>
         </section>
 
         <section class="user-projects">
@@ -77,4 +77,6 @@
             </div>
         </section>
     </div>
+    <div class="loading-bg-styles" *ngIf="isLoadingPage"></div>
+    <mat-spinner *ngIf="isLoadingPage" class="mat-spinner-centralized"></mat-spinner>
 </div>

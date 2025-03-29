@@ -8,6 +8,7 @@
     --text-color: #475467;
     --light-text: #969696;
     --white: #FFFFFF;
+    --black:#000000
 }
 
 /* You can add global styles to this file, and also import other style files */
@@ -21,4 +22,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .basicFlex{
   display: flex;
   align-items: center;
+}
+
+.header-when-isPageLoading{
+  position: fixed;
+  z-index: 3000;
+  width: 100%;
+}
+
+.mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic{
+  stroke: #1a1b1f !important;
 }

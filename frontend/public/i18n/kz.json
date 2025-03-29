@@ -72,5 +72,8 @@
   "social": "Қоғамдық жобалар",
   "social_description": "Қоғамдық жобалар",
   "view_profile": "Профайлды көру",
-  "log_out": "Шығу"
+  "log_out": "Шығу",
+  "log_in": "Кіру",
+  "you_logged_out":"Сіз жүйеден шықтыңыз!",
+  "redirect_after":"секундтан кейін қайта бағыттау"
 }

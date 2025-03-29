@@ -1,1 +1,14 @@
-<p>sign-out works!</p>
+<div class="basicFlex jc-center w100-h100">
+  <mat-card class="bgwhite" style="padding: 50px">
+    <mat-card-header class="basicFlex jc-center">
+      <img src="assets/icons/logo.svg" mat-card-image alt="icon">
+    </mat-card-header>
+    <mat-card-content >
+      <div class="flex-directionColumn gap-20 signOutContent">
+        <h1>{{t('you_logged_out')}}</h1>
+        <span>{{ currentLang === 'ru' ? (t('redirect_after') + ' ' + seconds) : (seconds + ' ' + t('redirect_after')) }}</span>
+        <button (click)="navigateToLogin()" mat-flat-button class="bgBlack-colorWhite">{{t('log_in')}}</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,13 @@
+.signOutContent{
+  align-items: center;
+}
+.signOutContent > h1{
+  /*max-width: calc(100% / 1.05);*/
+  /*margin: 0;*/
+  margin-bottom: 0;
+  align-self: center;
+}
+
+.signOutContent > button{
+  width: 100%;
+}

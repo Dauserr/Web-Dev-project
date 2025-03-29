@@ -23,6 +23,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
   align-items: center;
 }
+.jc-center{
+  justify-content: center;
+}
 
 .header-when-isPageLoading{
   position: fixed;
@@ -32,4 +35,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic{
   stroke: #1a1b1f !important;
+}
+
+.w100-h100{
+  width: 100%;
+  height: 100%;
+}
+
+.bg-whiteOpacity{
+  background-color: rgba(0, 0, 0,0.05) !important;
+}
+
+.bgwhite{
+  background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.bgBlack-colorWhite{
+  background-color: rgba(0, 0, 0) !important;
+  color: white !important;
+}
+
+.flex-directionColumn{
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-20{
+  gap: 20px;
 }

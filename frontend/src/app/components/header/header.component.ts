@@ -1,10 +1,12 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {TranslocoModule, TranslocoService} from '@ngneat/transloco';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import {Router} from '@angular/router';
+import {ProfileInfoResponse} from '../../interfaces/profileInfoResponse';
+import {ApiUrlsService} from '../../services/api-urls.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ import {Router} from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   private translocoService = inject(TranslocoService);
   t = (key: string) => this.translocoService.translate(key);
 
@@ -57,9 +59,23 @@ export class HeaderComponent {
       destinationPath: 'sign-out'
     }
   ]
-  userFullName = 'Даулет Серикбаев'
+  userFullName: string | undefined = ''
 
-  constructor(private _router:Router) {
+  constructor(private _router:Router,
+              private _urlService:ApiUrlsService) {
+  }
+
+  ngOnInit() {
+    this._urlService.profileApi.getUserProfileInformation().subscribe({
+      next: (res:ProfileInfoResponse) => {
+        if(res?.response_code === 'SUCCESS'  && res.data){
+          this.userFullName = res.data.user_fullName
+        }
+      },
+      error:(err) => {
+        console.error('Ошибка при загрузке профиля:',err)
+      }
+    })
   }
 
   checkTokenExpiration(){

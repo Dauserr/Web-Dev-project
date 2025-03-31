@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {TranslocoService} from '@ngneat/transloco';
@@ -10,7 +10,7 @@ import {TranslocoService} from '@ngneat/transloco';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'frontend';
   constructor(private translocoService: TranslocoService) {
     translocoService.load('ru').subscribe(() => {
@@ -24,5 +24,10 @@ export class AppComponent {
     }, error => {
       console.error('❌ Ошибка загрузки перевода:', error);
     });
+  }
+
+  ngOnInit() {
+    const savedLang = localStorage.getItem('currentLang') || 'ru'
+    this.translocoService.setActiveLang(savedLang);
   }
 }

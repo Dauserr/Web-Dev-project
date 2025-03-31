@@ -1,7 +1,7 @@
 <div class="login-main-container">
     <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
     <mat-card class="card-init" id="card-init-authPage">
-        <mat-card-header>{{!isExpanded ? 'Log In to your account' : 'Create your own account'}}</mat-card-header>
+        <mat-card-header>{{t(!isExpanded ? 'login_to_your_account' : 'create_your_own_account')}}</mat-card-header>
         <mat-card-content>
           <div class="card-inner" [class.rotate]="isExpanded">
             <div class="card-front" *ngIf="!isExpanded">
@@ -9,21 +9,21 @@
                 <div class="authCardElems">
                   <div class="input-container" *ngFor="let lbInfo of labelTextsLogin">
                     <input [formControlName]="lbInfo.frmCtrlName" class="input-cal input-base" id="input" placeholder="" type="text" >
-                    <label id="label-input">{{lbInfo.labelText}}</label>
+                    <label id="label-input">{{t(lbInfo.labelText)}}</label>
                     <div class="error-message" *ngIf="loginForm.controls[lbInfo.frmCtrlName].touched && loginForm.controls[lbInfo.frmCtrlName].invalid">
-                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['required']">Поле обязательно</span>
-                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['email']">Введите корректный email</span>
-                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'] ">Минимум {{ loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'].requiredLength }} символов</span>
+                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['required']">{{t('validation_field_required')}}</span>
+                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['email']">{{t('validation_enter_correct_email')}}</span>
+                      <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'] ">{{t('minimum') + ' ' + loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'].requiredLength + ' ' + t('symbols')}}</span>
                     </div>
                   </div>
                 <button
                   [ngStyle]="{
                   'background-color': (loginForm.controls['email'].valid && loginForm.controls['password'].valid) ? 'black' : '#e0e0e0',
                   'color': (loginForm.controls['email'].valid && loginForm.controls['password'].valid) ? 'white' : '#9e9e9e',
-                }" [disabled]="(!loginForm.get('email')?.valid || !loginForm.get('password')?.valid)" mat-flat-button style="color: white;background: black" class="btn-black" type="submit" >Log In</button>
+                }" [disabled]="(!loginForm.get('email')?.valid || !loginForm.get('password')?.valid)" mat-flat-button style="color: white;background: black" class="btn-black" type="submit" >{{t('log_in')}}</button>
                   <div class="dontHaveAnAccount">
-                    <span>Do not have an account?</span>
-                    <a (click)="flipCard()">Register</a>
+                    <span>{{t('do_not_have_account')}}</span>
+                    <a (click)="flipCard()">{{t('register')}}</a>
                   </div>
                 </div>
               </form>
@@ -34,14 +34,14 @@
                   <div class="authCardElems">
                     <div class="input-container" *ngFor="let lbInfo of labelTextsRegistration">
                       <input [formControlName]="lbInfo.frmCtrlName" class="input-cal input-base" id="input" placeholder="" type="text" >
-                      <label id="label-input">{{lbInfo.labelText}}</label>
+                      <label id="label-input">{{t(lbInfo.labelText)}}</label>
                       <div class="error-message" *ngIf="loginForm.controls[lbInfo.frmCtrlName].touched && loginForm.controls[lbInfo.frmCtrlName].invalid">
-                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['required']">Поле обязательно</span>
-                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['email']">Введите корректный email</span>
-                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'] ">Минимум {{ loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'].requiredLength }} символов</span>
+                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['required']">{{t('validation_field_required')}}</span>
+                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['email']">{{t('validation_enter_correct_email')}}</span>
+                        <span *ngIf="loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'] ">{{t('minimum') + ' ' + loginForm.controls[lbInfo.frmCtrlName].errors?.['minlength'].requiredLength + ' ' + t('symbols')}}</span>
                       </div>
                     <div class="error-message" *ngIf="lbInfo.frmCtrlName === 'repeatPasswordRegister' && loginForm.controls['passwordRegister'].valid && loginForm.controls['repeatPasswordRegister'].valid && loginForm.get('passwordRegister')?.value !== loginForm.get('repeatPasswordRegister')?.value">
-                      Пароли не совпадают
+                      {{t('passwords_do_not_match')}}
                     </div>
                     </div>
                     <button [disabled]="
@@ -59,10 +59,10 @@
                         !loginForm.get('passwordRegister')?.valid ||
                         !loginForm.get('repeatPasswordRegister')?.valid ||
                         loginForm.hasError('passwordsMismatch')) ? '#9e9e9e' : 'white',
-                }" mat-flat-button style="color: white;background: black" type="submit">Register</button>
+                }" mat-flat-button style="color: white;background: black" type="submit">{{t('register')}}</button>
                     <div class="dontHaveAnAccount">
-                      <span>Back to Log In</span>
-                      <a (click)="flipCard()">Back</a>
+                      <span>{{t('back_to_login')}}</span>
+                      <a (click)="flipCard()">{{t('to_back')}}</a>
                     </div>
                   </div>
                 </form>

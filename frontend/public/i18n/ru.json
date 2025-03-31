@@ -74,6 +74,20 @@
   "view_profile": "Просмотреть профайл",
   "log_out": "Выйти",
   "log_in": "Войти",
+  "register": "Регистрация",
+  "to_back": "Назад",
+  "back_to_login": "Назад в Войти",
+  "do_not_have_account": "Еще нет аккаунта?",
   "you_logged_out":"Вы вышли из системы!",
-  "redirect_after":"Перенаправление через"
+  "redirect_after":"Перенаправление через",
+  "login_to_your_account": "Войдите в свой аккаунт",
+  "create_your_own_account": "Создайте свой аккаунт",
+  "email_address": "Электронный адрес",
+  "password": "Пароль",
+  "password_repeat": "Повторите пароль",
+  "validation_field_required": "Поле обязательно",
+  "validation_enter_correct_email": "Введите корректный email",
+  "minimum": "минимум",
+  "symbols": "символов",
+  "passwords_do_not_match": "Пароли не совпадают"
 }

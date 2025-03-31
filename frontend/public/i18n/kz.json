@@ -74,6 +74,20 @@
   "view_profile": "Профайлды көру",
   "log_out": "Шығу",
   "log_in": "Кіру",
+  "register": "Тіркеу",
+  "to_back": "Артқа",
+  "back_to_login": "Кіру-ге қайта оралу",
+  "do_not_have_account": "Тіркелгіңіз жоқ па?",
   "you_logged_out":"Сіз жүйеден шықтыңыз!",
-  "redirect_after":"секундтан кейін қайта бағыттау"
+  "redirect_after":"секундтан кейін қайта бағыттау",
+  "login_to_your_account": "Өз тіркемеңізге кіріңіз",
+  "create_your_own_account": "Өз тіркемеңізді құрыңыз",
+  "email_address": "Электрондық пошта",
+  "password": "Құпия сөз",
+  "password_repeat": "Құпия сөзді қайталап енгізіңіз!",
+  "validation_field_required": "Міндетті енгізу!",
+  "validation_enter_correct_email": "Дұрыс электрондық поштаны енгізіңіз!",
+  "minimum": "кем дегенде",
+  "symbols": "символ",
+  "passwords_do_not_match": "Құпия сөздер сәйкес келмейді!"
 }

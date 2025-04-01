@@ -73,7 +73,7 @@
   <section class="support-section">
     <h2>{{t('no_answer_found')}}</h2>
     <p>{{t('support_team_ready')}}</p>
-    <button mat-raised-button color="primary" class="contact-support">
+    <button mat-raised-button color="primary" class="contact-support" (click)="navigateToContact()">
       {{t('contact_support')}}
     </button>
   </section>

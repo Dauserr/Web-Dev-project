@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FilterByCategoryPipe } from './filter-by-category.pipe';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { Router } from '@angular/router';
 
 export interface FAQItem {
   question: string;
@@ -37,6 +38,7 @@ export type {FAQItem as glFAQItem}
 })
 export class HelpComponent {
   private translocoService = inject(TranslocoService);
+  private router = inject(Router);
   t = (key: string) => this.translocoService.translate(key);
 
   searchQuery: string = '';
@@ -119,5 +121,9 @@ export class HelpComponent {
 
   getAnswerTranslationKey(item: FAQItem): string {
     return `faq_${item.translationKey}_answer`;
+  }
+
+  navigateToContact(): void {
+    this.router.navigate(['/contact']);
   }
 }

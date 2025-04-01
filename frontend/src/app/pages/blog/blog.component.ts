@@ -108,6 +108,11 @@ export class BlogComponent {
       nameKey: 'blog_author3_name',
       bioKey: 'blog_author3_bio',
       image: 'assets/images/blog/author3.jpg'
+    },
+    {
+      nameKey: 'blog_author4_name',
+      bioKey: 'blog_author4_bio',
+      image: 'assets/images/blog/author4.jpg'
     }
   ];
 

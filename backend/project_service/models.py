@@ -1,12 +1,11 @@
 from django.db import models
 
-# Create your models here.
-
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     user_id = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
     current_funds = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     target_funds = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -14,6 +13,7 @@ class Project(models.Model):
 
     class Meta:
         db_table = "projects"
+        managed = False
 
 class Photo(models.Model):
     id = models.AutoField(primary_key=True)
@@ -22,6 +22,7 @@ class Photo(models.Model):
 
     class Meta:
         db_table = "photos"
+        managed = False
 
 class Favorite(models.Model):
     id = models.AutoField(primary_key=True)
@@ -31,3 +32,4 @@ class Favorite(models.Model):
     class Meta:
         db_table = "favorites"
         unique_together = ("user_id", "project")
+        managed = False

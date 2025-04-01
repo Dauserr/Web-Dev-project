@@ -19,6 +19,19 @@ export class AuthService{
     return localStorage.getItem('accessToken') ?? '';
   }
 
+  getUserId(): number | null {
+    const token = this.accessToken;
+    if (!token) return null;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.user_id || null;
+    } catch (error) {
+      console.error('Ошибка декодирования токена', error);
+      return null;
+    }
+  }
+
   // @ts-ignore
   check(): Observable<boolean>
   {
@@ -45,4 +58,3 @@ export class AuthService{
   }
 
 }
-

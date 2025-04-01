@@ -30,6 +30,7 @@ def auth_handler(request):
                     return JsonResponse({"AUTH_STATUS": "INCORRECT_PASSWORD"}, status=400)
 
                 payload = {
+                    'user_id': user.user_id,
                     'username': username,
                     'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=2),
                     'iat': datetime.datetime.utcnow()

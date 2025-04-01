@@ -12,6 +12,7 @@ class Users(models.Model):
     user_description = models.CharField(max_length=200, default='')
     class Meta:
         db_table = 'users'
+        managed = False
 
     def __str__(self):
         return f"user with userID : {self.user_id} and with user name:{self.user_name}"

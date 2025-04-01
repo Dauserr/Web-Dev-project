@@ -1,3 +1,69 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
+from .models import Project, Photo, Favorite
+import json
+from datetime import datetime
+from django.utils.timezone import make_aware
 
-# Create your views here.
+def project_catalogue(request):
+    """Каталог проектов"""
+    projects = Project.objects.all()
+    result = []
+
+    for project in projects:
+        funding_status = (float(project.current_funds) * 100.0 / float(project.target_funds)) if project.target_funds else 0
+        result.append({
+            "id": project.id,
+            "title": project.title,
+            "description": project.description,
+            "category": project.category,
+            "funding_status": funding_status,
+            "user_id": project.user_id
+        })
+
+    return JsonResponse({"projects": result})
+
+def project_detail(request, project_id):
+    """Страница проекта"""
+    project = get_object_or_404(Project, id=project_id)
+    days_since_creation = (datetime.now() - project.created_at).days
+    days_until_deadline = (project.deadline - datetime.now()).days
+
+    return JsonResponse({
+        "id": project.id,
+        "title": project.title,
+        "description": project.description,
+        "current_funds": project.current_funds,
+        "target_funds": project.target_funds,
+        "user_id": project.user_id,
+        "category": project.category,
+        "days_since_creation": days_since_creation,
+        "days_until_deadline": days_until_deadline,
+    })
+
+@csrf_exempt
+def create_project(request):
+    """Создание проекта"""
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+
+            deadline = datetime.strptime(data["deadline"], "%Y-%m-%d")
+            deadline = make_aware(deadline)
+
+            project = Project.objects.create(
+                title=data["title"],
+                description=data["description"],
+                user_id=data["user_id"],
+                category=data.get("category"),
+                target_funds=data["target_funds"],
+                deadline=deadline
+            )
+
+            return JsonResponse({"success": True, "message": "Проект успешно создан", "project_id": project.id})
+
+        except Exception as e:
+            return JsonResponse({"success": False, "message": f"Ошибка: {str(e)}"})
+
+    return JsonResponse({"error": "Invalid request"}, status=400)

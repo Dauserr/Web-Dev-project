@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -15,6 +15,7 @@ import {MatProgressBar} from '@angular/material/progress-bar';
 import {ApiUrlsService} from '../../services/api-urls.service';
 import {ToastrService} from 'ngx-toastr';
 import {AuthResponseInterface} from '../../interfaces/authResponseInterface';
+import {TranslocoService} from '@ngneat/transloco';
 
 @Component({
   selector: 'app-login-page',
@@ -34,17 +35,20 @@ import {AuthResponseInterface} from '../../interfaces/authResponseInterface';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent{
-    loginForm: FormGroup;
+  private translocoService = inject(TranslocoService);
+  t = (key: string) => this.translocoService.translate(key);
+  currentLang = this.translocoService.getActiveLang()
+  loginForm: FormGroup;
     authorizationStatus:string | 'login' | 'register';
 
     labelTextsLogin = [
-      {labelText:'Email',frmCtrlName:'email'},
-      {labelText:'Password',frmCtrlName:'password'}];
+      {labelText:'email_address',frmCtrlName:'email'},
+      {labelText:'password',frmCtrlName:'password'}];
 
     labelTextsRegistration = [
-      {labelText:'Email',frmCtrlName:'emailRegister'},
-      {labelText:'Password',frmCtrlName:'passwordRegister'}
-      ,{labelText:'Repeat your password',frmCtrlName:"repeatPasswordRegister"}];
+      {labelText:'email_address',frmCtrlName:'emailRegister'},
+      {labelText:'password',frmCtrlName:'passwordRegister'}
+      ,{labelText:'password_repeat',frmCtrlName:"repeatPasswordRegister"}];
 
     isExpanded:boolean = false
     loading:boolean = false

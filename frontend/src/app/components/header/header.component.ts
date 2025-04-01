@@ -96,8 +96,8 @@ export class HeaderComponent implements OnInit {
   languageSwitcher($event:any){
     const currentLang = this.translocoService.getActiveLang();
     this.translocoService.setActiveLang($event.currentTarget.id.split('_')[1]);
+    localStorage.setItem('currentLang',$event.currentTarget.id.split('_')[1]);
     this.currentLanguage = this.translocoService.getActiveLang() === 'ru' ? 'РУС' : 'ҚАЗ'
-    localStorage.setItem('currentLang',currentLang);
   }
 
   navigateByUrl(url:string){

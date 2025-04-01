@@ -44,52 +44,53 @@
 
   <!-- Форма создания проекта -->
   <section class="project-form-section">
-    <form class="project-form" (ngSubmit)="createProject()">
+    <form class="project-form">
       <!-- Основная информация -->
       <div class="form-group">
-        <label for="title">Название проекта</label>
+        <label for="projectName">Название проекта</label>
         <div class="input-tip">Придумайте яркое и запоминающееся название</div>
-        <input type="text" id="title" name="title" [(ngModel)]="project.title" required>
+        <input type="text" id="projectName" name="projectName" required>
       </div>
 
       <div class="form-group">
-        <label for="description">Краткое описание</label>
+        <label for="projectDescription">Краткое описание</label>
         <div class="input-tip">Опишите суть вашего проекта в 2-3 предложениях</div>
-        <textarea id="description" name="description" [(ngModel)]="project.description" rows="3" required></textarea>
+        <textarea id="projectDescription" name="projectDescription" rows="3" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="projectCategory">Категория проекта</label>
-        <select id="projectCategory" name="projectCategory" [(ngModel)]="project.category" required>
-          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        <select id="projectCategory" name="projectCategory" required>
+          <option value="">Выберите категорию</option>
+          <!-- TODO: Добавить категории -->
         </select>
       </div>
 
-
-    <!-- Финансовая информация -->
-    <div class="form-group">
-      <label for="target_funds">Целевая сумма</label>
-      <input type="number" id="target_funds" name="target_funds" [(ngModel)]="project.target_funds" min="0" required>
-    </div>
-
-    <!-- Даты -->
-    <div class="form-group">
-      <label>Сроки сбора средств</label>
-      <div class="date-range">
-        <input type="date" id="deadline" name="deadline" [(ngModel)]="project.deadline" required>
+      <!-- Финансовая информация -->
+      <div class="form-group">
+        <label for="targetAmount">Целевая сумма</label>
+        <input type="number" id="targetAmount" name="targetAmount" min="0" required>
       </div>
-    </div>
 
-      <!-- Календарь дедлайнов
-    <div class="form-group">
-      <label>Календарь дедлайнов</label>
-      <div class="calendar-container">
-        <input type="date" [(ngModel)]="project.calendar" name="calendar">
+      <!-- Даты -->
+      <div class="form-group">
+        <label>Сроки сбора средств</label>
+        <div class="date-range">
+          <input type="date" id="startDate" name="startDate" required>
+          <span>до</span>
+          <input type="date" id="endDate" name="endDate" required>
+        </div>
       </div>
-    </div>-->
 
+      <!-- Календарь дедлайнов -->
+      <div class="form-group">
+        <label>Календарь дедлайнов</label>
+        <div class="calendar-container">
+          <!-- TODO: Добавить календарь -->
+        </div>
+      </div>
 
-      <!-- Медиа-контент
+      <!-- Медиа-контент -->
       <div class="form-group">
         <label>Медиа-контент</label>
         <div class="media-upload">
@@ -102,23 +103,19 @@
             <input type="text" id="projectVideo" name="projectVideo" placeholder="Вставьте ссылку на видео">
           </div>
         </div>
-      </div>-->
+      </div>
 
-      <!-- Вознаграждения
+      <!-- Вознаграждения -->
       <div class="form-group">
         <label>Вознаграждения для инвесторов</label>
         <div class="rewards-container">
-          <div *ngFor="let reward of project.rewards; let i = index">
-            <input type="text" [(ngModel)]="project.rewards[i]" name="reward{{i}}">
-          </div>
-          <button type="button" (click)="addReward()">Добавить</button>
+          <!-- TODO: Добавить динамические поля для вознаграждений -->
         </div>
-      </div>-->
-
+      </div>
 
       <!-- Кнопки действий -->
       <div class="form-actions">
-        <!--<button type="button" class="preview-btn">Предпросмотр</button>-->
+        <button type="button" class="preview-btn">Предпросмотр</button>
         <button type="submit" class="submit-btn">Отправить на модерацию</button>
       </div>
     </form>

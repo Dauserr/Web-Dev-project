@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-blog',
@@ -25,75 +26,95 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatCardModule,
     MatListModule,
-    FormsModule
+    FormsModule,
+    TranslocoModule
   ]
 })
 export class BlogComponent {
+  private translocoService = inject(TranslocoService);
+  t = (key: string) => this.translocoService.translate(key);
+
   articles = [
     {
-      title: 'Как успешно запустить краудфандинговую кампанию',
-      description: 'Пошаговое руководство по созданию эффективной кампании на нашей платформе',
+      titleKey: 'blog_article1_title',
+      descriptionKey: 'blog_article1_description',
       image: 'assets/images/blog/article1.jpg',
-      tags: ['Краудфандинг', 'Советы', 'Маркетинг']
+      tags: ['blog_crowdfunding_tag', 'blog_tips_tag', 'blog_marketing_tag']
     },
     {
-      title: 'История успеха: Проект "ЭкоПакет"',
-      description: 'Как команда энтузиастов собрала 1 миллион рублей на экологическую инициативу',
+      titleKey: 'blog_article2_title',
+      descriptionKey: 'blog_article2_description',
       image: 'assets/images/blog/article2.jpg',
-      tags: ['Истории успеха', 'Экология', 'Краудфандинг']
+      tags: ['blog_success_tag', 'blog_ecology_tag', 'blog_crowdfunding_tag']
     },
     {
-      title: 'Тренды краудфандинга 2024',
-      description: 'Обзор самых перспективных направлений и инноваций в мире краудфандинга',
+      titleKey: 'blog_article3_title',
+      descriptionKey: 'blog_article3_description',
       image: 'assets/images/blog/article3.jpg',
-      tags: ['Тренды', 'Инновации', 'Краудфандинг']
+      tags: ['blog_trends_tag', 'blog_innovation_tag', 'blog_crowdfunding_tag']
     }
   ];
 
   popularTags = [
-    'Краудфандинг', 'Советы', 'Истории успеха', 'Маркетинг', 'Экология',
-    'Инновации', 'Тренды', 'Социальные проекты', 'Технологии', 'Бизнес',
-    'Стартапы', 'Финансы'
+    'blog_crowdfunding_tag',
+    'blog_tips_tag',
+    'blog_success_tag',
+    'blog_marketing_tag',
+    'blog_ecology_tag',
+    'blog_innovation_tag',
+    'blog_trends_tag',
+    'blog_social_tag',
+    'blog_technology_tag',
+    'blog_business_tag',
+    'blog_startup_tag',
+    'blog_finance_tag'
   ];
 
   popularArticles = [
     {
-      title: 'Топ-10 ошибок при запуске краудфандинговой кампании',
-      date: '15 марта 2024'
+      titleKey: 'blog_popular_article1_title',
+      dateKey: 'blog_popular_article1_date'
     },
     {
-      title: 'Как правильно составить описание проекта',
-      date: '10 марта 2024'
+      titleKey: 'blog_popular_article2_title',
+      dateKey: 'blog_popular_article2_date'
     },
     {
-      title: 'Секреты успешного продвижения проекта',
-      date: '5 марта 2024'
+      titleKey: 'blog_popular_article3_title',
+      dateKey: 'blog_popular_article3_date'
     },
     {
-      title: 'Как выбрать правильное время для запуска',
-      date: '1 марта 2024'
+      titleKey: 'blog_popular_article4_title',
+      dateKey: 'blog_popular_article4_date'
     },
     {
-      title: 'Работа с инвесторами: основные правила',
-      date: '25 февраля 2024'
+      titleKey: 'blog_popular_article5_title',
+      dateKey: 'blog_popular_article5_date'
     }
   ];
 
   authors = [
     {
-      name: 'Анна Петрова',
-      bio: 'Эксперт по краудфандингу с 5-летним опытом',
+      nameKey: 'blog_author1_name',
+      bioKey: 'blog_author1_bio',
       image: 'assets/images/blog/author1.jpg'
     },
     {
-      name: 'Михаил Иванов',
-      bio: 'Успешный предприниматель и наставник',
+      nameKey: 'blog_author2_name',
+      bioKey: 'blog_author2_bio',
       image: 'assets/images/blog/author2.jpg'
     },
     {
-      name: 'Елена Смирнова',
-      bio: 'Маркетолог и специалист по социальным проектам',
+      nameKey: 'blog_author3_name',
+      bioKey: 'blog_author3_bio',
       image: 'assets/images/blog/author3.jpg'
     }
   ];
+
+  searchQuery: string = '';
+  selectedTabIndex = 0;
+
+  searchArticles(): void {
+    // Здесь будет логика поиска статей
+  }
 }

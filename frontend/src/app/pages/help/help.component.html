@@ -1,15 +1,15 @@
 <div class="help-container">
   <!-- Заголовок страницы -->
   <section class="header-section">
-    <h1>Часто задаваемые вопросы</h1>
-    <p class="subtitle">Найдите ответы на популярные вопросы о работе с нашей платформой</p>
+    <h1>{{t('help_title')}}</h1>
+    <p class="subtitle">{{t('help_subtitle')}}</p>
   </section>
 
   <!-- Поисковая строка -->
   <section class="search-section">
     <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Поиск по вопросам</mat-label>
-      <input matInput [(ngModel)]="searchQuery" (keyup.enter)="searchFAQ()" placeholder="Введите ваш вопрос...">
+      <mat-label>{{t('search_questions')}}</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (keyup.enter)="searchFAQ()" [placeholder]="t('search_questions_placeholder')">
       <button mat-icon-button matSuffix (click)="searchFAQ()">
         <mat-icon>search</mat-icon>
       </button>
@@ -20,7 +20,11 @@
   <nav class="category-nav">
     <ul>
       <li *ngFor="let category of categories">
-        <a [href]="'#' + category">{{ category }}</a>
+        <a [href]="'#' + category">{{t(category === 'Создание проектов' ? 'project_creation' : 
+                                      category === 'Поддержка и инвестиции' ? 'support_and_investment' :
+                                      category === 'Платежи и безопасность' ? 'payments_and_security' :
+                                      category === 'Профиль и настройки' ? 'profile_and_settings' :
+                                      'technical_issues')}}</a>
       </li>
     </ul>
   </nav>
@@ -28,20 +32,24 @@
   <!-- Основной контент FAQ -->
   <main class="faq-content">
     <div *ngFor="let category of categories" class="category-section" [id]="category">
-      <h2>{{ category }}</h2>
+      <h2>{{t(category === 'Создание проектов' ? 'project_creation' : 
+               category === 'Поддержка и инвестиции' ? 'support_and_investment' :
+               category === 'Платежи и безопасность' ? 'payments_and_security' :
+               category === 'Профиль и настройки' ? 'profile_and_settings' :
+               'technical_issues')}}</h2>
       
       <mat-accordion>
         <mat-expansion-panel *ngFor="let item of filteredFAQItems | filterByCategory:category">
           <mat-expansion-panel-header>
-            <mat-panel-title>{{ item.question }}</mat-panel-title>
+            <mat-panel-title>{{t(getQuestionTranslationKey(item))}}</mat-panel-title>
           </mat-expansion-panel-header>
           
           <div class="answer-content">
-            <p>{{ item.answer }}</p>
+            <p>{{t(getAnswerTranslationKey(item))}}</p>
             
             <!-- Блок обратной связи -->
             <div class="feedback-section">
-              <p>Был ли этот ответ полезен?</p>
+              <p>{{t('was_this_helpful')}}</p>
               <div class="feedback-buttons">
                 <button mat-icon-button (click)="markAsHelpful(item, true)">
                   <mat-icon>thumb_up</mat-icon>
@@ -53,7 +61,7 @@
             </div>
 
             <small class="last-updated">
-              Последнее обновление: {{ item.lastUpdated | date:'dd.MM.yyyy' }}
+              {{t('last_updated')}} {{ item.lastUpdated | date:'dd.MM.yyyy' }}
             </small>
           </div>
         </mat-expansion-panel>
@@ -63,10 +71,10 @@
 
   <!-- Блок поддержки -->
   <section class="support-section">
-    <h2>Не нашли ответа на свой вопрос?</h2>
-    <p>Наша команда поддержки всегда готова помочь вам</p>
+    <h2>{{t('no_answer_found')}}</h2>
+    <p>{{t('support_team_ready')}}</p>
     <button mat-raised-button color="primary" class="contact-support">
-      Связаться с поддержкой
+      {{t('contact_support')}}
     </button>
   </section>
 </div>

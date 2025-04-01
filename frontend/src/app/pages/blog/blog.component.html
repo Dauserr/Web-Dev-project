@@ -1,8 +1,8 @@
 <!-- Заголовок страницы -->
 <section class="blog-header">
   <div class="container">
-    <h1>Блог</h1>
-    <p class="subtitle">Актуальные новости, полезные советы и истории успеха в мире краудфандинга</p>
+    <h1>{{t('blog_title')}}</h1>
+    <p class="subtitle">{{t('blog_subtitle')}}</p>
   </div>
 </section>
 
@@ -10,8 +10,8 @@
 <section class="search-section">
   <div class="container">
     <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Поиск статей</mat-label>
-      <input matInput placeholder="Введите ключевые слова...">
+      <mat-label>{{t('search_articles')}}</mat-label>
+      <input matInput [placeholder]="t('search_articles_placeholder')">
       <button mat-icon-button matSuffix>
         <mat-icon>search</mat-icon>
       </button>
@@ -23,9 +23,9 @@
 <section class="categories-section">
   <div class="container">
     <mat-tab-group>
-      <mat-tab label="Новости платформы"></mat-tab>
-      <mat-tab label="Советы по краудфандингу"></mat-tab>
-      <mat-tab label="Истории успеха"></mat-tab>
+      <mat-tab [label]="t('platform_news')"></mat-tab>
+      <mat-tab [label]="t('crowdfunding_tips')"></mat-tab>
+      <mat-tab [label]="t('success_stories')"></mat-tab>
     </mat-tab-group>
   </div>
 </section>
@@ -35,14 +35,14 @@
   <div class="container">
     <div class="articles-grid">
       <mat-card *ngFor="let article of articles" class="article-card">
-        <img mat-card-image [src]="article.image" [alt]="article.title">
+        <img mat-card-image [src]="article.image" [alt]="t(article.titleKey)">
         <mat-card-content>
-          <h2>{{article.title}}</h2>
-          <p>{{article.description}}</p>
+          <h2>{{t(article.titleKey)}}</h2>
+          <p>{{t(article.descriptionKey)}}</p>
           <div class="tags">
-            <mat-chip *ngFor="let tag of article.tags">{{tag}}</mat-chip>
+            <mat-chip *ngFor="let tag of article.tags">{{t(tag)}}</mat-chip>
           </div>
-          <button mat-raised-button color="primary">Читать далее</button>
+          <button mat-raised-button color="primary">{{t('read_more')}}</button>
         </mat-card-content>
       </mat-card>
     </div>
@@ -52,13 +52,13 @@
 <!-- Теги и популярные статьи -->
 <section class="tags-section">
   <div class="container">
-    <h3>Популярные теги</h3>
+    <h3>{{t('popular_tags')}}</h3>
     <mat-chip-grid>
-      <mat-chip-row *ngFor="let tag of popularTags">{{tag}}</mat-chip-row>
+      <mat-chip-row *ngFor="let tag of popularTags">{{t(tag)}}</mat-chip-row>
     </mat-chip-grid>
     <button mat-stroked-button color="primary" class="popular-button">
       <mat-icon>trending_up</mat-icon>
-      Популярные статьи
+      {{t('popular_articles')}}
     </button>
   </div>
 </section>
@@ -66,13 +66,13 @@
 <!-- Подписка на обновления -->
 <section class="newsletter-section">
   <div class="container">
-    <h3>Подпишитесь на обновления</h3>
+    <h3>{{t('subscribe_updates')}}</h3>
     <form class="newsletter-form">
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" placeholder="Введите ваш email">
+        <mat-label>{{t('email')}}</mat-label>
+        <input matInput type="email" [placeholder]="t('enter_email')">
       </mat-form-field>
-      <button mat-raised-button color="primary">Подписаться</button>
+      <button mat-raised-button color="primary">{{t('subscribe')}}</button>
     </form>
   </div>
 </section>
@@ -80,11 +80,11 @@
 <!-- Популярные статьи -->
 <section class="popular-articles">
   <div class="container">
-    <h3>Популярные статьи</h3>
+    <h3>{{t('popular_articles')}}</h3>
     <mat-list>
       <mat-list-item *ngFor="let article of popularArticles">
-        <span mat-line>{{article.title}}</span>
-        <span mat-line>{{article.date}}</span>
+        <span mat-line>{{t(article.titleKey)}}</span>
+        <span mat-line>{{t(article.dateKey)}}</span>
       </mat-list-item>
     </mat-list>
   </div>
@@ -93,13 +93,13 @@
 <!-- Информация об авторах -->
 <section class="authors-section">
   <div class="container">
-    <h3>Наши авторы</h3>
+    <h3>{{t('our_authors')}}</h3>
     <div class="authors-grid">
       <mat-card *ngFor="let author of authors" class="author-card">
-        <img mat-card-image [src]="author.image" [alt]="author.name">
+        <img mat-card-image [src]="author.image" [alt]="t(author.nameKey)">
         <mat-card-content>
-          <h4>{{author.name}}</h4>
-          <p>{{author.bio}}</p>
+          <h4>{{t(author.nameKey)}}</h4>
+          <p>{{t(author.bioKey)}}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -109,7 +109,7 @@
 <!-- Социальные кнопки -->
 <section class="social-section">
   <div class="container">
-    <h3>Поделиться</h3>
+    <h3>{{t('share')}}</h3>
     <div class="social-buttons">
       <button mat-icon-button color="primary">
         <mat-icon>facebook</mat-icon>

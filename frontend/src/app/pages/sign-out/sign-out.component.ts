@@ -27,6 +27,7 @@ export class SignOutComponent implements OnInit{
   ngOnInit() {
     this.bodySetOpacityBg('add')
     this.secondTaker()
+    localStorage.removeItem('accessToken')
   }
 
   secondTaker() {

@@ -1,9 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {TranslocoModule, TranslocoService} from '@ngneat/transloco';
+import {NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-footer',
-  imports: [TranslocoModule],
+  imports: [TranslocoModule, NgForOf],
   standalone:true,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
@@ -11,8 +12,21 @@ import {TranslocoModule, TranslocoService} from '@ngneat/transloco';
 export class FooterComponent {
   private translocoService = inject(TranslocoService);
   t = (key: string) => this.translocoService.translate(key);
-  languageSwitcher($event:any){
-    const currentLang = this.translocoService.getActiveLang();
-    this.translocoService.setActiveLang(currentLang === 'ru' ? 'kz' : 'ru');
-    }
+
+  footerItems = [
+    {
+      columnHeadDefinition:'about_platform',
+      columnItems:['about_us','how_it_works','rules','security']
+    },{
+      columnHeadDefinition:'contacts',
+      columnItems:['email','phone','address']
+    },{
+      columnHeadDefinition:'social_networks',
+      columnItems:['Facebook','Instagram','Twitter','LinkedIn']
+    },{
+      columnHeadDefinition:'legal_information',
+      columnItems:['terms_of_use','privacy_policy','platform_rules']
+    },
+  ]
+
 }

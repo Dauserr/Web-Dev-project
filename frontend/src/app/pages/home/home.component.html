@@ -1,7 +1,6 @@
 <div class="body">
-    
     <section class="banner">
-        <div class="container">
+        <div class="container margin-left-10percent">
             <h1>{{t('banner_title')}}</h1>
             <p>{{t('banner_description')}}</p>
             <div class="banner-buttons">
@@ -10,11 +9,15 @@
             </div>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-icon"></div>
+                    <div class="stat-icon">
+                      <img src="assets/icons/project.png" alt="">
+                    </div>
                     <div class="stat-text">{{t('projects_count')}}</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon"></div>
+                    <div class="stat-icon">
+                      <img src="assets/icons/customer-icon.png" alt="">
+                    </div>
                     <div class="stat-text">{{t('users_count')}}</div>
                 </div>
             </div>
@@ -22,30 +25,15 @@
     </section>
 
     <section class="categories">
-        <div class="container">
+        <div class="container m0-auto">
             <h2>{{t('categories_title')}}</h2>
             <p class="subtitle">{{t('categories_description')}}</p>
             <div class="category-grid">
-                <div class="category-card">
-                    <img src="assets/icons/tech.svg" alt="Технологии">
-                    <h3>{{t('technology')}}</h3>
-                    <p>{{t('technology_description')}}</p>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/art.svg" alt="Искусство">
-                    <h3>{{t('art')}}</h3>
-                    <p>{{t('art_description')}}</p>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/eco.svg" alt="Экология">
-                    <h3>{{t('ecology')}}</h3>
-                    <p>{{t('ecology_description')}}</p>
-                </div>
-                <div class="category-card">
-                    <img src="assets/icons/social.svg" alt="Социальные проекты">
-                    <h3>{{t('social')}}</h3>
-                    <p>{{t('social_description')}}</p>
-                </div>
+              <div class="category-card" *ngFor="let cardItem of cardItems">
+                <img [src]="cardItem.src" [alt]="cardItem.altDesc">
+                <h3>{{t(cardItem.h3Code)}}</h3>
+                <p>{{t(cardItem.paragraphCode)}}</p>
+              </div>
             </div>
         </div>
     </section>

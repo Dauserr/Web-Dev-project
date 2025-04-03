@@ -8,17 +8,24 @@
 
 .body {
     background: var(--white);
-    max-width: 1440px;
+    width: 100vw;
+    /*max-width: 1440px;*/
     margin: 0 auto;
 }
 
 .container {
     width: 100%;
     max-width: 1110px;
-    margin: 0 auto;
     padding: 0 15px;
 }
 
+.margin-left-10percent{
+  margin-left: 5%;
+}
+
+.m0-auto{
+  margin: 0 auto;
+}
 /* Хедер */
 header {
     padding: 47px 0;
@@ -166,6 +173,14 @@ nav a {
     height: 70px;
     background: var(--accent-color);
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon > img{
+  width: 50px;
+  height: 50px;
 }
 
 .stat-text {
@@ -197,6 +212,10 @@ nav a {
     letter-spacing: 0.045em;
 }
 
+.as-start{
+  align-self: flex-start;
+}
+
 .category-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -208,9 +227,23 @@ nav a {
     border-radius: 6px;
     padding: 20px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.category-card > img{
+  width: 70px;
+  height: 70px;
 }
 
-/* Футер */
+.category-card:hover{
+  transition: ease 0.2s ;
+  transform: scale(1.1);
+  background-color: #e4f7ff;
+}
+
+  /* Футер */
 footer {
     background: var(--white);
     padding: 80px 0 40px;

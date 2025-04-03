@@ -1,38 +1,10 @@
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-column">
-                <h3>{{t('about_platform')}}</h3>
+            <div class="footer-column" *ngFor="let footerItem of footerItems">
+                <h3>{{t(footerItem.columnHeadDefinition)}}</h3>
                 <ul>
-                    <li><a href="#">{{t('about_us')}}</a></li>
-                    <li><a href="#">{{t('how_it_works')}}</a></li>
-                    <li><a href="#">{{t('rules')}}</a></li>
-                    <li><a href="#">{{t('security')}}</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>{{t('contacts')}}</h3>
-                <ul>
-                    <li>{{t('email')}}</li>
-                    <li>{{t('phone')}}</li>
-                    <li>{{t('address')}}</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>{{t('social_networks')}}</h3>
-                    <ul>
-                        <li><a href="#" class="social-link">Facebook</a></li>
-                        <li><a href="#" class="social-link">Instagram</a></li>
-                        <li><a href="#" class="social-link">Twitter</a></li>
-                        <li><a href="#" class="social-link">LinkedIn</a></li>
-                    </ul>
-            </div>
-            <div class="footer-column">
-                <h3>{{t('legal_information')}}</h3>
-                <ul>
-                    <li><a href="#">{{t('terms_of_use')}}</a></li>
-                    <li><a href="#">{{t('privacy_policy')}}</a></li>
-                    <li><a href="#">{{t('platform_rules')}}</a></li>
+                    <li *ngFor="let columnItem of footerItem.columnItems"><a href="#">{{t(columnItem)}}</a></li>
                 </ul>
             </div>
         </div>

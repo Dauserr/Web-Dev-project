@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProfileInfo, ProfileInfoResponse} from '../interfaces/profileInfoResponse';
 import {SettedUserInfoResponse} from '../interfaces/settedUserInfoResponse';
+import {UserProjectsResponse} from '../interfaces/userProjectsResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,9 @@ export class ApiUrlsService {
     },
     setUserData: (body: string): Observable<SettedUserInfoResponse> => {
       return this._httpClient.put<SettedUserInfoResponse>(`${this.BASE_URL}user-info/set-data`, body);
+    },
+    getUserProjects:() => {
+      return this._httpClient.get<UserProjectsResponse>(`${this.BASE_URL}user-info/get-user-projects`,this.tokenInHeader);
     }
   }
 

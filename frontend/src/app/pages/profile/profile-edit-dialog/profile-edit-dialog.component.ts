@@ -43,7 +43,7 @@ export class ProfileEditDialogComponent implements OnInit{
     {
       labelStr:'Ваш номер телефона',
       formControlName:'user_phoneNumber',
-      inputType:'number'
+      inputType:'text'
     },
     {
       labelStr:'Опишите себя',
@@ -52,6 +52,7 @@ export class ProfileEditDialogComponent implements OnInit{
     },
   ]
   isLoadingPage = false
+  phoneNumberRegexPattern = '^[+78][\\d\\s\\-()]{10,}$'
   constructor(private fb:FormBuilder,
               @Inject(MAT_DIALOG_DATA) public data: {
                 user_fullName: string,
@@ -65,7 +66,7 @@ export class ProfileEditDialogComponent implements OnInit{
     this.profileForm = this.fb.group({
       user_fullName:['',[Validators.required,Validators.minLength(6)]],
       user_name:['',[Validators.required,Validators.email]],
-      user_phoneNumber:['',[Validators.required,Validators.minLength(11)]],
+      user_phoneNumber:['',[Validators.required,Validators.minLength(11),Validators.pattern(this.phoneNumberRegexPattern)]],
       user_description:['']
     })
   }
@@ -74,6 +75,7 @@ export class ProfileEditDialogComponent implements OnInit{
     Object.keys(this.data).forEach(item => {
       this.profileForm.patchValue({[item as keyof typeof this.data]:this.data?.[item as keyof typeof this.data] })
     })
+    console.log('profileForm:',this.profileForm.value)
       this.profileForm.get('user_name')?.disable();
   }
 

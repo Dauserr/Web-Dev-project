@@ -7,6 +7,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {CountryISO, NgxIntlTelInputModule, SearchCountryField} from 'ngx-intl-tel-input';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {ProfileEditDialogComponent} from './profile-edit-dialog/profile-edit-dialog.component';
+import {projectsDataTypes, UserProjectsResponse} from '../../interfaces/userProjectsResponse';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-profile',
@@ -17,11 +19,13 @@ import {ProfileEditDialogComponent} from './profile-edit-dialog/profile-edit-dia
     ReactiveFormsModule,
     NgxIntlTelInputModule,
     NgForOf,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   templateUrl: './profile.component.html',
   standalone: true,
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
+
 })
 export class ProfileComponent implements OnInit{
   userInfo?  :ProfileInfo = {
@@ -52,6 +56,9 @@ export class ProfileComponent implements OnInit{
     },
   ]
   isFormActive = false
+  visibleProjectCardCount = 2
+  isProjectCardsExpanded = false
+  projectsData:Array<projectsDataTypes> = []
 
 
   constructor(private _urlService:ApiUrlsService,
@@ -68,6 +75,7 @@ export class ProfileComponent implements OnInit{
     this.isLoadingPage = true
     this.headerAddRemoveStyleWhenPageLoading('add')
     this.reloadProfileData()
+    this.getUserProjects()
     if (!this.isFormActive) {
       this.profileForm.disable();
     } else {
@@ -98,6 +106,19 @@ export class ProfileComponent implements OnInit{
     })
   }
 
+  getUserProjects(){
+    this._urlService.profileApi.getUserProjects().subscribe({
+      next:(res:UserProjectsResponse) => {
+        if(res.response_code === 'SUCCESS'){
+            this.projectsData = res.data
+        }
+      },
+      error:(error) => {
+
+      },
+    })
+  }
+
   headerAddRemoveStyleWhenPageLoading(mode:string){
     const header = document.querySelector('header');
     if (header) {
@@ -125,6 +146,16 @@ export class ProfileComponent implements OnInit{
     });
   }
 
+  visibleProjectCardCountModif(){
+    if(this.isProjectCardsExpanded){
+      this.visibleProjectCardCount = 2
+      this.isProjectCardsExpanded = false
+    }else{
+      this.visibleProjectCardCount = this.projectsData.length
+      this.isProjectCardsExpanded = true
+    }
+
+  }
   logout() {
     console.log('User logged out');
   }

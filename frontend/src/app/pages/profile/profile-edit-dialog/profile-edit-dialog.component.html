@@ -12,6 +12,7 @@
           <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['required']">{{t('validation_field_required')}}</span>
           <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['email']">{{t('validation_enter_correct_email')}}</span>
           <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['minlength'] ">{{t('minimum') + ' ' + profileForm.controls[profileItem.formControlName].errors?.['minlength'].requiredLength + ' ' + t('symbols')}}</span>
+          <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['pattern'] ">{{t('incorrect_phoneNumber_format')}}</span>
         </div>
       </div>
     </div>

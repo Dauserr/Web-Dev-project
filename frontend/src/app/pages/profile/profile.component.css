@@ -203,6 +203,16 @@ button:not(:first-child) {
   position: relative;
 }
 
+.showAll{
+  align-self: center;
+  align-items: center;
+  cursor: pointer;
+  transition: ease 1s ;
+}
+
+.showAll:hover{
+  color:blue;
+}
 
 /* Списки */
 ul {

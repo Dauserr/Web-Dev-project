@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {authBodyInterface} from '../interfaces/authBodyInterface';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ProfileInfoResponse} from '../interfaces/profileInfoResponse';
+import {ProfileInfo, ProfileInfoResponse} from '../interfaces/profileInfoResponse';
+import {SettedUserInfoResponse} from '../interfaces/settedUserInfoResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,9 @@ export class ApiUrlsService {
   profileApi = {
     getUserProfileInformation : () :Observable<ProfileInfoResponse> =>  {
       return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`,this.tokenInHeader)
+    },
+    setUserData: (body: string): Observable<SettedUserInfoResponse> => {
+      return this._httpClient.put<SettedUserInfoResponse>(`${this.BASE_URL}user-info/set-data`, body);
     }
   }
 

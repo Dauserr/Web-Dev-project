@@ -1,0 +1,22 @@
+<div style="margin: 30px 50px 50px 50px;position: relative">
+  <div class="loading-bg-styles" style="position: absolute;top:0;left: 0;width: calc(100% + 50px);background: rgba(255, 255, 255,0.6);" *ngIf="isLoadingPage"></div>
+  <mat-spinner *ngIf="isLoadingPage" style="position: absolute;top:42%;left: 40%" class="mat-spinner-centralized"></mat-spinner>
+  <h2 style="width: 100%;text-align: center;margin-bottom: 40px">{{t('edit')}}</h2>
+  <form [formGroup]="profileForm" class="dsp-flex flex-directionColumn jc-center gap-20 fs-20 fw-bold">
+    <div class="basicFlex gap-20" *ngFor="let profileItem of profileItems">
+      <span style="font-weight: 500">{{profileItem.labelStr}}</span>
+      <div class="custom-input-container">
+        <input *ngIf="profileItem.formControlName !== 'user_description'" [formControlName]="profileItem.formControlName" [value]="profileForm.get(profileItem.formControlName)?.value" class="custom-input-cal custom-input-base" id="custom_input" placeholder="" [type]="profileItem.inputType" >
+        <textarea *ngIf="profileItem.formControlName === 'user_description'" [formControlName]="'user_description'" [value]="profileForm.get('user_description')?.value" class="custom-input-cal custom-input-base" id="custom_input" placeholder="" type="text"></textarea>
+        <div class="error-message" *ngIf="profileForm.controls[profileItem.formControlName].touched && profileForm.controls[profileItem.formControlName].invalid">
+          <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['required']">{{t('validation_field_required')}}</span>
+          <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['email']">{{t('validation_enter_correct_email')}}</span>
+          <span class="color-red fs-12 fw-500" *ngIf="profileForm.controls[profileItem.formControlName].errors?.['minlength'] ">{{t('minimum') + ' ' + profileForm.controls[profileItem.formControlName].errors?.['minlength'].requiredLength + ' ' + t('symbols')}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="dsp-flex jstf-cnt-end" style="width: 100%;">
+      <button [disabled]="!profileForm.valid" style="margin-right: 16px" [ngStyle]="!profileForm.valid ? {'background-color':'rgba(211, 211, 211, 1)','color':'rgba(169, 169, 169, 1)'} : {}" (click)="onSave()">{{t('save_btn')}}</button>
+    </div>
+  </form>
+</div>

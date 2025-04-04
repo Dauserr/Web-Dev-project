@@ -14,7 +14,7 @@ def project_catalogue(request):
     for project in projects:
         funding_status = (float(project.current_funds) * 100.0 / float(project.target_funds)) if project.target_funds else 0
         result.append({
-            "id": project.id,
+            "project_id": project.project_id,
             "title": project.title,
             "description": project.description,
             "category": project.category,
@@ -26,12 +26,12 @@ def project_catalogue(request):
 
 def project_detail(request, project_id):
     """Страница проекта"""
-    project = get_object_or_404(Project, id=project_id)
+    project = get_object_or_404(Project, project_id=project_id)
     days_since_creation = (datetime.now() - project.created_at).days
     days_until_deadline = (project.deadline - datetime.now()).days
 
     return JsonResponse({
-        "id": project.id,
+        "project_id": project.project_id,
         "title": project.title,
         "description": project.description,
         "current_funds": project.current_funds,
@@ -61,7 +61,7 @@ def create_project(request):
                 deadline=deadline
             )
 
-            return JsonResponse({"success": True, "message": "Проект успешно создан", "project_id": project.id})
+            return JsonResponse({"success": True, "message": "Проект успешно создан", "project_id": project.project_id})
 
         except Exception as e:
             return JsonResponse({"success": False, "message": f"Ошибка: {str(e)}"})

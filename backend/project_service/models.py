@@ -1,7 +1,7 @@
 from django.db import models
 
 class Project(models.Model):
-    id = models.AutoField(primary_key=True)
+    project_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     description = models.TextField()
     user_id = models.CharField(max_length=100)
@@ -16,7 +16,7 @@ class Project(models.Model):
         managed = False
 
 class Photo(models.Model):
-    id = models.AutoField(primary_key=True)
+    photo_id = models.AutoField(primary_key=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     photo_url = models.TextField()
 
@@ -25,7 +25,7 @@ class Photo(models.Model):
         managed = False
 
 class Favorite(models.Model):
-    id = models.AutoField(primary_key=True)
+    favorite_id = models.AutoField(primary_key=True)
     user_id = models.CharField(max_length=100)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
 

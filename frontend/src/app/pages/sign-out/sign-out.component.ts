@@ -25,6 +25,7 @@ export class SignOutComponent implements OnInit{
   seconds = 5
   constructor(private _router:Router){}
   ngOnInit() {
+    // this.setHeightOfBody('add')
     this.bodySetOpacityBg('add')
     this.secondTaker()
     localStorage.removeItem('accessToken')
@@ -43,6 +44,7 @@ export class SignOutComponent implements OnInit{
 
   navigateToLogin(){
     this._router.navigate(['login'])
+    this.bodySetOpacityBg('remove')
   }
 
   bodySetOpacityBg(mode:string){

@@ -1,13 +1,29 @@
 <div class="profile-container">
     <div class="container">
         <section class="profile-info">
-            <div class="avatar">
-                <img src="assets/images/avatar-placeholder.jpg" alt="Фото пользователя">
-            </div>
-            <h1 class="user-name">{{ userInfo?.user_fullName }}</h1>
+          <div class="avatar">
+            <img src="assets/images/avatar-placeholder.jpg" alt="Фото пользователя">
+          </div>
+          <ng-container *ngIf="isUserProfileConfigured">
+            <h1 class="user-name" *ngIf="!!userInfo?.user_fullName">{{ userInfo?.user_fullName }}</h1>
             <p class="contact-info">Email: {{userInfo?.user_name}}</p>
             <p class="contact-info">Телефон: {{ userInfo?.user_phoneNumber }}</p>
             <p class="bio">{{userInfo?.user_description}}</p>
+          </ng-container>
+          <ng-container *ngIf="!isUserProfileConfigured">
+            <form [formGroup]="profileForm" class="dsp-flex flex-directionColumn jc-center gap-20 fs-20 fw-bold">
+              <div class="basicFlex" *ngFor="let profileItem of profileItems">
+                  <span>{{profileItem.labelStr}}</span>
+                  <div class="custom-input-container">
+                    <input [disabled]="!isFormActive" *ngIf="profileItem.formControlName !== 'user_description'" [formControlName]="profileItem.formControlName" [value]="profileForm.get(profileItem.formControlName)?.value" class="custom-input-cal custom-input-base" id="custom_input" placeholder="" type="text" >
+                    <textarea [disabled]="!isFormActive" *ngIf="profileItem.formControlName === 'user_description'" [formControlName]="'user_description'" [value]="profileForm.get('user_description')?.value" class="custom-input-cal custom-input-base" id="custom_input" placeholder="" type="text"></textarea>
+                  </div>
+              </div>
+            </form>
+          </ng-container>
+          <div class="dsp-flex" [ngClass]="!isUserProfileConfigured ? 'jstf-cnt-end' : 'jstf-cnt-center'" style="margin-top: 15px">
+            <button style="margin-right: 4%" (click)="onEdit()">{{'Редактировать профиль'}}</button>
+          </div>
         </section>
 
         <section class="user-projects">
@@ -34,28 +50,28 @@
             </div>
         </section>
 
-        <section class="notifications">
-            <h2>Уведомления</h2>
-            <ul>
-                <li>Уведомление 1</li>
-                <li>Уведомление 2</li>
-            </ul>
-        </section>
+<!--        <section class="notifications">-->
+<!--            <h2>Уведомления</h2>-->
+<!--            <ul>-->
+<!--                <li>Уведомление 1</li>-->
+<!--                <li>Уведомление 2</li>-->
+<!--            </ul>-->
+<!--        </section>-->
 
-        <section class="messages">
-            <h2>Сообщения</h2>
-            <div class="chat">
-                <p><strong>Другой пользователь:</strong> Привет!</p>
-                <input type="text" placeholder="Написать сообщение...">
-            </div>
-        </section>
+<!--        <section class="messages">-->
+<!--            <h2>Сообщения</h2>-->
+<!--            <div class="chat">-->
+<!--                <p><strong>Другой пользователь:</strong> Привет!</p>-->
+<!--                <input type="text" placeholder="Написать сообщение...">-->
+<!--            </div>-->
+<!--        </section>-->
 
-        <section class="transaction-history">
-            <h2>История транзакций</h2>
-            <ul>
-                <li>Дата: 01.01.2025 — Сумма: 100₸ — Поддержка проекта "Название"</li>
-            </ul>
-        </section>
+<!--        <section class="transaction-history">-->
+<!--            <h2>История транзакций</h2>-->
+<!--            <ul>-->
+<!--                <li>Дата: 01.01.2025 — Сумма: 100₸ — Поддержка проекта "Название"</li>-->
+<!--            </ul>-->
+<!--        </section>-->
 
         <section class="favorite-projects">
             <h2>Избранные проекты</h2>
@@ -67,15 +83,15 @@
             </div>
         </section>
 
-        <section class="account-settings">
-            <h2>Настройки аккаунта</h2>
-            <div class="project-actions">
-                <button>Изменить пароль</button>
-                <button>Настройки уведомлений</button>
-                <button>Соцсети</button>
-                <button>Конфиденциальность</button>
-            </div>
-        </section>
+<!--        <section class="account-settings">-->
+<!--            <h2>Настройки аккаунта</h2>-->
+<!--            <div class="project-actions">-->
+<!--                <button>Изменить пароль</button>-->
+<!--                <button>Настройки уведомлений</button>-->
+<!--                <button>Соцсети</button>-->
+<!--                <button>Конфиденциальность</button>-->
+<!--            </div>-->
+<!--        </section>-->
     </div>
     <div class="loading-bg-styles" *ngIf="isLoadingPage"></div>
     <mat-spinner *ngIf="isLoadingPage" class="mat-spinner-centralized"></mat-spinner>

@@ -15,7 +15,6 @@ from backend_service.settings import JWT_SECRET_KEY
 
 @csrf_exempt
 def getUserData(request):
-    print('token:', f'{len(request.headers.get("Authorization"))}')
     if request.method == 'GET':
         try:
             token = request.headers.get('Authorization')
@@ -40,9 +39,22 @@ def getUserData(request):
     else:
         return JsonResponse({"response_code": "UNALLOWED_METHOD"}, 405)
 
-
+@csrf_exempt
 def updateUserProfileData(request):
     if request.method == 'PUT':
-        pass
+        try:
+            data = json.loads(request.body)
+            user = Users.objects.filter(user_name=data['user_name']).first()
+            if user:
+                user.user_fullName = data['user_fullName']
+                user.user_phoneNumber = data['user_phoneNumber']
+                user.user_description = data['user_description']
+                user.save()
+
+                return JsonResponse({"code": "SUCCESS", "info": "User successfully updated"}, status=200)
+            else:
+                return JsonResponse({'code': 'USER_NOT_FOUND', 'info': 'User not found'}, status=500)
+        except BaseException as be:
+            return JsonResponse({"code": "ERROR", "info": be}, status=500)
     else:
-        return JsonResponse({"response_code": "UNALLOWED_METHOD"}, 405)
+        return JsonResponse({"code": "UNALLOWED_METHOD"}, 405)

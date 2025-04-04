@@ -1,0 +1,22 @@
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:first-child {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+button:not(:first-child) {
+  background: var(--accent-color);
+  color: var(--secondary-color);
+}

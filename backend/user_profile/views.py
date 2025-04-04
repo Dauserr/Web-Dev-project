@@ -9,6 +9,7 @@ from jwt import ExpiredSignatureError, DecodeError
 
 from auth_service.models import Users
 from backend_service.settings import JWT_SECRET_KEY
+from project_service.models import Project
 
 
 # Create your views here.
@@ -56,5 +57,31 @@ def updateUserProfileData(request):
                 return JsonResponse({'code': 'USER_NOT_FOUND', 'info': 'User not found'}, status=500)
         except BaseException as be:
             return JsonResponse({"code": "ERROR", "info": be}, status=500)
+    else:
+        return JsonResponse({"code": "UNALLOWED_METHOD"}, 405)
+
+@csrf_exempt
+def getUserProjects(request):
+    if request.method == 'GET':
+        try:
+            token = request.headers.get('Authorization')
+            if token and token.startswith('Bearer '):
+                token = token.split(' ')[1]
+                decoded = jwt.decode(token, JWT_SECRET_KEY, algorithms=['HS256'])
+                user = Users.objects.filter(user_name=decoded['username']).first()
+                projects = Project.objects.filter(user_id=user.user_id).values()
+                if projects:
+                    return JsonResponse({'response_code': "SUCCESS", 'data': list(projects)}, status=200)
+                else:
+                    return JsonResponse({'response_code': "PROJECTS_NOT_FOUND", 'data': 'none'}, status=500)
+        except IndexError:
+            return JsonResponse({"response_code": "TOKEN_IS_EMPTY"}, status=402)
+        except ExpiredSignatureError:
+            return JsonResponse({"response_code": "TOKEN_EXPIRED"}, status=401)
+        except DecodeError:
+            return JsonResponse({"response_code": "TOKEN_DECODE_ERROR"}, status=410)
+        except BaseException as be:
+            return JsonResponse({"code": "ERROR", "info": be}, status=500)
+
     else:
         return JsonResponse({"code": "UNALLOWED_METHOD"}, 405)

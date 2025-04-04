@@ -15,7 +15,6 @@ from backend_service.settings import JWT_SECRET_KEY
 
 @csrf_exempt
 def getUserData(request):
-    print('token:', f'{len(request.headers.get("Authorization"))}')
     if request.method == 'GET':
         try:
             token = request.headers.get('Authorization')

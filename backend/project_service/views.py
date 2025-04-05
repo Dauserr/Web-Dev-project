@@ -5,6 +5,7 @@ from .models import Project, Photo, Favorite
 import json
 from datetime import datetime
 from django.utils.timezone import make_aware
+from auth_service.models import Users
 
 def project_catalogue(request):
     """Каталог проектов"""
@@ -12,14 +13,22 @@ def project_catalogue(request):
     result = []
 
     for project in projects:
+        user = get_object_or_404(Users, user_id=project.user_id)
+        user_full_name = user.user_fullName
+
         funding_status = (float(project.current_funds) * 100.0 / float(project.target_funds)) if project.target_funds else 0
+
+        days_until_deadline = (project.deadline - datetime.now()).days
+
         result.append({
             "project_id": project.project_id,
             "title": project.title,
             "description": project.description,
             "category": project.category,
             "funding_status": funding_status,
-            "user_id": project.user_id
+            "user_id": project.user_id,
+            "user_full_name": user_full_name,
+            "days_until_deadline": days_until_deadline,
         })
 
     return JsonResponse({"projects": result})

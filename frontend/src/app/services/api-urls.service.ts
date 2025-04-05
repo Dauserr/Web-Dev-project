@@ -53,4 +53,8 @@ export class ApiUrlsService {
     return this._httpClient.post(`${this.BASE_URL}api/projects/create`, projectData);
   }
 
+  getProjects(): Observable<any> {
+    return this._httpClient.get<any>(`${this.BASE_URL}api/projects/`);
+  }
+
 }

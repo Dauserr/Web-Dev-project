@@ -1,125 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
-
-@Pipe({
-  name: 'safe',
-  standalone: true
-})
-export class SafePipe implements PipeTransform {
-  constructor(private sanitizer: DomSanitizer) {}
-
-  transform(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
-}
-
-interface Project {
-  title: string;
-  subtitle: string;
-  mainImage: string;
-  videoUrl?: string;
-  progress: number;
-  raisedAmount: number;
-  investorsCount: number;
-  timeRemaining: string;
-  description: string;
-  goals: string[];
-  rewards: Reward[];
-  stretchGoals: StretchGoal[];
-  author: Author;
-  comments: Comment[];
-  updates: Update[];
-  faq: FAQ[];
-  risks: Risk[];
-}
-
-interface Reward {
-  title: string;
-  amount: number;
-  description: string;
-}
-
-interface StretchGoal {
-  title: string;
-  description: string;
-  progress: number;
-}
-
-interface Author {
-  name: string;
-  avatar: string;
-  bio: string;
-}
-
-interface Comment {
-  userName: string;
-  userAvatar: string;
-  text: string;
-}
-
-interface Update {
-  date: Date;
-  title: string;
-  content: string;
-}
-
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-interface Risk {
-  title: string;
-  description: string;
-  solution: string;
-}
+import { ActivatedRoute } from '@angular/router';
+import { ApiUrlsService } from '../../services/api-urls.service';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
-  standalone: true,
-  imports: [CommonModule, SafePipe]
+  imports: [CommonModule]
 })
 export class ProjectComponent implements OnInit {
-  project: Project = {
-    title: 'Название проекта',
-    subtitle: 'Краткий слоган проекта',
-    mainImage: 'assets/images/project-main.jpg',
-    videoUrl: 'https://www.youtube.com/embed/VIDEO_ID',
-    progress: 0,
-    raisedAmount: 0,
-    investorsCount: 0,
-    timeRemaining: '30 дней',
-    description: 'Описание проекта...',
-    goals: [],
-    rewards: [],
-    stretchGoals: [],
-    author: {
-      name: '',
-      avatar: '',
-      bio: ''
-    },
-    comments: [],
-    updates: [],
-    faq: [],
-    risks: []
-  };
+  project: any;
 
-  constructor(private sanitizer: DomSanitizer) {}
-
+  constructor(
+    private route: ActivatedRoute, // для получения параметра ID из URL
+    private apiUrlsService: ApiUrlsService // сервис для работы с API
+  ) {}
   ngOnInit(): void {
-    // Здесь будет логика загрузки данных проекта
-    this.loadProjectData();
+    // Получаем ID из URL
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+      this.loadProjectDetail(projectId);
+    }
   }
 
-  private loadProjectData(): void {
-    // TODO: Загрузка данных проекта из сервиса
-  }
-
-  getSafeUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  loadProjectDetail(projectId: string): void {
+    this.apiUrlsService.getProjectDetail(projectId).subscribe(
+      (data) => {
+        this.project = data;
+      },
+      (error) => {
+        console.error('Ошибка при загрузке данных проекта', error);
+      }
+    );
   }
 }

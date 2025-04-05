@@ -9,7 +9,7 @@ export interface projectsDataTypes{
   current_funds:string,
   deadline:string,
   description:string,
-  id:number,
+  project_id:number,
   target_funds:string,
   title:string,
   user_id:string,

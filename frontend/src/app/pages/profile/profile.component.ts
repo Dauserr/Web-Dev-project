@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {ApiUrlsService} from '../../services/api-urls.service';
 import {ProfileInfo, ProfileInfoResponse} from '../../interfaces/profileInfoResponse';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -9,7 +9,9 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {ProfileEditDialogComponent} from './profile-edit-dialog/profile-edit-dialog.component';
 import {projectsDataTypes, UserProjectsResponse} from '../../interfaces/userProjectsResponse';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
-
+import {Router} from '@angular/router';
+import {v4 as uuidv4} from 'uuid';
+import {TranslocoService} from '@ngneat/transloco';
 @Component({
   selector: 'app-profile',
   imports: [
@@ -28,6 +30,8 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 
 })
 export class ProfileComponent implements OnInit{
+  private translocoService = inject(TranslocoService);
+  t = (key: string) => this.translocoService.translate(key);
   userInfo?  :ProfileInfo = {
     user_name:'',
     user_fullName:'',
@@ -59,11 +63,30 @@ export class ProfileComponent implements OnInit{
   visibleProjectCardCount = 2
   isProjectCardsExpanded = false
   projectsData:Array<projectsDataTypes> = []
+  projectCardsActionButtons = [
+    {
+      btn_code:'just_edit',
+      onBtnClick:($event:any) => {
+        this.navigateByRoute('project',$event.currentTarget.parentElement.parentElement.id)
+      }
+    },
+    {
+      btn_code:'update',
+      onBtnClick:($event:any) => {
+        this.navigateByRoute('project',$event.currentTarget.parentElement.parentElement.id)
+      }
+    },
+    {
+      btn_code:'statistics',
+      onBtnClick:() => {}
+    }
+  ]
 
 
   constructor(private _urlService:ApiUrlsService,
               private fb:FormBuilder,
-              private _dialog:MatDialog) {
+              private _dialog:MatDialog,
+              private _router:Router) {
       this.profileForm = this.fb.group({
         user_fullName:['',[Validators.required]],
         user_name:['',[Validators.required,Validators.email]],
@@ -156,10 +179,19 @@ export class ProfileComponent implements OnInit{
     }
 
   }
-  logout() {
-    console.log('User logged out');
+
+  navigateByRoute(route:string,id:string){
+    if(route === 'project'){
+      this._router.navigate([route,id])
+    }
+  }
+
+  getUuidValue(id:string){
+    const additionalString = `_project_${id}`
+    return  uuidv4().slice(0,12) + additionalString;
   }
 
   protected readonly CountryISO = CountryISO;
   protected readonly SearchCountryField = SearchCountryField;
+  protected readonly String = String;
 }

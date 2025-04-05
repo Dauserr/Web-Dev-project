@@ -4,7 +4,9 @@
             <div class="footer-column" *ngFor="let footerItem of footerItems">
                 <h3>{{t(footerItem.columnHeadDefinition)}}</h3>
                 <ul>
-                    <li *ngFor="let columnItem of footerItem.columnItems"><a href="#">{{t(columnItem)}}</a></li>
+                    <li *ngFor="let columnItem of footerItem.columnItems">
+                        <a (click)="navigateByUrl(columnItem.link)">{{t(columnItem.name)}}</a>
+                    </li>
                 </ul>
             </div>
         </div>

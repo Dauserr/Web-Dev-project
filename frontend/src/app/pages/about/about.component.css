@@ -30,8 +30,8 @@ body {
 }
 
 /* Hero секция */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/about/hero-bg.jpg');
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/about/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -39,13 +39,13 @@ body {
     text-align: center;
 }
 
-.hero-section h1 {
+.hero h1 {
     font-size: 56px;
     line-height: 66px;
     margin-bottom: 20px;
 }
 
-.hero-section .subtitle {
+.hero .subtitle {
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 40px;
@@ -72,30 +72,23 @@ body {
     transform: translateY(-2px);
 }
 
-/* Секции */
-section {
-    padding: var(--section-padding);
-}
-
-section h2 {
-    font-size: 32px;
-    line-height: 42px;
-    color: var(--primary-color);
-    margin-bottom: 24px;
+/* Миссия */
+.mission {
+    padding: 80px 0;
     text-align: center;
 }
 
-/* Миссия */
-.mission-section {
-    background-color: var(--accent-color);
+.mission h2 {
+    font-size: 32px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 
 .mission-text {
     font-size: 18px;
     line-height: 28px;
     color: var(--text-color);
-    text-align: center;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto 40px;
 }
 
@@ -103,7 +96,6 @@ section h2 {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 40px;
 }
 
 .mission-item {
@@ -116,11 +108,16 @@ section h2 {
 }
 
 /* Социальная значимость */
+.social-impact {
+    padding: 80px 0;
+    background-color: var(--accent-color);
+}
+
 .impact-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .impact-card {
@@ -128,98 +125,85 @@ section h2 {
     padding: 30px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .impact-card .icon {
-    font-size: 40px;
+    font-size: 48px;
     margin-bottom: 16px;
 }
 
 /* Таймлайн */
 .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 40px auto 0;
+    padding: 80px 0;
 }
 
-.timeline::before {
+.timeline-container {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-container::before {
     content: '';
     position: absolute;
-    width: 2px;
-    background: var(--secondary-color);
+    left: 50%;
     top: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 2px;
+    background: var(--secondary-color);
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 40px;
+    width: 50%;
+    padding: 20px;
+}
+
+.timeline-item:nth-child(odd) {
+    margin-left: 50%;
 }
 
 .timeline-item .date {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--secondary-color);
-    color: var(--white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 500;
-}
-
-.timeline-item .content {
-    width: 45%;
-    padding: 20px;
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.timeline-item:nth-child(odd) .content {
-    margin-left: 55%;
-}
-
-.timeline-item:nth-child(even) .content {
-    margin-right: 55%;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
 }
 
 /* Команда */
+.team {
+    padding: 80px 0;
+    background-color: var(--accent-color);
+}
+
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
 
 .team-member {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
 }
 
 .team-member img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    margin-bottom: 16px;
-    object-fit: cover;
-}
-
-.team-member .position {
-    color: var(--secondary-color);
-    margin-bottom: 8px;
-}
-
-.team-member .bio {
-    color: var(--text-color);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 /* Ценности */
+.values {
+    padding: 80px 0;
+}
+
 .values-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     margin-top: 40px;
 }
@@ -233,23 +217,28 @@ section h2 {
 }
 
 .value-card .icon {
-    font-size: 40px;
+    font-size: 48px;
     margin-bottom: 16px;
 }
 
 /* Истории успеха */
+.success-stories {
+    padding: 80px 0;
+    background-color: var(--accent-color);
+}
+
 .stories-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .story-card {
     background: var(--white);
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .story-card img {
@@ -260,13 +249,11 @@ section h2 {
     margin-bottom: 20px;
 }
 
-.story-card blockquote {
-    font-style: italic;
-    color: var(--text-color);
-    margin-bottom: 16px;
+/* Партнеры */
+.partners {
+    padding: 80px 0;
 }
 
-/* Партнеры */
 .partners-grid {
     display: flex;
     justify-content: center;
@@ -287,60 +274,70 @@ section h2 {
 }
 
 /* CTA секция */
-.cta-section {
-    background: var(--accent-color);
+.cta {
+    padding: 80px 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/images/about/cta-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
     text-align: center;
+}
+
+.cta h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
 
 /* Адаптивные стили */
 @media (max-width: 992px) {
-    .mission-icons,
-    .impact-cards,
-    .team-grid,
-    .values-grid,
-    .stories-grid {
+    .hero h1 {
+        font-size: 48px;
+        line-height: 58px;
+    }
+    
+    .impact-cards {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .hero-section h1 {
+    .hero h1 {
         font-size: 40px;
         line-height: 50px;
     }
-
-    .mission-icons,
-    .impact-cards,
-    .team-grid,
-    .values-grid,
-    .stories-grid {
+    
+    .mission-icons {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .timeline-container::before {
+        left: 0;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .impact-cards {
         grid-template-columns: 1fr;
-    }
-
-    .timeline::before {
-        left: 30px;
-    }
-
-    .timeline-item .content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-    }
-
-    .timeline-item .date {
-        left: 30px;
-        transform: translateX(-50%);
     }
 }
 
 @media (max-width: 576px) {
-    .hero-section h1 {
+    .hero h1 {
         font-size: 32px;
         line-height: 42px;
     }
-
-    section h2 {
-        font-size: 24px;
-        line-height: 34px;
+    
+    .hero .subtitle {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
     }
 }
 

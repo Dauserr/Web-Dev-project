@@ -13,6 +13,7 @@
     --text-color: #475467;
     --light-text: #969696;
     --white: #FFFFFF;
+    --section-padding: 80px 0;
 }
 
 body {
@@ -28,142 +29,35 @@ body {
     padding: 0 15px;
 }
 
-/* Хедер */
-header {
-    padding: 47px 0;
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 22px;
-    color: var(--primary-color);
-    gap: 8px;
-}
-
-.logo-icon {
-    width: 43px;
-    height: 43px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 32px;
-}
-
-nav a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.045em;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 16px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.btn-primary {
-    background: var(--primary-color);
+/* Hero секция */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/about/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
     color: var(--white);
+    padding: 120px 0;
+    text-align: center;
 }
 
-.btn-secondary {
-    background: var(--accent-color);
-    color: var(--secondary-color);
-}
-
-/* Стили для страницы О нас */
-.about-us {
-    padding: 80px 0;
-}
-
-.about-us h1 {
+.hero-section h1 {
     font-size: 56px;
     line-height: 66px;
-    color: var(--primary-color);
     margin-bottom: 20px;
-    text-align: center;
 }
 
-.about-us .subtitle {
-    font-family: 'Merriweather', serif;
+.hero-section .subtitle {
     font-size: 20px;
     line-height: 30px;
-    color: var(--text-color);
-    text-align: center;
-    margin-bottom: 60px;
-    letter-spacing: 0.045em;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.about-section {
-    margin-bottom: 60px;
-}
-
-.about-section h2 {
-    font-size: 32px;
-    line-height: 42px;
-    color: var(--primary-color);
-    margin-bottom: 24px;
-}
-
-.about-section p {
-    font-family: 'Merriweather', serif;
-    font-size: 18px;
-    line-height: 28px;
-    color: var(--text-color);
-    margin-bottom: 24px;
-    letter-spacing: 0.045em;
-}
-
-.benefits-list {
-    list-style: none;
-    margin-left: 20px;
-}
-
-.benefits-list li {
-    font-family: 'Merriweather', serif;
-    font-size: 18px;
-    line-height: 28px;
-    color: var(--text-color);
-    margin-bottom: 16px;
-    letter-spacing: 0.045em;
-}
-
-.highlight {
-    font-size: 24px;
-    line-height: 34px;
-    color: var(--primary-color);
-    text-align: center;
-    font-weight: 600;
-    margin-top: 40px;
-}
-
-.contact-button-container {
-    text-align: center;
-    margin-top: 3rem;
-}
-
-.contact-button {
+/* Кнопки CTA */
+.cta-button {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 16px 32px;
     background-color: var(--secondary-color);
     color: var(--white);
     text-decoration: none;
@@ -171,129 +65,283 @@ nav a {
     font-weight: 500;
     font-size: 16px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.contact-button:hover {
+.cta-button:hover {
     background-color: var(--primary-color);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Футер */
-footer {
-    background: var(--white);
-    padding: 80px 0 40px;
-    border-top: 2px solid #D6D8DD;
+/* Секции */
+section {
+    padding: var(--section-padding);
 }
 
-.footer-grid {
+section h2 {
+    font-size: 32px;
+    line-height: 42px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Миссия */
+.mission-section {
+    background-color: var(--accent-color);
+}
+
+.mission-text {
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--text-color);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.mission-icons {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.mission-item {
+    text-align: center;
+}
+
+.mission-item .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+/* Социальная значимость */
+.impact-cards {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 40px;
+}
+
+.impact-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.impact-card .icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+/* Таймлайн */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: var(--secondary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
     margin-bottom: 40px;
 }
 
-.footer-column h3 {
+.timeline-item .date {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 4px;
     font-weight: 500;
-    font-size: 18px;
-    color: var(--primary-color);
-    margin-bottom: 35px;
 }
 
-.footer-column ul {
-    list-style: none;
+.timeline-item .content {
+    width: 45%;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.footer-column a {
-    color: var(--light-text);
-    text-decoration: none;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    margin-bottom: 25px;
-    display: block;
+.timeline-item:nth-child(odd) .content {
+    margin-left: 55%;
 }
 
-.footer-bottom {
+.timeline-item:nth-child(even) .content {
+    margin-right: 55%;
+}
+
+/* Команда */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    object-fit: cover;
+}
+
+.team-member .position {
+    color: var(--secondary-color);
+    margin-bottom: 8px;
+}
+
+.team-member .bio {
+    color: var(--text-color);
+    margin-bottom: 16px;
+}
+
+/* Ценности */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    text-align: center;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.value-card .icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+/* Истории успеха */
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.story-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.story-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.story-card blockquote {
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 16px;
+}
+
+/* Партнеры */
+.partners-grid {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding-top: 40px;
-    border-top: 2px solid #D6D8DD;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
 }
 
-.footer-bottom p {
-    color: var(--light-text);
-    font-size: 14px;
+.partners-grid img {
+    max-height: 60px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.partners-grid img:hover {
+    filter: grayscale(0%);
+}
+
+/* CTA секция */
+.cta-section {
+    background: var(--accent-color);
+    text-align: center;
 }
 
 /* Адаптивные стили */
-@media (max-width: 1200px) {
-    .container {
-        max-width: 960px;
-    }
-}
-
 @media (max-width: 992px) {
-    .container {
-        max-width: 720px;
-    }
-    
-    .about-us h1 {
-        font-size: 48px;
-        line-height: 58px;
+    .mission-icons,
+    .impact-cards,
+    .team-grid,
+    .values-grid,
+    .stories-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    .container {
-        max-width: 540px;
-    }
-    
-    .about-us h1 {
+    .hero-section h1 {
         font-size: 40px;
         line-height: 50px;
     }
-    
-    .about-section h2 {
-        font-size: 28px;
-        line-height: 38px;
+
+    .mission-icons,
+    .impact-cards,
+    .team-grid,
+    .values-grid,
+    .stories-grid {
+        grid-template-columns: 1fr;
     }
-    
-    .footer-grid {
-        grid-template-columns: repeat(3, 1fr);
+
+    .timeline::before {
+        left: 30px;
+    }
+
+    .timeline-item .content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+
+    .timeline-item .date {
+        left: 30px;
+        transform: translateX(-50%);
     }
 }
 
 @media (max-width: 576px) {
-    .container {
-        max-width: 100%;
-    }
-    
-    .header-container {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .about-us h1 {
+    .hero-section h1 {
         font-size: 32px;
         line-height: 42px;
     }
-    
-    .about-section h2 {
+
+    section h2 {
         font-size: 24px;
         line-height: 34px;
     }
-    
-    .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
 }
+
+

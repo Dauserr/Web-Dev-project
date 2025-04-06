@@ -172,18 +172,5 @@
   "just_edit": "Редактировать",
   "update": "Обновить",
   "statistics": "Статистика",
-  "incorrect_phoneNumber_format": "Некорректный формат номера телефона",
-  "culture": "Культура",
-  "echology": "Экология",
-  "social_projects": "Социальные проекты",
-  "category_title": "Категории",
-  "status_active": "Активные",
-  "status_finished": "Завершенные",
-  "by_addition_date": "По дате добавления",
-  "by_popularity": "По популярности",
-  "by_raised_funds": "По сумме собранных средств",
-  "by_time_to_finish": "По времени до завершения",
-  "find_btn": "Найти",
-  "project_status": "Статус проекта",
-  "sort_title": "Сортировка"
+  "incorrect_phoneNumber_format": "Некорректный формат номера телефона"
 }

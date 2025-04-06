@@ -1,61 +1,168 @@
-,<div class="body">
+<div class="body">
     <main class="about-us">
-        <div class="container">
-            <h1>{{t('about_us')}} – StartHub.kz 🚀</h1>
-            <p class="subtitle">{{t('about_us_subtitle')}}</p>
-
-            <section class="about-section">
-                <p>{{t('about_us_description')}}</p>
-            </section>
-
-            <section class="about-section">
-                <h2>{{t('for_entrepreneurs')}}</h2>
-                <p>{{t('for_entrepreneurs_description')}}</p>
-                <ul class="benefits-list">
-                    <li>{{t('for_entrepreneurs_benefits_1')}}</li>
-                    <li>{{t('for_entrepreneurs_benefits_2')}}</li>
-                    <li>{{t('for_entrepreneurs_benefits_3')}}</li>
-                    <li>{{t('for_entrepreneurs_benefits_4')}}</li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h2>{{t('for_investors')}}</h2>
-                <p>{{t('for_investors_description')}}</p>
-                <ul class="benefits-list">
-                    <li>{{t('for_investors_benefits_1')}}</li>
-                    <li>{{t('for_investors_benefits_2')}}</li>
-                    <li>{{t('for_investors_benefits_3')}}</li>
-                    <li>{{t('for_investors_benefits_4')}}</li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h2>{{t('for_society')}}</h2>
-                <p>{{t('for_society_description')}}</p>
-                <ul class="benefits-list">
-                    <li>{{t('for_society_benefits_1')}}</li>
-                    <li>{{t('for_society_benefits_2')}}</li>
-                    <li>{{t('for_society_benefits_3')}}</li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <h2>{{t('why_starthub')}}</h2>
-                <ul class="benefits-list">
-                    <li>{{t('why_starthub_benefits_1')}}</li>
-                    <li>{{t('why_starthub_benefits_2')}}</li>
-                    <li>{{t('why_starthub_benefits_3')}}</li>
-                </ul>
-            </section>
-
-            <section class="about-section">
-                <p class="highlight">{{t('starthub_description')}}</p>
-            </section>
-
-            <div class="contact-button-container">
-                <a href="../contact" class="contact-button">{{t('contact_us')}}</a>
+        <!-- Hero секция -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>{{t('about_us_hero_title')}}</h1>
+                <p class="subtitle">{{t('about_us_hero_subtitle')}}</p>
+                <a href="#" class="cta-button">{{t('join_us')}}</a>
             </div>
-        </div>
+        </section>
+
+        <!-- Миссия -->
+        <section class="mission-section">
+            <div class="container">
+                <h2>{{t('our_mission')}}</h2>
+                <p class="mission-text">{{t('mission_description')}}</p>
+                <div class="mission-icons">
+                    <div class="mission-item">
+                        <div class="icon">🎨</div>
+                        <h3>{{t('create')}}</h3>
+                    </div>
+                    <div class="mission-item">
+                        <div class="icon">🤝</div>
+                        <h3>{{t('support')}}</h3>
+                    </div>
+                    <div class="mission-item">
+                        <div class="icon">🌍</div>
+                        <h3>{{t('change_world')}}</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Социальная значимость -->
+        <section class="social-impact">
+            <div class="container">
+                <h2>{{t('social_impact_title')}}</h2>
+                <p class="subtitle">{{t('social_impact_subtitle')}}</p>
+                <div class="impact-cards">
+                    <div class="impact-card">
+                        <div class="icon">📚</div>
+                        <h3>{{t('education_projects')}}</h3>
+                        <p>{{t('education_description')}}</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon">❤️</div>
+                        <h3>{{t('charity_projects')}}</h3>
+                        <p>{{t('charity_description')}}</p>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon">🌱</div>
+                        <h3>{{t('environmental_projects')}}</h3>
+                        <p>{{t('environmental_description')}}</p>
+                    </div>
+                </div>
+                <a href="#" class="cta-button">{{t('view_stories')}}</a>
+            </div>
+        </section>
+
+        <!-- История -->
+        <section class="timeline-section">
+            <div class="container">
+                <h2>{{t('our_story')}}</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="date">2020</div>
+                        <div class="content">
+                            <h3>{{t('launch')}}</h3>
+                            <p>{{t('launch_description')}}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2021</div>
+                        <div class="content">
+                            <h3>{{t('first_project')}}</h3>
+                            <p>{{t('first_project_description')}}</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="date">2022</div>
+                        <div class="content">
+                            <h3>{{t('first_investment')}}</h3>
+                            <p>{{t('first_investment_description')}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Команда -->
+        <section class="team-section">
+            <div class="container">
+                <h2>{{t('our_team')}}</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="assets/images/team/member1.jpg" alt="Team Member">
+                        <h3>{{t('member1_name')}}</h3>
+                        <p class="position">{{t('member1_position')}}</p>
+                        <p class="bio">{{t('member1_bio')}}</p>
+                        <a href="#" class="profile-link">{{t('view_profile')}}</a>
+                    </div>
+                    <!-- Добавьте больше членов команды по аналогии -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Ценности -->
+        <section class="values-section">
+            <div class="container">
+                <h2>{{t('our_values')}}</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="icon">📢</div>
+                        <h3>{{t('transparency')}}</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">👥</div>
+                        <h3>{{t('support')}}</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">🤝</div>
+                        <h3>{{t('community')}}</h3>
+                    </div>
+                    <div class="value-card">
+                        <div class="icon">🌍</div>
+                        <h3>{{t('impact')}}</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Истории успеха -->
+        <section class="success-stories">
+            <div class="container">
+                <h2>{{t('success_stories')}}</h2>
+                <div class="stories-grid">
+                    <div class="story-card">
+                        <img src="assets/images/stories/story1.jpg" alt="Success Story">
+                        <blockquote>{{t('story1_quote')}}</blockquote>
+                        <p class="author">{{t('story1_author')}}</p>
+                    </div>
+                    <!-- Добавьте больше историй по аналогии -->
+                </div>
+                <a href="#" class="cta-button">{{t('read_more_blog')}}</a>
+            </div>
+        </section>
+
+        <!-- Партнеры -->
+        <section class="partners-section">
+            <div class="container">
+                <h2>{{t('our_partners')}}</h2>
+                <div class="partners-grid">
+                    <img src="assets/images/partners/partner1.png" alt="Partner 1">
+                    <img src="assets/images/partners/partner2.png" alt="Partner 2">
+                    <!-- Добавьте больше логотипов партнеров -->
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA секция -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>{{t('join_movement')}}</h2>
+                <a href="../contact" class="cta-button">{{t('contact_us')}}</a>
+            </div>
+        </section>
     </main>
 </div>

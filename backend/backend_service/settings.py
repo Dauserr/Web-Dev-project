@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'auth_service',
     'user_profile',
-    'project_service'
+    'project_service',
+    'blog_service'
 ]
 
 MIDDLEWARE = [

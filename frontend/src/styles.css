@@ -50,6 +50,11 @@ mat-icon {
   stroke: #1a1b1f !important;
 }
 
+.w100percent-h100percent{
+  width: 100%;
+  height: 100%;
+}
+
 .w100-h100{
   width: 100%;
   height: 100%;
@@ -154,11 +159,19 @@ mat-icon {
   z-index: 1000;
 }
 
+.bg-w-opacity-06{
+  background: rgba(255, 255, 255,0.6);
+}
+
+.pos-rel{
+  position: relative;
+}
+
 .mat-spinner-centralized{
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 2000;
+  z-index: 10000;
 }
 
 .color-red{
@@ -185,4 +198,29 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.pos-rel{
+  position: relative;
+}
+
+.pos-abs{
+  position: absolute;
+}
+
+.z-ind-10000{
+  z-index: 10000;
+}
+
+.t-50percent-l-50percent{
+  top: 50%;
+  left: 50%;
+}
+
+.w100{
+  width: 100%;
+}
+
+.place-items-center{
+  place-items: center;
 }

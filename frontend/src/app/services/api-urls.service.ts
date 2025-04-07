@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {authBodyInterface} from '../interfaces/authBodyInterface';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ProfileInfo, ProfileInfoResponse} from '../interfaces/profileInfoResponse';
 import {SettedUserInfoResponse} from '../interfaces/settedUserInfoResponse';
@@ -46,6 +46,12 @@ export class ApiUrlsService {
     },
     getUserProjects:() => {
       return this._httpClient.get<UserProjectsResponse>(`${this.BASE_URL}user-info/get-user-projects`,this.tokenInHeader);
+    }
+  }
+
+  catalogApi = {
+    getCatalogData : (params:any) => {
+      return this._httpClient.get(`${this.BASE_URL}api/catalog`,{params})
     }
   }
 

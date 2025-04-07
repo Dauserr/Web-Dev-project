@@ -224,5 +224,6 @@
   "find_btn": "Іздеу",
   "project_status": "Жобаның статусы",
   "sort_title": "Сұрыптау",
-  "choose_sort_type": "Сұрыптау түрін таңдаңыз"
+  "choose_sort_type": "Сұрыптау түрін таңдаңыз",
+  "projects_not_found": "Жобалар табылмады"
 }

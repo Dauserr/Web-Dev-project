@@ -10,6 +10,15 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
+import { ApiUrlsService } from '../../services/api-urls.service';
+import { OnInit } from '@angular/core';
+
+interface Article {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+}
 
 @Component({
   selector: 'app-blog',
@@ -30,30 +39,26 @@ import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
     TranslocoModule
   ]
 })
-export class BlogComponent {
+export class BlogComponent implements OnInit {
   private translocoService = inject(TranslocoService);
   t = (key: string) => this.translocoService.translate(key);
 
-  articles = [
-    {
-      titleKey: 'blog_article1_title',
-      descriptionKey: 'blog_article1_description',
-      image: 'assets/images/blog/article1.jpg',
-      tags: ['blog_crowdfunding_tag', 'blog_tips_tag', 'blog_marketing_tag']
-    },
-    {
-      titleKey: 'blog_article2_title',
-      descriptionKey: 'blog_article2_description',
-      image: 'assets/images/blog/article2.jpg',
-      tags: ['blog_success_tag', 'blog_ecology_tag', 'blog_crowdfunding_tag']
-    },
-    {
-      titleKey: 'blog_article3_title',
-      descriptionKey: 'blog_article3_description',
-      image: 'assets/images/blog/article3.jpg',
-      tags: ['blog_trends_tag', 'blog_innovation_tag', 'blog_crowdfunding_tag']
-    }
-  ];
+  constructor(private apiUrlsService: ApiUrlsService) { }
+
+  articles: Article[] = [];
+
+  ngOnInit(): void {
+    this.apiUrlsService.getNews().subscribe({
+      next: (data) => {
+        this.articles = data;
+        console.log('articles', this.articles);
+      },
+      error: (error) => {
+        console.error('Ошибка при загрузке статей:', error);
+        // Здесь можно добавить обработку ошибки, например, показать уведомление пользователю
+      }
+    });
+  }
 
   popularTags = [
     'blog_crowdfunding_tag',

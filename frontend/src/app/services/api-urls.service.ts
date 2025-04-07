@@ -67,4 +67,8 @@ export class ApiUrlsService {
     return this._httpClient.get<any>(`${this.BASE_URL}api/projects/${projectId}`);
   }
 
+  getNews(): Observable<any> {
+    return this._httpClient.get<any>(`${this.BASE_URL}blog/get_news`);
+  }
 }
+

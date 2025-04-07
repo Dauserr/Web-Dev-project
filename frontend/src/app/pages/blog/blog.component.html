@@ -35,10 +35,10 @@
   <div class="container">
     <div class="articles-grid">
       <mat-card *ngFor="let article of articles" class="article-card">
-        <img mat-card-image [src]="article.image" [alt]="t(article.titleKey)">
+        <img mat-card-image [src]="!!article.image ? article.image : 'assets/images/avatar-placeholder.jpg'" [alt]="t(article.title)">
         <mat-card-content>
-          <h2>{{t(article.titleKey)}}</h2>
-          <p>{{t(article.descriptionKey)}}</p>
+          <h2>{{t(article.title)}}</h2>
+          <p>{{t(article.description)}}</p>
           <div class="tags">
             <mat-chip *ngFor="let tag of article.tags">{{t(tag)}}</mat-chip>
           </div>

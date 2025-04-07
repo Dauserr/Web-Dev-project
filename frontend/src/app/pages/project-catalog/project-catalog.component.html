@@ -5,7 +5,7 @@
               <form [formGroup]="filterForm">
                   <div class="search-bar">
                       <input formControlName="enteredProjectName" type="text" placeholder="Поиск по проектам..." class="search-input">
-                      <button [ngStyle]="!filterForm.get('enteredProjectName')?.value ? {'background-color':'rgba(128,128,128,0.4)','color':'rgba(128,128,128,1)'} : {}" [disabled]="!filterForm.get('enteredProjectName')?.value" class="btn-primary btn" style="cursor: pointer">{{t('find_btn')}}</button>
+                      <button (click)="onSearchProjects()" class="btn-primary btn" style="cursor: pointer">{{t('find_btn')}}</button>
                   </div>
 
                   <div class="filters">
@@ -52,35 +52,41 @@
               </form>
             </section>
 
-            <section class="projects-list">
-                <div *ngFor="let project of projects" class="project-card">
-                    <div class="project-image">
-                        <img src="assets/icons/tech.svg" alt="Изображение проекта">
-                    </div>
-                    <div class="project-content">
-                        <h2>{{ project.title }}</h2>
-                        <p class="project-description">{{ project.description }}</p>
-                        <div class="project-progress">
-                            <div class="progress-bar">
-                                <div class="progress" [style.width]="(project.funding_status) + '%'"></div>
-                            </div>
-                            <div class="progress-stats">
-                                <span>{{ project.funding_status }}% собрано</span>
-                                <span>Осталось {{ project.days_until_deadline }} дней</span>
-                            </div>
-                        </div>
-                        <div class="project-author">
-                            <img src="assets/icons/avatar.svg" alt="Аватар автора" class="author-avatar">
-                            <span class="author-name">{{ project.user_full_name}}</span>
-                        </div>
-                        <div class="project-actions">
-                            <button class="btn-favorite" (click)="$event.preventDefault(); $event.stopPropagation();">В избранное</button>
-                            <button class="btn-share" (click)="$event.preventDefault(); $event.stopPropagation();">Поделиться</button>
-                        </div>
-                    </div>
+            <section class="projects-list pos-rel min-height-30vh" [ngStyle]="!isLoadingProjects && projects.length === 0 ? {'display':'flex','justify-content':'center','align-items':'center','width':'100%','height':'100%'} : {}">
+              <div class="pos-abs z-ind-10000 w100percent-h100percent bg-w-opacity-06" *ngIf="isLoadingProjects">
+                <mat-spinner class="mat-spinner-centralized"></mat-spinner>
+              </div>
+              <div *ngFor="let project of projects" class="project-card">
+                <div class="project-image">
+                  <img src="assets/icons/tech.svg" alt="Изображение проекта">
                 </div>
+                <div class="project-content">
+                  <h2>{{ project.title }}</h2>
+                  <p class="project-description">{{ project.description }}</p>
+                  <div class="project-progress">
+                    <div class="progress-bar">
+                      <div class="progress" [style.width]="(project.funding_status) + '%'"></div>
+                    </div>
+                    <div class="progress-stats">
+                      <span>{{ project.funding_status }}% собрано</span>
+                      <span>Осталось {{ project.days_until_deadline }} дней</span>
+                    </div>
+                  </div>
+                  <div class="project-author">
+                    <img src="assets/icons/avatar.svg" alt="Аватар автора" class="author-avatar">
+                    <span class="author-name">{{ project.user_full_name}}</span>
+                  </div>
+                  <div class="project-actions">
+                    <button class="btn-favorite" (click)="$event.preventDefault(); $event.stopPropagation();">В избранное</button>
+                    <button class="btn-share" (click)="$event.preventDefault(); $event.stopPropagation();">Поделиться</button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!isLoadingProjects && projects.length === 0">
+                <span class="fs-20">{{t('projects_not_found')}}</span>
+              </div>
             </section>
-            <div class="pagination">
+            <div class="pagination" *ngIf="!isLoadingProjects && projects.length > 0">
                 <button class="btn-page" disabled>←</button>
                 <button class="btn-page active">1</button>
                 <button class="btn-page">2</button>

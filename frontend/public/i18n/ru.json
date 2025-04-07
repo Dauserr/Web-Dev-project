@@ -223,5 +223,6 @@
   "find_btn": "Найти",
   "project_status": "Статус проекта",
   "sort_title": "Сортировка",
-  "choose_sort_type": "Выберите вид сортировки"
+  "choose_sort_type": "Выберите вид сортировки",
+  "projects_not_found": "Проекты не были найдены"
 }

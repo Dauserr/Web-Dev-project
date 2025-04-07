@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco';
 import { ApiUrlsService } from '../../services/api-urls.service';
 import { OnInit } from '@angular/core';
+import { TruncatePipe } from './truncate.pipe';
 
 interface Article {
   title: string;
@@ -36,7 +37,8 @@ interface Article {
     MatCardModule,
     MatListModule,
     FormsModule,
-    TranslocoModule
+    TranslocoModule,
+    TruncatePipe
   ]
 })
 export class BlogComponent implements OnInit {

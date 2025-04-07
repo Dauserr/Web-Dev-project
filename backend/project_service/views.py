@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -6,6 +7,7 @@ import json
 from datetime import datetime
 from django.utils.timezone import make_aware
 from auth_service.models import Users
+
 
 def project_catalogue(request):
     """Каталог проектов"""
@@ -33,6 +35,7 @@ def project_catalogue(request):
 
     return JsonResponse({"projects": result})
 
+
 def project_detail(request, project_id):
     """Страница проекта"""
     print(f"Получен запрос на проект с ID: {project_id}")
@@ -55,6 +58,7 @@ def project_detail(request, project_id):
         "days_until_deadline": days_until_deadline,
         "user_full_name": user_full_name,
     })
+
 
 @csrf_exempt
 def create_project(request):
@@ -81,3 +85,31 @@ def create_project(request):
             return JsonResponse({"success": False, "message": f"Ошибка: {str(e)}"})
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+def getCatalog(request):
+    if request.method == "GET":
+        try:
+            enteredprojectname = request.GET.get('enteredProjectName')
+            categories = request.GET.get('category').split(',') if request.GET.get('category') else []
+            print('categories:', categories)
+            project_status = 'ACTIVE' if request.GET.get('project_status') == 'status_active' else 'FINISHED'
+            projects_sort = request.GET.get('projects_sort')
+
+            filters = Q()
+            if enteredprojectname:
+                filters &= Q(title__icontains=enteredprojectname)
+            if categories:
+                filters &= Q(category__in=categories)
+            '''
+            if project_status:
+                filters &= Q(status=project_status)
+            '''
+            project = Project.objects.filter(filters)
+            if project:
+                return JsonResponse({'code': "SUCCESS_FOUND", 'data': list(project.values())}, status=200)
+            return JsonResponse({'code': "PROJECT_NOT_FOUND", 'data': []}, status=500)
+        except Exception as e:
+            return JsonResponse({"code": 'REQUEST_FAILED', "message": f"Ошибка: {str(e)}"}, status=500)
+
+    return JsonResponse({"code": "INVALID_REQUEST"}, status=400)

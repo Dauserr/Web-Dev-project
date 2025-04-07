@@ -185,5 +185,7 @@
   "by_time_to_finish": "По времени до завершения",
   "find_btn": "Найти",
   "project_status": "Статус проекта",
-  "sort_title": "Сортировка"
+  "sort_title": "Сортировка",
+  "choose_sort_type": "Выберите вид сортировки"
+
 }

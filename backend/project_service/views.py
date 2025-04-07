@@ -35,12 +35,10 @@ def project_catalogue(request):
 
 def project_detail(request, project_id):
     """Страница проекта"""
-    print(f"Request for project with ID: {project_id}")
+    print(f"Получен запрос на проект с ID: {project_id}")
     project = get_object_or_404(Project, project_id=project_id)
     user = get_object_or_404(Users, user_id=project.user_id)
     user_full_name = user.user_fullName
-
-    print(f"Project found: {project.title}")
 
     days_since_creation = (datetime.now() - project.created_at).days
     days_until_deadline = (project.deadline - datetime.now()).days

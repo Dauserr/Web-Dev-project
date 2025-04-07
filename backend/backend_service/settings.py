@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'auth_service',
     'user_profile',
     'project_service',
-    'blog_service'
+    'blog_service',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

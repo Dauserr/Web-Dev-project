@@ -4,7 +4,7 @@
             <section class="filters-section">
               <form [formGroup]="filterForm">
                   <div class="search-bar">
-                      <input formControlName="enteredProjectName" type="text" placeholder="Поиск по проектам..." class="search-input">
+                      <input formControlName="enteredProjectName" type="text" placeholder="{{t('search_projects')}}" class="search-input">
                       <button (click)="onSearchProjects()" class="btn-primary btn" style="cursor: pointer">{{t('find_btn')}}</button>
                   </div>
 

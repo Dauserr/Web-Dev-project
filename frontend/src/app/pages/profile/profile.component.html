@@ -22,12 +22,12 @@
             </form>
           </ng-container>
           <div class="dsp-flex" [ngClass]="!isUserProfileConfigured ? 'jstf-cnt-end' : 'jstf-cnt-center'" style="margin-top: 15px">
-            <button style="margin-right: 4%" (click)="onEdit()">{{'Редактировать профиль'}}</button>
+            <button style="margin-right: 4%" (click)="onEdit()">{{t('edit')}}</button>
           </div>
         </section>
 
         <section class="user-projects">
-            <h2>Мои проекты</h2>
+            <h2>{{t('my_projects')}}</h2>
             <div class="dsp-flex gap-20 jc-center flex-directionColumn">
               <div class="dsp-flex gap-20 jc-center" style="flex-wrap: wrap">
                 <div class="project-card" [id]="getUuidValue(String(projectData.project_id))" *ngFor="let projectData of projectsData.slice(0,visibleProjectCardCount)">
@@ -47,7 +47,7 @@
         </section>
 
         <section class="supported-projects">
-            <h2>Поддержанные проекты</h2>
+            <h2>{{t('supported_projects')}}</h2>
             <div class="project-card">
                 <h3>Название поддержанного проекта</h3>
                 <p>Статус финансирования: 80%</p>
@@ -81,7 +81,7 @@
 <!--        </section>-->
 
         <section class="favorite-projects">
-            <h2>Избранные проекты</h2>
+            <h2>{{t('favorite_projects')}}</h2>
             <div class="project-card">
                 <h3>Название избранного проекта</h3>
                 <div class="project-actions">

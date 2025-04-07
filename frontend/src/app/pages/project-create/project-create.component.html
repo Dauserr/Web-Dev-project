@@ -61,7 +61,7 @@
       <div class="form-group">
         <label for="projectCategory">Категория проекта</label>
         <select id="projectCategory" name="projectCategory" [(ngModel)]="project.category" required>
-          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
         </select>
       </div>
 

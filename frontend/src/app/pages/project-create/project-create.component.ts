@@ -18,7 +18,13 @@ export class ProjectCreateComponent {
     private ApiUrlsService: ApiUrlsService
   ) {}
 
-  categories = ['Игры', 'Экология', 'Индустрия'];
+  categories = [
+    { label: 'Технологии', value: 'technology' },
+    { label: 'Экология', value: 'echology' },
+    { label: 'Культура', value: 'culture' },
+    { label: 'Социальные проекты', value: 'social_projects' }
+  ];
+
 
   project = {
     title: '',

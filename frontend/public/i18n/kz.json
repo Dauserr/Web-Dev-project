@@ -210,5 +210,19 @@
   "read_more_blog": "Блогта көбірек оқу",
   "our_partners": "Біздің серіктестеріміз",
   "join_movement": "Біздің қозғалысымызға қосылғыңыз келе ме?",
-  "contact_us": "Бізбен байланысу"
+  "contact_us": "Бізбен байланысу",
+  "culture": "Мәдениет",
+  "echology": "Экология",
+  "social_projects": "Қоғамдық жобалар",
+  "category_title": "Санаттар",
+  "status_active": "Активті",
+  "status_finished": "Аяқталған",
+  "by_addition_date": "Қосылған күні бойынша",
+  "by_popularity": "Танымалдығы бойынша",
+  "by_raised_funds": "Жиналған қаражат сомасы бойынша",
+  "by_time_to_finish": "Аяқталу уақыты бойынша",
+  "find_btn": "Іздеу",
+  "project_status": "Жобаның статусы",
+  "sort_title": "Сұрыптау",
+  "choose_sort_type": "Сұрыптау түрін таңдаңыз"
 }

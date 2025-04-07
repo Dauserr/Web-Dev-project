@@ -40,6 +40,7 @@
                       <div class="filter-group">
                           <h3>{{t('sort_title')}}</h3>
                           <mat-form-field style="width: 100%">
+                            <mat-label>{{t('choose_sort_type')}}</mat-label>
                             <mat-select formControlName="projects_sort">
                               @for (sortOption of sortOptions; track sortOption) {
                                 <mat-option style="padding: 0 20px" [value]="sortOption.code">{{t(sortOption.code)}}</mat-option>

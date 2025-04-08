@@ -308,6 +308,13 @@ nav a {
 }
 
 .project-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Количество строк */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em; /* Примерно 2 строки */
+    line-height: 1.5em;
     color: var(--text-color);
     margin-bottom: 1rem;
 }
@@ -647,4 +654,3 @@ footer {
   transform: scale(0);
   transition: transform 0.2s ease;
 }
-

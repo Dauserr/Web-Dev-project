@@ -13,6 +13,7 @@ import {ContactComponent} from './pages/contact/contact.component';
 import {NoAuthGuard} from './auth/guards/noAuth.guard';
 import {AuthGuard} from './auth/guards/auth.guard';
 import {SignOutComponent} from './pages/sign-out/sign-out.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -50,4 +51,5 @@ export const routes: Routes = [
     ],
 
   },
+  { path: '**', component: NotFoundComponent },
 ];

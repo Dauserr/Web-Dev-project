@@ -35,7 +35,7 @@
   <div class="container">
     <div class="articles-grid">
       <mat-card *ngFor="let article of articles" class="article-card">
-        <img mat-card-image [src]="!!article.image ? article.image : 'assets/images/avatar-placeholder.jpg'" [alt]="t(article.title)">
+        <img mat-card-image [src]="!!article.image ? article.image : 'assets/images/404.jpg'" [alt]="t(article.title)">
         <mat-card-content>
           <h2>{{ article.title | truncate:30 }}</h2>
           <p>{{ article.description | truncate:100 }}</p>

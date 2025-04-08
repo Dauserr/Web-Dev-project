@@ -16,7 +16,7 @@
       <section class="project-hero">
         <div class="media-container">
           <div class="main-image">
-            <img [src]="project.mainImage" [alt]="project.title">
+            <img [src]="!!project.mainImage ? project.mainImage : 'assets/images/404.jpg'" [alt]="project.title">
           </div>
           <div class="video-container" *ngIf="project.videoUrl">
           <!--  <iframe [src]="project.videoUrl | safe" frameborder="0" allowfullscreen></iframe>-->

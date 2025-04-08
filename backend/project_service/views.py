@@ -42,6 +42,7 @@ def project_detail(request, project_id):
     project = get_object_or_404(Project, project_id=project_id)
     user = get_object_or_404(Users, user_id=project.user_id)
     user_full_name = user.user_fullName
+    user_bio = user.user_description
 
     days_since_creation = (datetime.now() - project.created_at).days
     days_until_deadline = (project.deadline - datetime.now()).days
@@ -57,6 +58,7 @@ def project_detail(request, project_id):
         "days_since_creation": days_since_creation,
         "days_until_deadline": days_until_deadline,
         "user_full_name": user_full_name,
+        "user_bio": user_bio,
     })
 
 

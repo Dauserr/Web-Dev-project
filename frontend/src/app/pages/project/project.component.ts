@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ApiUrlsService } from '../../services/api-urls.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-project',
@@ -10,6 +11,8 @@ import { ApiUrlsService } from '../../services/api-urls.service';
   imports: [CommonModule]
 })
 export class ProjectComponent implements OnInit {
+  private translocoService = inject(TranslocoService);
+  t = (key: string) => this.translocoService.translate(key);
   project: any;
 
   constructor(

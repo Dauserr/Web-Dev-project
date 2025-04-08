@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import {ApiUrlsService} from '../../services/api-urls.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { TranslocoService } from '@ngneat/transloco';
 
 
 @Component({
@@ -13,6 +14,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './project-create.component.css'
 })
 export class ProjectCreateComponent {
+  private translocoService = inject(TranslocoService);
+  t = (key: string) => this.translocoService.translate(key);
+
   constructor(
     private authService: AuthService,
     private ApiUrlsService: ApiUrlsService

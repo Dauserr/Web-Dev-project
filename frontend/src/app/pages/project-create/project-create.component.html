@@ -2,42 +2,42 @@
 <div class="project-create-container">
   <!-- Секция с инструкциями -->
   <section class="instructions-section">
-    <h2>Создание проекта</h2>
+    <h2>{{t('create_project')}}</h2>
     <div class="steps-container">
       <div class="step">
         <div class="step-icon">
           <!-- TODO: Добавить SVG иконку -->
         </div>
-        <h3>Шаг 1</h3>
-        <p>Расскажите о вашем проекте</p>
+        <h3>{{t('step_1')}}</h3>
+        <p>{{t('step_1_description')}}</p>
       </div>
       <div class="step">
         <div class="step-icon">
           <!-- TODO: Добавить SVG иконку -->
         </div>
-        <h3>Шаг 2</h3>
-        <p>Добавьте медиа-контент</p>
+        <h3>{{t('step_2')}}</h3>
+        <p>{{t('step_2_description')}}</p>
       </div>
       <div class="step">
         <div class="step-icon">
           <!-- TODO: Добавить SVG иконку -->
         </div>
-        <h3>Шаг 3</h3>
-        <p>Установите цель и сроки</p>
+        <h3>{{t('step_3')}}</h3>
+        <p>{{t('step_3_description')}}</p>
       </div>
       <div class="step">
         <div class="step-icon">
           <!-- TODO: Добавить SVG иконку -->
         </div>
-        <h3>Шаг 4</h3>
-        <p>Настройте вознаграждения</p>
+        <h3>{{t('step_4')}}</h3>
+        <p>{{t('step_4_description')}}</p>
       </div>
       <div class="step">
         <div class="step-icon">
           <!-- TODO: Добавить SVG иконку -->
         </div>
-        <h3>Шаг 5</h3>
-        <p>Просмотрите и отправьте</p>
+        <h3>{{t('step_5')}}</h3>
+        <p>{{t('step_5_description')}}</p>
       </div>
     </div>
   </section>
@@ -47,19 +47,19 @@
     <form class="project-form" (ngSubmit)="createProject()">
       <!-- Основная информация -->
       <div class="form-group">
-        <label for="title">Название проекта</label>
-        <div class="input-tip">Придумайте яркое и запоминающееся название</div>
+        <label for="title">{{t('project_title')}}</label>
+        <div class="input-tip">{{t('create_memorable_title')}}</div>
         <input type="text" id="title" name="title" [(ngModel)]="project.title" required>
       </div>
 
       <div class="form-group">
-        <label for="description">Краткое описание</label>
-        <div class="input-tip">Опишите суть вашего проекта в 2-3 предложениях</div>
+        <label for="description">{{t('short_description')}}</label>
+        <div class="input-tip">{{t('describe_project_in_2_3_sentences')}}</div>
         <textarea id="description" name="description" [(ngModel)]="project.description" rows="3" required></textarea>
       </div>
 
       <div class="form-group">
-        <label for="projectCategory">Категория проекта</label>
+        <label for="projectCategory">{{t('project_category')}}</label>
         <select id="projectCategory" name="projectCategory" [(ngModel)]="project.category" required>
           <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
         </select>
@@ -68,13 +68,13 @@
 
     <!-- Финансовая информация -->
     <div class="form-group">
-      <label for="target_funds">Целевая сумма</label>
+      <label for="target_funds">{{t('target_amount')}}</label>
       <input type="number" id="target_funds" name="target_funds" [(ngModel)]="project.target_funds" min="0" required>
     </div>
 
     <!-- Даты -->
     <div class="form-group">
-      <label>Сроки сбора средств</label>
+      <label>{{t('fundraising_deadlines')}}</label>
       <div class="date-range">
         <input type="date" id="deadline" name="deadline" [(ngModel)]="project.deadline" required>
       </div>
@@ -119,7 +119,7 @@
       <!-- Кнопки действий -->
       <div class="form-actions">
         <!--<button type="button" class="preview-btn">Предпросмотр</button>-->
-        <button type="submit" class="submit-btn">Отправить на модерацию</button>
+        <button type="submit" class="submit-btn">{{t('submit_for_moderation')}}</button>
       </div>
     </form>
   </section>

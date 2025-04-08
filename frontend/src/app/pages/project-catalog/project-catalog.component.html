@@ -56,7 +56,7 @@
               <div class="pos-abs z-ind-10000 w100percent-h100percent bg-w-opacity-06" *ngIf="isLoadingProjects">
                 <mat-spinner class="mat-spinner-centralized"></mat-spinner>
               </div>
-              <div *ngFor="let project of projects" class="project-card">
+              <a *ngFor="let project of projects" [routerLink]="['/project', project.project_id]" class="project-card" style="text-decoration: none; color: inherit;">
                 <div class="project-image">
                   <img src="assets/icons/tech.svg" alt="Изображение проекта">
                 </div>
@@ -81,7 +81,7 @@
                     <button class="btn-share" (click)="$event.preventDefault(); $event.stopPropagation();">Поделиться</button>
                   </div>
                 </div>
-              </div>
+              </a>
               <div *ngIf="!isLoadingProjects && projects.length === 0">
                 <span class="fs-20">{{t('projects_not_found')}}</span>
               </div>

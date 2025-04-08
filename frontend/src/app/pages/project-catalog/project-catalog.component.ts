@@ -7,10 +7,11 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ActivatedRoute, Router} from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-project-catalog',
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, MatSelectModule, MatProgressSpinnerModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, MatSelectModule, MatProgressSpinnerModule, RouterModule],
   standalone:true,
   templateUrl: './project-catalog.component.html',
   styleUrls: ['./project-catalog.component.css']

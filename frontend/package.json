@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
     "@ngneat/transloco": "^6.0.4",
+    "@ngrx/effects": "github:ngrx/effects",
+    "@ngrx/store": "^19.1.0",
     "force": "^0.0.3",
     "ngx-intl-tel-input": "^17.0.0",
     "ngx-toastr": "^19.0.0",

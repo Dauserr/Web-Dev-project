@@ -1,13 +1,15 @@
-import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import {provideHttpClient} from '@angular/common/http';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideToastr} from 'ngx-toastr';
-import {provideTransloco, TRANSLOCO_CONFIG, TRANSLOCO_LOADER, TranslocoModule} from '@ngneat/transloco';
+import {provideTransloco} from '@ngneat/transloco';
 import {translocoConfigOptions} from './core/transloco.config';
 import {TranslocoHttpLoader} from './core/transloco.loader';
+import {provideStore} from '@ngrx/store';
+import {rootReducer} from './store/reducers';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),provideHttpClient(),
@@ -21,5 +23,6 @@ export const appConfig: ApplicationConfig = {
       config: translocoConfigOptions,
       loader: TranslocoHttpLoader,
     }),
+    provideStore(rootReducer)
   ]
 };

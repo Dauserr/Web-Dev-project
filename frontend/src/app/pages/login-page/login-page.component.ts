@@ -16,6 +16,9 @@ import {ApiUrlsService} from '../../services/api-urls.service';
 import {ToastrService} from 'ngx-toastr';
 import {AuthResponseInterface} from '../../interfaces/authResponseInterface';
 import {TranslocoService} from '@ngneat/transloco';
+import {Store} from '@ngrx/store';
+import {ProfileInfoResponse} from '../../interfaces/profileInfoResponse';
+import {headerInfoActions} from '../../store/headerInfo/headerInfo.actions';
 
 @Component({
   selector: 'app-login-page',
@@ -38,6 +41,7 @@ export class LoginPageComponent{
   private translocoService = inject(TranslocoService);
   t = (key: string) => this.translocoService.translate(key);
   currentLang = this.translocoService.getActiveLang()
+  store = inject(Store);
   loginForm: FormGroup;
     authorizationStatus:string | 'login' | 'register';
 
@@ -98,6 +102,15 @@ export class LoginPageComponent{
             case 'SUCCESS_LOGIN':
               this.toastr.success('Мы рады вас снова видеть','Добро пожаловать!', {
                 positionClass: 'toast-top-right'
+              })
+              this.ApiUrlsService.profileApi.getUserProfileInformation(res.access_token).subscribe({
+                next: (response:ProfileInfoResponse) => {
+                  console.log('response:',response)
+                  // this.store.dispatch(headerInfoActions.setCurrentUserInfo({userinfo:response.data}))
+                },
+                error:(err) => {
+                  console.error('Ошибка при загрузке профиля:',err)
+                }
               })
               localStorage.setItem('accessToken',res.access_token)
               setTimeout(() => {

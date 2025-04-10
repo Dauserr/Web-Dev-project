@@ -38,9 +38,19 @@ export class ApiUrlsService {
   }
 
   profileApi = {
-    getUserProfileInformation : () :Observable<ProfileInfoResponse> =>  {
-      return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`,this.tokenInHeader)
+    getUserProfileInformation : (token?:string) :Observable<ProfileInfoResponse> =>  {
+      if(!!token){
+        const tokenizedHeader = {
+          headers:{
+            'Authorization':'Bearer '+ token
+          }
+        }
+        return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`,tokenizedHeader)
+      }else{
+        return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`,this.tokenInHeader)
+      }
     },
+
     setUserData: (body: string): Observable<SettedUserInfoResponse> => {
       return this._httpClient.put<SettedUserInfoResponse>(`${this.BASE_URL}user-info/set-data`, body);
     },

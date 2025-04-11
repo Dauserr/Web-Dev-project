@@ -1,6 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {TranslocoModule, TranslocoService} from '@ngneat/transloco';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
@@ -10,7 +10,7 @@ import {ApiUrlsService} from '../../services/api-urls.service';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf, MatIcon, MatIconButton, MatIconModule, NgClass],
+  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf, MatIcon, MatIconButton, MatIconModule, NgClass, NgStyle],
   standalone:true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

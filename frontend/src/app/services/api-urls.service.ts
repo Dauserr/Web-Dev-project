@@ -39,13 +39,15 @@ export class ApiUrlsService {
 
   profileApi = {
     getUserProfileInformation : () :Observable<ProfileInfoResponse> =>  {
-      return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`,this.tokenInHeader)
+    // ,this.tokenInHeader
+      return this._httpClient.get<ProfileInfoResponse>(`${this.BASE_URL}user-info`)
     },
     setUserData: (body: string): Observable<SettedUserInfoResponse> => {
       return this._httpClient.put<SettedUserInfoResponse>(`${this.BASE_URL}user-info/set-data`, body);
     },
     getUserProjects:() => {
-      return this._httpClient.get<UserProjectsResponse>(`${this.BASE_URL}user-info/get-user-projects`,this.tokenInHeader);
+    // ,this.tokenInHeader
+      return this._httpClient.get<UserProjectsResponse>(`${this.BASE_URL}user-info/get-user-projects`);
     }
   }
 

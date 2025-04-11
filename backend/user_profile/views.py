@@ -9,6 +9,8 @@ from jwt import ExpiredSignatureError, DecodeError
 
 from auth_service.models import Users
 from backend_service.settings import JWT_SECRET_KEY
+from customSerializers.ProjectSerializer import ProjectSerializer
+from customSerializers.UserSerializer import UserDataSerializer
 from project_service.models import Project
 
 
@@ -25,7 +27,9 @@ def getUserData(request):
                 user = Users.objects.filter(user_name=decoded.get('username')).first()
                 if not user:
                     return JsonResponse({"response_code": "USER_NOT_FOUND"})
-                return JsonResponse({"data": model_to_dict(user, fields=['user_name', 'user_fullName', 'user_phoneNumber', 'user_description']), "response_code": "SUCCESS"}, status=200)
+
+                serializer = UserDataSerializer(user)
+                return JsonResponse({"data": serializer.data, "response_code": "SUCCESS"}, status=200)
             else:
                 return JsonResponse({"response_code": "WRONG_TOKEN_FORMAT"}, status=407)
         except IndexError:
@@ -70,8 +74,9 @@ def getUserProjects(request):
                 decoded = jwt.decode(token, JWT_SECRET_KEY, algorithms=['HS256'])
                 user = Users.objects.filter(user_name=decoded['username']).first()
                 projects = Project.objects.filter(user_id=user.user_id).values()
+                serializer = ProjectSerializer(projects, many=True)
                 if projects:
-                    return JsonResponse({'response_code': "SUCCESS", 'data': list(projects)}, status=200)
+                    return JsonResponse({'response_code': "SUCCESS", 'data': serializer.data}, status=200)
                 else:
                     return JsonResponse({'response_code': "PROJECTS_NOT_FOUND", 'data': 'none'}, status=500)
         except IndexError:

@@ -1,4 +1,5 @@
 from django.db.models import Q
+from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
@@ -94,7 +95,6 @@ def getCatalog(request):
         try:
             enteredprojectname = request.GET.get('enteredProjectName')
             categories = request.GET.get('category').split(',') if request.GET.get('category') else []
-            print('categories:', categories)
             project_status = 'ACTIVE' if request.GET.get('project_status') == 'status_active' else 'FINISHED'
             projects_sort = request.GET.get('projects_sort')
 
@@ -103,10 +103,9 @@ def getCatalog(request):
                 filters &= Q(title__icontains=enteredprojectname)
             if categories:
                 filters &= Q(category__in=categories)
-            '''
             if project_status:
                 filters &= Q(status=project_status)
-            '''
+
             project = Project.objects.filter(filters)
             if project:
                 return JsonResponse({'code': "SUCCESS_FOUND", 'data': list(project.values())}, status=200)

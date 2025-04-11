@@ -4,12 +4,12 @@
             <img src="assets/icons/logo.svg" alt="StartHub.kz Logo" class="logo-icon">
             StartHub.kz
         </a>
-        <nav style="position: absolute;left: 40%;top: 0">
+        <nav style="position: absolute;left: 41%;top: 0">
             <ul>
                 <li *ngFor="let navChild of navigationChildren"><a [href]="navChild.linkToThePage">{{t(navChild.translationCode)}}</a></li>
             </ul>
         </nav>
-          <div class="auth-buttons" style="position: absolute;z-index: 10000;top:10%;left: 93%" [ngStyle]="!!userFullName ? {'left':'85%'} : {}">
+          <div class="auth-buttons" style="position: absolute;z-index: 10000;top:10%;left: 93%" [ngStyle]="!!userFullName ? {'left':'85%'} : !showAuthorizationModal ? {'left':'88%'} : {}">
             <a *ngIf="!showAuthorizationModal" href="../login" class="btn btn-primary">{{t('login')}}</a>
             <button class="menuMainObject" mat-button [matMenuTriggerFor]="menu">{{currentLanguage}}</button>
             <mat-menu #menu="matMenu">

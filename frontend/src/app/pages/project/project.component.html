@@ -1,15 +1,15 @@
 <!-- Основная обертка для контента -->
-<div class="page-wrapper">
+<div class="page-wrapper" [ngStyle]="isLoadingPage ? {'position':'relative','height':'100vh'} : {}">
   <!-- Заголовок проекта -->
-  <section class="project-header">
+  <section *ngIf="!isLoadingPage" class="project-header">
     <div class="container">
       <h1 class="project-title">{{project.title}}</h1>
       <h2 class="project-subtitle">{{project.subtitle}}</h2>
     </div>
-  </section>
+  </section  >
 
   <!-- Основной контент в двухколоночном layout -->
-  <div class="main-content">
+  <div *ngIf="!isLoadingPage" class="main-content">
     <!-- Левая колонка (основной контент) -->
     <div class="content-column">
       <!-- Визуальная зона проекта -->
@@ -164,4 +164,7 @@
       </section>
     </div>
   </div>
+
+  <div class="loading-bg-styles" *ngIf="isLoadingPage"></div>
+  <mat-spinner *ngIf="isLoadingPage" class="mat-spinner-centralized" style="position: absolute;top: 40%"></mat-spinner>
 </div>

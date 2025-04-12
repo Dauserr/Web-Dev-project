@@ -212,6 +212,10 @@
   "project_status_active_decs": "Активный",
   "project_status_finished_decs": "Завершенный",
 
+  "title_user_dont_have_projects": "У вас нету проектов",
+  "title_projects_not_found": "Проекты не найдены",
+  "create_first_project": "Создать первый проект",
+
   "category_title": "Категории",
   "status_active": "Активные",
   "status_finished": "Завершенные",

@@ -231,6 +231,10 @@
   "choose_sort_type": "Сұрыптау түрін таңдаңыз",
   "projects_not_found": "Жобалар табылмады",
 
+  "title_user_dont_have_projects": "Сізде әлі өз жобаларыңыз жоқ",
+  "title_projects_not_found": "Жобалар табылмады",
+  "create_first_project": "Алғашқы жобаны жасау",
+
   "create_project": "Жоба жасау",
   "step_1": "1-ші қадам",
   "step_2": "2-ші қадам",

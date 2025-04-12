@@ -22,7 +22,7 @@
             </form>
           </ng-container>
           <div class="dsp-flex" [ngClass]="!isUserProfileConfigured ? 'jstf-cnt-end' : 'jstf-cnt-center'" style="margin-top: 15px">
-            <button style="margin-right: 4%" (click)="onEdit()">{{t('edit')}}</button>
+            <button  (click)="onEdit()">{{t('edit')}}</button>
           </div>
         </section>
 
@@ -36,6 +36,10 @@
                       <div class="project-actions">
                           <button (click)="projectBtn.onBtnClick($event)" *ngFor="let projectBtn of projectCardsActionButtons">{{t(projectBtn.btn_code)}}</button>
                       </div>
+                </div>
+                <div class="project-card" *ngIf="projectsData.length === 0" style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 20px">
+                  <span style="font-weight: bold">{{t(userProjectsStatus === "PROJECTS_NOT_FOUND" ? 'title_user_dont_have_projects' : 'title_projects_not_found')}}</span>
+                  <button (click)="navigateByRoute('create-project')" *ngIf="projectsData.length === 0" style="background: black;color: white;margin-left: 1vw">{{t('create_first_project')}}</button>
                 </div>
               </div>
               <div *ngIf="projectsData.length >= visibleProjectCardCount" class="dsp-flex flex-directionColumn jc-center showAll" (click)="visibleProjectCardCountModif()">

@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit{
   visibleProjectCardCount = 2
   isProjectCardsExpanded = false
   projectsData:Array<projectsDataTypes> = []
+  userProjectsStatus:string = ''
   projectCardsActionButtons = [
     {
       btn_code:'just_edit',
@@ -137,6 +138,7 @@ export class ProfileComponent implements OnInit{
         }
       },
       error:(error) => {
+        this.userProjectsStatus = error.error.response_code
         console.error('Ошибка:',error)
       },
     })
@@ -179,10 +181,11 @@ export class ProfileComponent implements OnInit{
     }
   }
 
-  navigateByRoute(route:string,id:string){
+  navigateByRoute(route:string,id?:string){
     if(route === 'project'){
-      this._router.navigate([route,id])
+     return this._router.navigate([route,id])
     }
+    return this._router.navigate([route])
   }
 
   getUuidValue(id:string){

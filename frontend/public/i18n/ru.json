@@ -44,7 +44,7 @@
   "our_partners": "Наши партнеры",
   "join_movement": "Хотите присоединиться к нашему движению?",
   "contact_us": "Связаться с нами",
-  
+
 
 
   "blog_title": "Блог",
@@ -245,8 +245,23 @@
   "target_amount": "Целевая сумма",
   "fundraising_deadlines": "Сроки сбора средств",
   "submit_for_moderation": "Отправить на модерацию",
-  
-  
+
+
+  "culture": "Культура",
+  "echology": "Экология",
+  "social_projects": "Социальные проекты",
+
+  "welcome_success": "Добро пожаловать!",
+  "weAreHappyToSeeYou_success": "Мы рады вас снова видеть",
+  "title_success": "Успех!",
+  "title_success_register": "Аккаунт успешно создан",
+  "title_error": "Ошибка!",
+  "title_error_desc": "Неизвестная ошибка,просим вас войти позже",
+  "title_user_not_exist": "Пользователь с таким именем не существует",
+  "title_entered_invalid_pass": "Вы ввели неправильный пароль",
+  "title_user_already_exist": "Пользователь с таким именем уже существует",
+
+
 
 
   "about_platform": "О платформе",

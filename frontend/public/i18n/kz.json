@@ -172,7 +172,7 @@
   "social": "Қоғамдық жобалар",
   "social_description": "Қоғамдық жобалар",
 
-  "view_profile": "Профайлды көру",
+  "view_profile": "Тіркемені көру",
   "log_out": "Шығу",
   "log_in": "Кіру",
   "register": "Тіркеу",
@@ -248,7 +248,19 @@
   "target_amount": "Жоба мақсаты",
   "fundraising_deadlines": "Қаржыландыру мерзімі",
   "submit_for_moderation": "Модерацияға жіберу",
+  "culture": "Мәдениет",
+  "echology": "Экология",
+  "social_projects": "Қоғамдық жобалар",
 
+  "welcome_success": "Қош келдіңіз!",
+  "weAreHappyToSeeYou_success": "Сізді қайтадан көргенімізге қуаныштымыз",
+  "title_success": "Сәтті әрекет!",
+  "title_success_register": "Тіркеме сәтті құрылды",
+  "title_error": "Қате!",
+  "title_error_desc": "Белгісіз қате, кейінірек кіруіңізді сұраймыз",
+  "title_user_not_exist": "Бұл есіммен пайдаланушы жоқ",
+  "title_entered_invalid_pass": "Сіз қате құпия сөзді енгіздіңіз",
+  "title_user_already_exist": "Мұндай атаумен пайдаланушы бар",
 
   "about_platform": "Платформа жайлы",
   "how_it_works": "Қалай жұмыс істейді",

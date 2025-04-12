@@ -9,7 +9,7 @@
                 <li *ngFor="let navChild of navigationChildren"><a [href]="navChild.linkToThePage">{{t(navChild.translationCode)}}</a></li>
             </ul>
         </nav>
-          <div class="auth-buttons" style="position: absolute;top:10%;left: 93%" [ngStyle]="!!userFullName ? {'left':'85%'} : !showAuthorizationModal ? {'left':'88%'} : {}">
+          <div class="auth-buttons" style="position: absolute;top:10%;left: 93%" [ngStyle]="!!userFullName ? {'left':'85%'} : !showAuthorizationModal ? (currentLanguage === 'ҚАЗ' ? {'left':'91%'} : {'left':'88%'}) : {}">
             <a *ngIf="!showAuthorizationModal" href="../login" class="btn btn-primary">{{t('login')}}</a>
             <button class="menuMainObject" mat-button [matMenuTriggerFor]="menu">{{currentLanguage}}</button>
             <mat-menu #menu="matMenu">

@@ -35,10 +35,10 @@ import {TranslocoService} from '@ngneat/transloco';
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent{
-  private translocoService = inject(TranslocoService);
-  t = (key: string) => this.translocoService.translate(key);
-  currentLang = this.translocoService.getActiveLang()
-  loginForm: FormGroup;
+    private translocoService = inject(TranslocoService);
+    t = (key: string) => this.translocoService.translate(key);
+    currentLang = this.translocoService.getActiveLang()
+    loginForm: FormGroup;
     authorizationStatus:string | 'login' | 'register';
 
     labelTextsLogin = [
@@ -96,7 +96,7 @@ export class LoginPageComponent{
         next: (res:AuthResponseInterface) => {
           switch (res.AUTH_STATUS){
             case 'SUCCESS_LOGIN':
-              this.toastr.success('Мы рады вас снова видеть','Добро пожаловать!', {
+              this.toastr.success(this.t('weAreHappyToSeeYou_success'),this.t('welcome_success'), {
                 positionClass: 'toast-top-right'
               })
               localStorage.setItem('accessToken',res.access_token)
@@ -105,12 +105,12 @@ export class LoginPageComponent{
               }, 1000);
               break
             case 'SUCCESS_REGISTER':
-              this.toastr.success('Аккаунт успешно создан','Успех!', {
+              this.toastr.success(this.t('title_success_register'),this.t('title_success'), {
                 positionClass: 'toast-top-right'
               })
               break
             default:
-              this.toastr.error('Неизвестная ошибка,просим вас войти позже','Ошибка!', {
+              this.toastr.error(this.t('title_error_desc'),this.t('title_error'), {
                 positionClass: 'toast-top-right'
               })
           }
@@ -118,22 +118,22 @@ export class LoginPageComponent{
         error: (err) => {
           switch (err.error.AUTH_STATUS){
             case 'USER_NOT_EXISTS':
-              this.toastr.error('Пользователь с таким именем не существует','Ошибка!', {
+              this.toastr.error(this.t('title_user_not_exist'),this.t('title_error'), {
                 positionClass: 'toast-top-right'
               })
               break
             case 'INCORRECT_PASSWORD':
-              this.toastr.error('Вы ввели неправильный пароль','Ошибка!', {
+              this.toastr.error(this.t('title_entered_invalid_pass'),this.t('title_error'), {
                 positionClass: 'toast-top-right'
               })
               break
             case 'ALREADY_EXISTS':
-              this.toastr.error('Пользователь с таким именем уже существует','Ошибка!', {
+              this.toastr.error(this.t('title_user_already_exist'),this.t('title_error'), {
                 positionClass: 'toast-top-right'
               })
               break
             default:
-              this.toastr.error('Неизвестная ошибка,просим вас войти позже','Ошибка!', {
+              this.toastr.error(this.t('title_error_desc'),this.t('title_error'), {
                 positionClass: 'toast-top-right'
               })
           }

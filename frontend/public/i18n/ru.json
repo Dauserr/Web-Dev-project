@@ -209,7 +209,8 @@
   "write_to_author": "Написать автору",
   "risks_and_challenges": "Риски и вызовы",
   "solution": "Решение",
-
+  "project_status_active_decs": "Активный",
+  "project_status_finished_decs": "Завершенный",
 
   "category_title": "Категории",
   "status_active": "Активные",

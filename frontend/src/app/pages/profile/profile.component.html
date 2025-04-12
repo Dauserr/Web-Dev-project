@@ -32,13 +32,13 @@
               <div class="dsp-flex gap-20 jc-center" style="flex-wrap: wrap">
                 <div class="project-card" [id]="getUuidValue(String(projectData.project_id))" *ngFor="let projectData of projectsData.slice(0,visibleProjectCardCount)">
                       <h3>{{projectData.title}}</h3>
-                      <p>Статус: активен</p>
+                      <p>Статус: {{t(projectData.status === 'ACTIVE' ? 'project_status_active_decs' : 'project_status_finished_decs')}}</p>
                       <div class="project-actions">
                           <button (click)="projectBtn.onBtnClick($event)" *ngFor="let projectBtn of projectCardsActionButtons">{{t(projectBtn.btn_code)}}</button>
                       </div>
                 </div>
               </div>
-              <div *ngIf="projectsData.length > visibleProjectCardCount" class="dsp-flex flex-directionColumn jc-center showAll" (click)="visibleProjectCardCountModif()">
+              <div *ngIf="projectsData.length >= visibleProjectCardCount" class="dsp-flex flex-directionColumn jc-center showAll" (click)="visibleProjectCardCountModif()">
                 <mat-icon *ngIf="isProjectCardsExpanded">keyboard_arrow_up</mat-icon>
                 <span>{{(!isProjectCardsExpanded ? 'Показать все' : 'Скрыть')}}</span>
                 <mat-icon *ngIf="!isProjectCardsExpanded">keyboard_arrow_down</mat-icon>

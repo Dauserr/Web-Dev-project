@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, inject, OnInit} from '@angular/core';
 import {ApiUrlsService} from '../../services/api-urls.service';
 import {ProfileInfo, ProfileInfoResponse} from '../../interfaces/profileInfoResponse';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -137,7 +137,7 @@ export class ProfileComponent implements OnInit{
         }
       },
       error:(error) => {
-
+        console.error('Ошибка:',error)
       },
     })
   }
@@ -177,7 +177,6 @@ export class ProfileComponent implements OnInit{
       this.visibleProjectCardCount = this.projectsData.length
       this.isProjectCardsExpanded = true
     }
-
   }
 
   navigateByRoute(route:string,id:string){

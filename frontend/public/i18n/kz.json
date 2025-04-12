@@ -218,6 +218,8 @@
   "category_title": "Санаттар",
   "status_active": "Активті",
   "status_finished": "Аяқталған",
+  "project_status_active_decs": "Активті",
+  "project_status_finished_decs": "Аяқталған",
   "by_addition_date": "Қосылған күні бойынша",
   "by_popularity": "Танымалдығы бойынша",
   "by_raised_funds": "Жиналған қаражат сомасы бойынша",

@@ -27,7 +27,7 @@ export class ProjectComponent implements OnInit {
   }
 
   loadProjectDetail(projectId: string): void {
-    document.body.style.overflowY = 'hidden'
+    document.body.style.height = '100vh'
     this.isLoadingPage = true
     const extractedId = projectId.split('_')[2]
     this.apiUrlsService.getProjectDetail(extractedId).subscribe({
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
       },
       complete:() => {
         this.isLoadingPage = false
-        document.body.style.overflowY = 'auto'
+        document.body.style.height = 'auto'
       }
     }
     );

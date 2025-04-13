@@ -58,6 +58,8 @@
   "our_partners": "Біздің серіктестеріміз",
   "join_movement": "Біздің қозғалысымызға қосылғыңыз келе ме?",
   "contact_us": "Бізбен байланысу",
+  "delete_project": "Жобаны жою",
+  "edit_project": "Жобаға өзгеріс енгізу",
 
   "blog_title": "Блог",
   "blog_subtitle": "Краудфандинг әлеміндегі өзекті жаңалықтар, пайдалы кеңестер және табыс туралы баяндамалар",
@@ -230,6 +232,14 @@
   "sort_title": "Сұрыптау",
   "choose_sort_type": "Сұрыптау түрін таңдаңыз",
   "projects_not_found": "Жобалар табылмады",
+  "project_deletion_title": "Жобаны жою",
+  "project_deletion_approvement_question": "Жобаны жойғыңыз келетінің растайсыз ба?",
+  "close_btn": "Жабу",
+  "delete_btn": "Жою",
+  "delete_reset": "Болдырмау",
+  "success_action_desc": "Әрекет сәтті аяқталды",
+  "success_project_deletion": "Жоба сәтті түрде жойылды",
+  "project_deletion_error": "Жобаны жою кезінде қате орын алды",
 
   "title_user_dont_have_projects": "Сізде әлі өз жобаларыңыз жоқ",
   "title_projects_not_found": "Жобалар табылмады",

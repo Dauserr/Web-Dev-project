@@ -13,5 +13,6 @@ export interface projectsDataTypes{
   target_funds:string,
   title:string,
   user_id:string,
-  status:string
+  status:string,
+  uid?:string
 }

@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ProfileInfo, ProfileInfoResponse} from '../interfaces/profileInfoResponse';
 import {SettedUserInfoResponse} from '../interfaces/settedUserInfoResponse';
 import {UserProjectsResponse} from '../interfaces/userProjectsResponse';
+import {BasicResponse} from '../interfaces/basicResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,9 @@ export class ApiUrlsService {
   catalogApi = {
     getCatalogData : (params:any) => {
       return this._httpClient.get(`${this.BASE_URL}api/catalog`,{params})
+    },
+    deleteProjectById : (id:number) => {
+      return this._httpClient.delete<BasicResponse>(`${this.BASE_URL}api/delete-project/${id}`)
     }
   }
 

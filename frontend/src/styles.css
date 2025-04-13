@@ -224,3 +224,11 @@ input[type="number"] {
 .place-items-center{
   place-items: center;
 }
+
+.pd-top-20{
+  padding-top: 20px;
+}
+
+.gap-10{
+  gap: 10px;
+}

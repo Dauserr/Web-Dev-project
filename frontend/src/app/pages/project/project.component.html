@@ -65,7 +65,7 @@
       </section>
 
       <!-- Комментарии -->
-      <section class="comments">
+        <section class="comments" *ngIf="!isCurrentUserAuthorOfProject">
         <h3>{{t('comments')}}</h3>
         <div class="comment-form">
           <textarea placeholder="Оставьте комментарий..."></textarea>
@@ -106,7 +106,7 @@
           </div>
         </div>
 
-        <div class="action-buttons">
+        <div class="action-buttons" *ngIf="!isCurrentUserAuthorOfProject">
           <button class="support-btn">{{t('support_project')}}</button>
           <div class="share-buttons">
             <button class="share-btn facebook"><i class="fab fa-facebook"></i></button>
@@ -118,7 +118,7 @@
       </section>
 
       <!-- Список вознаграждений -->
-      <section class="rewards">
+      <section class="rewards" *ngIf="!isCurrentUserAuthorOfProject">
         <h3>{{t('choose_reward')}}</h3>
         <div class="rewards-grid">
           <div class="reward-card" *ngFor="let reward of project.rewards">
@@ -131,7 +131,7 @@
       </section>
 
       <!-- Информация об авторе -->
-      <section class="author-info">
+      <section class="author-info" *ngIf="!isCurrentUserAuthorOfProject">
         <div class="author-profile">
           <img src="assets/images/avatar-placeholder.jpg" [alt]="project.user_full_name" class="author-avatar">
           <h3>{{project.user_full_name}}</h3>
@@ -162,9 +162,13 @@
           </div>
         </div>
       </section>
+
+      <div class="dsp-flex gap-10">
+        <button mat-flat-button style="padding: 10px;background: black;color: white">{{t('edit_project')}}</button>
+        <button (click)="onDeleteProject()" mat-flat-button style="padding: 10px;background: red;color: white">{{t('delete_project')}}</button>
+      </div>
     </div>
   </div>
-
   <div class="loading-bg-styles" *ngIf="isLoadingPage"></div>
   <mat-spinner *ngIf="isLoadingPage" class="mat-spinner-centralized" style="position: absolute;top: 40%"></mat-spinner>
 </div>

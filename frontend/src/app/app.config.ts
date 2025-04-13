@@ -5,10 +5,11 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideToastr} from 'ngx-toastr';
-import {provideTransloco} from '@ngneat/transloco';
+import {provideTransloco, TRANSLOCO_MISSING_HANDLER} from '@ngneat/transloco';
 import {translocoConfigOptions} from './core/transloco.config';
 import {TranslocoHttpLoader} from './core/transloco.loader';
 import {RequestHeadersInterceptor} from './interceptors/RequestHeadersInterceptor';
+import {CustomMissingHandler} from './core/customMissingHandler';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -23,6 +24,9 @@ export const appConfig: ApplicationConfig = {
       config: translocoConfigOptions,
       loader: TranslocoHttpLoader,
     }),
-
+    {
+      provide:TRANSLOCO_MISSING_HANDLER,
+      useClass:CustomMissingHandler
+    }
   ]
 };

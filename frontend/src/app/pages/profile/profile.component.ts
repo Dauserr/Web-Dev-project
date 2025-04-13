@@ -134,7 +134,10 @@ export class ProfileComponent implements OnInit{
     this._urlService.profileApi.getUserProjects().subscribe({
       next:(res:UserProjectsResponse) => {
         if(res.response_code === 'SUCCESS'){
-            this.projectsData = res.data
+            this.projectsData = res.data.map(p => ({
+              ...p,
+              uid:this.getUuidValue(p.project_id)
+            }))
         }
       },
       error:(error) => {
@@ -188,7 +191,7 @@ export class ProfileComponent implements OnInit{
     return this._router.navigate([route])
   }
 
-  getUuidValue(id:string){
+  getUuidValue(id:string | number){
     const additionalString = `_project_${id}`
     return  uuidv4().slice(0,12) + additionalString;
   }

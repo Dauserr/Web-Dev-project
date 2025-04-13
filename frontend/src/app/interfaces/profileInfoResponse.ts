@@ -1,6 +1,6 @@
 export interface ProfileInfoResponse {
   response_code:string,
-  data?:{
+  data:{
     user_name:string,
     user_fullName?:string,
     user_phoneNumber?:string,

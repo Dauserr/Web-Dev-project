@@ -8,6 +8,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {ActivatedRoute, Router} from '@angular/router';
 import { RouterModule } from '@angular/router';
+import {v4 as uuidv4} from 'uuid';
 
 @Component({
   selector: 'app-project-catalog',
@@ -106,6 +107,11 @@ export class ProjectCatalogComponent {
     })
 
     return queryParamObject
+  }
+
+  getUuidValue(id:string | number){
+    const additionalString = `_project_${id}`
+    return  uuidv4().slice(0,12) + additionalString;
   }
 
   onSearchProjects(){

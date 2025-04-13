@@ -56,7 +56,7 @@
               <div class="pos-abs z-ind-10000 w100percent-h100percent bg-w-opacity-06" *ngIf="isLoadingProjects">
                 <mat-spinner class="mat-spinner-centralized"></mat-spinner>
               </div>
-              <a *ngFor="let project of projects" [routerLink]="['/project', project.project_id]" class="project-card" style="text-decoration: none; color: inherit;">
+              <a *ngFor="let project of projects" [routerLink]="['/project', getUuidValue(project.project_id)]" class="project-card" style="text-decoration: none; color: inherit;">
                 <div class="project-image">
                   <img src="assets/icons/tech.svg" alt="Изображение проекта">
                 </div>

@@ -163,7 +163,7 @@
         </div>
       </section>
 
-      <div class="dsp-flex gap-10">
+      <div class="dsp-flex gap-10" *ngIf="isCurrentUserAuthorOfProject">
         <button mat-flat-button style="padding: 10px;background: black;color: white">{{t('edit_project')}}</button>
         <button (click)="onDeleteProject()" mat-flat-button style="padding: 10px;background: red;color: white">{{t('delete_project')}}</button>
       </div>

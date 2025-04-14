@@ -232,3 +232,7 @@ input[type="number"] {
 .gap-10{
   gap: 10px;
 }
+
+.bg-white{
+  background-color: white !important;
+}

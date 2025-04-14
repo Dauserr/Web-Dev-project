@@ -1,4 +1,4 @@
-import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,6 +10,7 @@ import {translocoConfigOptions} from './core/transloco.config';
 import {TranslocoHttpLoader} from './core/transloco.loader';
 import {RequestHeadersInterceptor} from './interceptors/RequestHeadersInterceptor';
 import {CustomMissingHandler} from './core/customMissingHandler';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
@@ -27,6 +28,14 @@ export const appConfig: ApplicationConfig = {
     {
       provide:TRANSLOCO_MISSING_HANDLER,
       useClass:CustomMissingHandler
-    }
+    },
+    {
+      provide:LOCALE_ID,
+      useValue:'ru'
+    },
+    {
+      provide:MAT_DATE_LOCALE,
+      useValue:'ru-RU'
+    },
   ]
 };

@@ -4,40 +4,12 @@
   <section class="instructions-section">
     <h2>{{t('create_project')}}</h2>
     <div class="steps-container">
-      <div class="step">
+      <div class="step" *ngFor="let stepContent of stepsContent">
         <div class="step-icon">
-          <!-- TODO: Добавить SVG иконку -->
+          <img [src]="stepContent.stepImage" alt="step-icon">
         </div>
-        <h3>{{t('step_1')}}</h3>
-        <p>{{t('step_1_description')}}</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">
-          <!-- TODO: Добавить SVG иконку -->
-        </div>
-        <h3>{{t('step_2')}}</h3>
-        <p>{{t('step_2_description')}}</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">
-          <!-- TODO: Добавить SVG иконку -->
-        </div>
-        <h3>{{t('step_3')}}</h3>
-        <p>{{t('step_3_description')}}</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">
-          <!-- TODO: Добавить SVG иконку -->
-        </div>
-        <h3>{{t('step_4')}}</h3>
-        <p>{{t('step_4_description')}}</p>
-      </div>
-      <div class="step">
-        <div class="step-icon">
-          <!-- TODO: Добавить SVG иконку -->
-        </div>
-        <h3>{{t('step_5')}}</h3>
-        <p>{{t('step_5_description')}}</p>
+        <h3>{{t(stepContent.stepTitleCode)}}</h3>
+        <p>{{t(stepContent.stepDescriptionCode)}}</p>
       </div>
     </div>
   </section>
@@ -49,19 +21,19 @@
       <div class="form-group">
         <label for="title">{{t('project_title')}}</label>
         <div class="input-tip">{{t('create_memorable_title')}}</div>
-        <input type="text" id="title" name="title" [(ngModel)]="project.title" required>
+        <input style="width: 100%" type="text" id="title" name="title" [(ngModel)]="project.title" required>
       </div>
 
       <div class="form-group">
         <label for="description">{{t('short_description')}}</label>
         <div class="input-tip">{{t('describe_project_in_2_3_sentences')}}</div>
-        <textarea id="description" name="description" [(ngModel)]="project.description" rows="3" required></textarea>
+        <textarea style="width: 100%;font-size: 18px" id="description" name="description" [(ngModel)]="project.description" rows="3" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="projectCategory">{{t('project_category')}}</label>
-        <select id="projectCategory" name="projectCategory" [(ngModel)]="project.category" required>
-          <option *ngFor="let category of categories" [value]="category.value">{{ category.label }}</option>
+        <select style="width: 102%" id="projectCategory" name="projectCategory" [(ngModel)]="project.category" required>
+          <option *ngFor="let category of categories"  [value]="category.value">{{ category.label }}</option>
         </select>
       </div>
 
@@ -69,15 +41,18 @@
     <!-- Финансовая информация -->
     <div class="form-group">
       <label for="target_funds">{{t('target_amount')}}</label>
-      <input type="number" id="target_funds" name="target_funds" [(ngModel)]="project.target_funds" min="0" required>
+      <input type="number" style="width: 100%" id="target_funds" name="target_funds" [(ngModel)]="project.target_funds" min="0" required>
     </div>
 
     <!-- Даты -->
     <div class="form-group">
       <label>{{t('fundraising_deadlines')}}</label>
-      <div class="date-range">
-        <input type="date" id="deadline" name="deadline" [(ngModel)]="project.deadline" required>
-      </div>
+      <mat-form-field style="width: 50%">
+        <mat-label>{{t('choose_date_title')}}</mat-label>
+        <input id="matdatePickerInput" matInput [matDatepicker]="picker" name="deadline" [min]="today" [(ngModel)]="project.deadline">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker class="bg-white" name="deadline" [(ngModel)]="project.deadline" #picker></mat-datepicker>
+      </mat-form-field>
     </div>
 
       <!-- Календарь дедлайнов
@@ -119,7 +94,12 @@
       <!-- Кнопки действий -->
       <div class="form-actions">
         <!--<button type="button" class="preview-btn">Предпросмотр</button>-->
-        <button type="submit" class="submit-btn">{{t('submit_for_moderation')}}</button>
+        <button
+          [disabled]="!this.project.category || !this.project.deadline || !this.project.description || !this.project.title"
+          [ngStyle]="!this.project.category || !this.project.deadline || !this.project.description || !this.project.title ? {'background':'rgba(128,128,128,0.4)','color':'rgba(128,128,128,1)'} : {}"
+          mat-flat-button
+          type="submit"
+          class="submit-btn">{{t('submit_for_moderation')}}</button>
       </div>
     </form>
   </section>

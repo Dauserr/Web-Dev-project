@@ -38,7 +38,7 @@
   transform: translateY(-5px);
 }
 
-.step-icon {
+.step-icon > img {
   width: 60px;
   height: 60px;
   margin: 0 auto 1rem;
@@ -98,7 +98,7 @@ select {
   transition: border-color 0.3s ease;
 }
 
-input:focus,
+input:not(#matdatePickerInput):focus,
 textarea:focus,
 select:focus {
   outline: none;

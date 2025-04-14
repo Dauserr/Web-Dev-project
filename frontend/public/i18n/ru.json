@@ -223,6 +223,8 @@
   "delete_reset": "Сбросить",
   "success_project_deletion": "Проект успешно удален",
   "project_deletion_error": "Ошибка при удалении проекта",
+  "send_btn": "Отправить",
+  "choose_date_title": "Выберите дату",
 
   "category_title": "Категории",
   "status_active": "Активные",

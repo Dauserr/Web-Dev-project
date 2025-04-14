@@ -95,8 +95,9 @@ def getCatalog(request):
     if request.method == "GET":
         try:
             enteredprojectname = request.GET.get('enteredProjectName')
-            categories = request.GET.get('category').split(',') if request.GET.get('category') else []
-            project_status = 'ACTIVE' if request.GET.get('project_status') == 'status_active' else 'FINISHED'
+            categories = request.GET.get('category')
+            categories = categories.split(',') if categories else []
+            project_status = request.GET.get('project_status')
             projects_sort = request.GET.get('projects_sort')
 
             filters = Q()
@@ -105,9 +106,13 @@ def getCatalog(request):
             if categories:
                 filters &= Q(category__in=categories)
             if project_status:
-                filters &= Q(status=project_status)
+                if project_status == 'status_active':
+                    filters &= Q(status='ACTIVE')
+                elif project_status == 'status_finished':
+                    filters &= Q(status='FINISHED')
 
             project = Project.objects.filter(filters)
+
             if project:
                 return JsonResponse({'code': "SUCCESS_FOUND", 'data': list(project.values())}, status=200)
             return JsonResponse({'code': "PROJECT_NOT_FOUND", 'data': []}, status=500)

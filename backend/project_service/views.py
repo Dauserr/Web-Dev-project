@@ -8,6 +8,9 @@ import json
 from datetime import datetime
 from django.utils.timezone import make_aware
 from auth_service.models import Users
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import ProjectSerializer
 
 
 def project_catalogue(request):
@@ -38,30 +41,23 @@ def project_catalogue(request):
     return JsonResponse({"projects": result})
 
 
-def project_detail(request, project_id):
-    """Страница проекта"""
-    print(f"Получен запрос на проект с ID: {project_id}")
-    project = get_object_or_404(Project, project_id=project_id)
-    user = get_object_or_404(Users, user_id=project.user_id)
-    user_full_name = user.user_fullName
-    user_bio = user.user_description
+class project_detail(APIView):
+    def get(self, request, project_id):
+        project = get_object_or_404(Project, project_id=project_id)
+        user = get_object_or_404(Users, user_id=project.user_id)
 
-    days_since_creation = (datetime.now() - project.created_at).days
-    days_until_deadline = (project.deadline - datetime.now()).days
+        days_since_creation = (datetime.now() - project.created_at).days
+        days_until_deadline = (project.deadline - datetime.now()).days
 
-    return JsonResponse({
-        "project_id": project.project_id,
-        "title": project.title,
-        "description": project.description,
-        "current_funds": project.current_funds,
-        "target_funds": project.target_funds,
-        "user_id": project.user_id,
-        "category": project.category,
-        "days_since_creation": days_since_creation,
-        "days_until_deadline": days_until_deadline,
-        "user_full_name": user_full_name,
-        "user_bio": user_bio,
-    })
+        serializer = ProjectSerializer(project)
+        project_data = serializer.data
+        project_data["user_full_name"] = user.user_fullName
+        project_data["user_bio"] = user.user_description
+        project_data["days_since_creation"] = days_since_creation
+        project_data["days_until_deadline"] = days_until_deadline
+
+        return Response(project_data)
+
 
 
 @csrf_exempt

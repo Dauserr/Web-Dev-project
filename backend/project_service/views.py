@@ -13,32 +13,39 @@ from rest_framework.response import Response
 from .serializers import ProjectSerializer
 
 
-def project_catalogue(request):
-    """Каталог проектов"""
-    projects = Project.objects.all()
-    result = []
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
+from datetime import datetime
+from .models import Project
+from auth_service.models import Users
+from .serializers import ProjectSerializer
 
-    for project in projects:
-        user = get_object_or_404(Users, user_id=project.user_id)
-        user_full_name = user.user_fullName
+class project_catalogue(APIView):
+    def get(self, request):
+        projects = Project.objects.all()
+        result = []
 
-        funding_status = (
-                    float(project.current_funds) * 100.0 / float(project.target_funds)) if project.target_funds else 0
+        for project in projects:
+            user = get_object_or_404(Users, user_id=project.user_id)
+            user_full_name = user.user_fullName
 
-        days_until_deadline = (project.deadline - datetime.now()).days
+            funding_status = (
+                float(project.current_funds) * 100.0 / float(project.target_funds)
+            ) if project.target_funds else 0
 
-        result.append({
-            "project_id": project.project_id,
-            "title": project.title,
-            "description": project.description,
-            "category": project.category,
-            "funding_status": funding_status,
-            "user_id": project.user_id,
-            "user_full_name": user_full_name,
-            "days_until_deadline": days_until_deadline,
-        })
+            days_until_deadline = (project.deadline - datetime.now()).days
 
-    return JsonResponse({"projects": result})
+            serializer = ProjectSerializer(project)
+            project_data = serializer.data
+            project_data["user_full_name"] = user_full_name
+            project_data["funding_status"] = funding_status
+            project_data["days_until_deadline"] = days_until_deadline
+
+            result.append(project_data)
+
+        return Response({"projects": result})
+
 
 
 class project_detail(APIView):

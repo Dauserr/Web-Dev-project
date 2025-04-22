@@ -75,34 +75,43 @@ export class ProjectCreateComponent {
 
   ngOnInit() {
     this.project.user_id = this.authService.getUserId() || 0;
+  }createProject() {
+    const st = !this.project.category || !this.project.deadline || !this.project.description || !this.project.title;
+    const deadlineDate = new Date(this.project.deadline);
+    const formattedDeadline = deadlineDate.toISOString().split('T')[0]; // Форматируем дату
+
+    const payload = {
+      ...this.project,
+      deadline: formattedDeadline,
+    };
+
+    console.log('Отправляем данные:', payload, st);
+
+    this.ApiUrlsService.createProject(payload).subscribe(  // Отправляем payload, а не this.project
+      (response: any) => {
+        if (response.success) {
+          console.log('Проект успешно создан:', response);
+          alert(response.message); // Покажет "Успех"
+
+          // Сброс формы
+          this.project = {
+            title: '',
+            description: '',
+            user_id: this.authService.getUserId() || 0,
+            category: '',
+            target_funds: 0,
+            deadline: '',
+          };
+        } else {
+          console.error('Ошибка при создании проекта:', response.message);
+          alert(response.message); // Покажет "Ошибка: ..."
+        }
+      },
+      error => {
+        console.error('Ошибка сети или сервера:', error);
+        alert('Ошибка сети или сервера');
+      }
+    );
   }
-  createProject() {
-    const st = !this.project.category || !this.project.deadline || !this.project.description || !this.project.title
-    console.log('Отправляем данные:', this.project,st);
-    // this.ApiUrlsService.createProject(this.project).subscribe(
-    //   (response: any) => {
-    //     if (response.success) {
-    //       console.log('Проект успешно создан:', response);
-    //       alert(response.message); // Покажет "Успех"
-    //
-    //       // Сброс формы
-    //       this.project = {
-    //         title: '',
-    //         description: '',
-    //         user_id: this.authService.getUserId() || 0,
-    //         category: '',
-    //         target_funds: 0,
-    //         deadline: '',
-    //       };
-    //     } else {
-    //       console.error('Ошибка при создании проекта:', response.message);
-    //       alert(response.message); // Покажет "Ошибка: ..."
-    //     }
-    //   },
-    //   error => {
-    //     console.error('Ошибка сети или сервера:', error);
-    //     alert('Ошибка сети или сервера');
-    //   }
-    // );
-  }
+
 }

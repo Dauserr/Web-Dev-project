@@ -57,12 +57,12 @@ export class ApiUrlsService {
       return this._httpClient.get(`${this.BASE_URL}api/catalog`,{params})
     },
     deleteProjectById : (id:number) => {
-      return this._httpClient.delete<BasicResponse>(`${this.BASE_URL}api/delete-project/${id}`)
+      return this._httpClient.delete<BasicResponse>(`${this.BASE_URL}api/projects/${id}`)
     }
   }
 
   createProject(projectData: any): Observable<any> {
-    return this._httpClient.post(`${this.BASE_URL}api/projects/create`, projectData);
+    return this._httpClient.post(`${this.BASE_URL}api/projects`, projectData);
   }
 
   getProjects(): Observable<any> {
@@ -77,4 +77,3 @@ export class ApiUrlsService {
     return this._httpClient.get<any>(`${this.BASE_URL}blog/get_news`);
   }
 }
-

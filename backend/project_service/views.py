@@ -13,66 +13,53 @@ from rest_framework.response import Response
 from .serializers import ProjectSerializer
 
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-from datetime import datetime
-from .models import Project
-from auth_service.models import Users
-from .serializers import ProjectSerializer
+class ProjectView(APIView):
+    def get(self, request, project_id=None):
+        if project_id is None:
+            # Каталог проектов
+            projects = Project.objects.all()
+            result = []
 
-class project_catalogue(APIView):
-    def get(self, request):
-        projects = Project.objects.all()
-        result = []
+            for project in projects:
+                user = get_object_or_404(Users, user_id=project.user_id)
+                user_full_name = user.user_fullName
 
-        for project in projects:
+                funding_status = (
+                    float(project.current_funds) * 100.0 / float(project.target_funds)
+                ) if project.target_funds else 0
+
+                days_until_deadline = (project.deadline - datetime.now()).days
+
+                serializer = ProjectSerializer(project)
+                project_data = serializer.data
+                project_data["user_full_name"] = user_full_name
+                project_data["funding_status"] = funding_status
+                project_data["days_until_deadline"] = days_until_deadline
+
+                result.append(project_data)
+
+            return Response({"projects": result})
+
+        else:
+            # Детали одного проекта
+            project = get_object_or_404(Project, project_id=project_id)
             user = get_object_or_404(Users, user_id=project.user_id)
-            user_full_name = user.user_fullName
 
-            funding_status = (
-                float(project.current_funds) * 100.0 / float(project.target_funds)
-            ) if project.target_funds else 0
-
+            days_since_creation = (datetime.now() - project.created_at).days
             days_until_deadline = (project.deadline - datetime.now()).days
 
             serializer = ProjectSerializer(project)
             project_data = serializer.data
-            project_data["user_full_name"] = user_full_name
-            project_data["funding_status"] = funding_status
+            project_data["user_full_name"] = user.user_fullName
+            project_data["user_bio"] = user.user_description
+            project_data["days_since_creation"] = days_since_creation
             project_data["days_until_deadline"] = days_until_deadline
 
-            result.append(project_data)
+            return Response(project_data)
 
-        return Response({"projects": result})
-
-
-
-class project_detail(APIView):
-    def get(self, request, project_id):
-        project = get_object_or_404(Project, project_id=project_id)
-        user = get_object_or_404(Users, user_id=project.user_id)
-
-        days_since_creation = (datetime.now() - project.created_at).days
-        days_until_deadline = (project.deadline - datetime.now()).days
-
-        serializer = ProjectSerializer(project)
-        project_data = serializer.data
-        project_data["user_full_name"] = user.user_fullName
-        project_data["user_bio"] = user.user_description
-        project_data["days_since_creation"] = days_since_creation
-        project_data["days_until_deadline"] = days_until_deadline
-
-        return Response(project_data)
-
-
-
-@csrf_exempt
-def create_project(request):
-    """Создание проекта"""
-    if request.method == "POST":
+    def post(self, request):
         try:
-            data = json.loads(request.body)
+            data = request.data
 
             deadline = datetime.strptime(data["deadline"], "%Y-%m-%d")
             deadline = make_aware(deadline)
@@ -86,12 +73,31 @@ def create_project(request):
                 deadline=deadline
             )
 
-            return JsonResponse({"success": True, "message": "Проект успешно создан", "project_id": project.project_id})
+            return Response({
+                "success": True,
+                "message": "Проект успешно создан",
+                "project_id": project.project_id
+            })
 
         except Exception as e:
-            return JsonResponse({"success": False, "message": f"Ошибка: {str(e)}"})
+            return Response({
+                "success": False,
+                "message": f"Ошибка: {str(e)}"
+            }, status=400)
 
-    return JsonResponse({"error": "Invalid request"}, status=400)
+    def delete(self, request, project_id):
+        try:
+            project = get_object_or_404(Project, project_id=project_id)
+            project.delete()
+            return Response({
+                "code": "SUCCESS_DELETE",
+                "message": "Проект успешно удалён"
+            }, status=200)
+        except Exception as e:
+            return Response({
+                "code": "REQUEST_FAILED",
+                "message": f"Ошибка при удалении: {str(e)}"
+            }, status=500)
 
 
 def getCatalog(request):
@@ -123,22 +129,3 @@ def getCatalog(request):
             return JsonResponse({"code": 'REQUEST_FAILED', "message": f"Ошибка: {str(e)}"}, status=500)
 
     return JsonResponse({"code": "INVALID_REQUEST"}, status=400)
-
-
-@csrf_exempt
-def deleteproject(request, project_id):
-    if request.method == 'DELETE':
-        try:
-            project = Project.objects.get(project_id=project_id)
-            print('project ID in model:', project.project_id)
-            print('project ID from request:', project_id)
-            if not project:
-                return JsonResponse({"code": 'PROJECT_NOT_FOUND', "message": "project did not found in the table"},
-                                    status=500)
-            else:
-                project.delete()
-                return JsonResponse({"code": 'SUCCESS_DELETE', "message": "project successfully deleted"}, status=200)
-        except Exception as e:
-            return JsonResponse({"code": 'REQUEST_FAILED', "message": f"Ошибка: {str(e)}"}, status=500)
-    else:
-        return JsonResponse({"code": 'INVALID_METHOD', "message": f"unallowed method for this request"}, status=500)

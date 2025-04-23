@@ -235,6 +235,7 @@
   "by_time_to_finish": "По времени до завершения",
   "search_projects": "Поиск по проектам...",
   "find_btn": "Найти",
+  "create_project_btn": "Создать проект",
   "project_status": "Статус проекта",
   "sort_title": "Сортировка",
   "choose_sort_type": "Выберите вид сортировки",

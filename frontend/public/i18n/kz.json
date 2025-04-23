@@ -238,6 +238,7 @@
   "project_deletion_approvement_question": "Жобаны жойғыңыз келетінің растайсыз ба?",
   "close_btn": "Жабу",
   "delete_btn": "Жою",
+  "create_project_btn": "Жоба құру",
   "delete_reset": "Болдырмау",
   "success_action_desc": "Әрекет сәтті аяқталды",
   "success_project_deletion": "Жоба сәтті түрде жойылды",

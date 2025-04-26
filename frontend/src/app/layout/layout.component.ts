@@ -4,9 +4,10 @@ import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 import {filter} from 'rxjs';
 import {NgIf} from '@angular/common';
+import {ChatbotComponent} from '../components/chatbot/chatbot.component';
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NgIf],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, NgIf, ChatbotComponent],
   standalone:true,
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'

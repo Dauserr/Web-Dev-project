@@ -1,5 +1,5 @@
 @import 'ngx-toastr/toastr';
-
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 /* Global CSS Variables */
 :root {
     --primary-color: #101828;
@@ -206,6 +206,10 @@ input[type="number"] {
 
 .pos-abs{
   position: absolute;
+}
+
+.pos-sticky{
+  position: sticky;
 }
 
 .z-ind-10000{

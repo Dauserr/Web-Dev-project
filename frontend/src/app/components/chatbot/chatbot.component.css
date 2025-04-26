@@ -1,0 +1,10 @@
+.questionMarkWrapper{
+  background-color: black;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+}
+
+.questionMarkWrapper:hover{
+  background-color: rgba(128,128,128,0.7);
+}

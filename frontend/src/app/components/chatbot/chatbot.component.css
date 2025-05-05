@@ -1,10 +1,112 @@
 .questionMarkWrapper{
   background-color: black;
-  padding: 1rem;
+  padding: clamp(0.5rem,0.75rem,1rem);
   border-radius: 50%;
   transition: 0.2s ease-in-out;
+  width: fit-content;
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 .questionMarkWrapper:hover{
   background-color: rgba(128,128,128,0.7);
+}
+
+.chatMain{
+  width: clamp(500px,550px,600px);
+  transition: all ease-in-out 1s;
+}
+
+.chatPanel{
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap:10px;
+}
+.withIconBlock{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  position: absolute;
+  top: 8rem;
+}
+.withIconBlock > span{
+  font-size: 20px;
+  color: rgba(128,128,128,0.7);
+}
+
+input {
+  transition: outline 0.2s ease;
+  font-size: 1.4rem;
+  outline: unset;
+  border: 1px solid #bbbbbb;
+  padding: 17px 10px 10px 17px;
+  width: 90%;
+}
+.messageForm{
+  display: flex;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0.5rem;
+}
+.messageForm > input{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.sendBtn{
+  background-color: black;
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.sendBtn:hover{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.messageCard{
+  background-color: black;
+  border-radius: 12px;
+  padding: 10px;
+  color: white;
+  max-width: 80%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.messageCard > span{
+  font-size: 20px;
+}
+.sendTime{
+  align-self: flex-end;
+}
+
+.messagesBlock{
+  flex: 1;
+  overflow-y: scroll;
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 1rem 1rem 7rem 1rem;
+  margin-right: 1rem;
+
+  /*  скрыл скроллбар*/
+  -ms-overflow-style: none;
+}
+.messagesBlock::-webkit-scrollbar{
+  display: none;
 }

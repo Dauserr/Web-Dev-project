@@ -1,3 +1,27 @@
-<div class="questionMarkWrapper">
-  <fa-icon [icon]="faQuestionCircle" style="color: white" size="2xl"></fa-icon>
+<div class="dsp-flex gap-20">
+  <div class="dsp-flex flex-directionColumn gap-10 chatMain" *ngIf="showChatbot">
+    <mat-card>
+      <div class="chatPanel pos-rel">
+        <div class="withIconBlock dsp-flex flex-directionColumn" *ngIf="!hasMessages">
+          <fa-icon [icon]="faMessage" size="4x" style="color: rgba(128,128,128,0.4)"></fa-icon>
+          <span>{{'Поделитесь своим вопросом'}}</span>
+        </div>
+        <div *ngIf="hasMessages" class="messagesBlock">
+            <div *ngFor="let message of messages" class="messageCard">
+              <span>{{message.title}}</span>
+              <span class="sendTime">{{message.sendTime}}</span>
+            </div>
+        </div>
+        <form [formGroup]="chatQuestionsForm" (ngSubmit)="sendMessage()" class="messageForm">
+          <input [formControlName]="'message'" type="text" [placeholder]="'Введите сообщение'">
+          <button class="sendBtn" type="submit">
+              <fa-icon [icon]="faPaperPlane" size="2x" style="color: white"></fa-icon>
+          </button>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+  <div class="questionMarkWrapper" (click)="showChatbot=true">
+    <fa-icon [icon]="faQuestionCircle" [animation]="'shake'" style="color: white" size="3x"></fa-icon>
+  </div>
 </div>

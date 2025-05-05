@@ -211,7 +211,9 @@ input[type="number"] {
 .pos-sticky{
   position: sticky;
 }
-
+.pos-fixed{
+  position: fixed;
+}
 .z-ind-10000{
   z-index: 10000;
 }

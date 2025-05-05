@@ -2,7 +2,9 @@
 
 <main class="main-content">
   <router-outlet></router-outlet>
-  <app-chatbot style="top:80%;left: 80%"></app-chatbot>
+  <div class="pos-fixed chatbot-positioning">
+    <app-chatbot></app-chatbot>
+  </div>
 </main>
 
 <app-footer *ngIf="isFooterNeeded"></app-footer>

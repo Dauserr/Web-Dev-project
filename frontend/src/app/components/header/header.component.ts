@@ -10,7 +10,7 @@ import {ApiUrlsService} from '../../services/api-urls.service';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf, MatIcon, MatIconButton, MatIconModule, NgClass, NgStyle],
+  imports: [TranslocoModule, NgForOf, MatMenu, MatButton, MatMenuItem, MatMenuTrigger, NgIf, MatIcon, MatIconButton, MatIconModule, NgClass],
   standalone:true,
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

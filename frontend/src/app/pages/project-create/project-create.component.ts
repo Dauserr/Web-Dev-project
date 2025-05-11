@@ -19,7 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-project-create',
-  imports: [FormsModule, HttpClientModule, CommonModule, MatFormFieldModule, MatLabel, MatHint, MatDatepickerToggle, MatInputModule, MatDatepickerInput, MatDatepickerModule, MatNativeDateModule, MatButtonModule],
+  imports: [FormsModule, HttpClientModule, CommonModule, MatFormFieldModule, MatLabel, MatDatepickerToggle, MatInputModule, MatDatepickerInput, MatDatepickerModule, MatNativeDateModule, MatButtonModule],
   standalone:true,
   templateUrl: './project-create.component.html',
   styleUrl: './project-create.component.css'
